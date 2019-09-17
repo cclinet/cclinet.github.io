@@ -234,9 +234,22 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-17 18:00:37" itemprop="dateModified" datetime="2019-09-17T18:00:37+08:00">2019-09-17</time>
+                <time title="修改时间：2019-09-17 18:16:06" itemprop="dateModified" datetime="2019-09-17T18:16:06+08:00">2019-09-17</time>
               </span>
             
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -250,98 +263,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-<h2 id="楔子">楔子</h2>
-<p>在线性回归中，当因变量与自变量的关系式不再是线性时，我们通过引入衍生变量<span class="math inline">\(y’\)</span>，使其转换为线性表达形式。那么很自然地，对于我们现在面临的分类任务，我们就需要一个转换，使得分类变量0和1转化为可用的形式。</p>
-<h2 id="起源">起源</h2>
-<p>逻辑回归起源于19世纪对人口增长以及自催化反应的研究，在1835年Verhulst的同乡人Adolphe Quetelet发表了一篇关于讨论人口增长的文章，文中认为人口不可能一直是指数增长的，而会被与增长速度平方成比例的一种阻力而影响，但是这篇论文只有猜想没有数学理论基础，在1838年Verhulst发表了关于人口数量增长的论文，就是在这篇论文里面他推导出了logistic equation，文章中谈到一个重要观点，随着时间的增加，一个国家的大小（资源）和这个国家人们的生育能力限制了人口的增长，人口数量会渐渐趋近一个稳定值。厉害的是他将这个过程用公式给描述出来了，他从人口数量增长的速度公式入手，即人口数量<span class="math inline">\(P(t)\)</span>对时间<span class="math inline">\(t\)</span>的导数:</p>
-<p><span class="math display">\[ \frac{\partial P}{\partial t} = rP(1-\frac{P}{K}) \]</span></p>
-<p>其中K就是他认为人口数量稳定的值，当<span class="math inline">\(P(t)\)</span>远小于<span class="math inline">\(K\)</span>时，求导公式后一项约等于0，那么就变成了<span class="math inline">\(\frac{\partial P}{\partial t} \simeq rP\)</span>，这个阶段人口增长速度与人口数量和一个常数的乘积成正比，并且在渐渐变大。然后对这个式子求解一阶线性微分方程得到<span class="math inline">\(P(t)\simeq P(0)e^{rt}\)</span>。当<span class="math inline">\(P(t)\)</span>接近<span class="math inline">\(K\)</span>时，人口增长速度开始渐渐变小，同样求解二阶微分方程(论文中是将二阶转化成一阶求解)，然后将二者整合在一起得到最初的形式。</p>
-<p>他将法国英国等过十几年的人口实际数据拿来跟这个公式对比之后发现确实拟合的很不错。但他当时并没有那么多年的数据，在他过世以后人们总结的300年来的人口增长分布，可以看到非常漂亮的拟合了logisitc分布的累积分布函数走势。但是当时这个公式并没有名字，直到1845年他发表了另外一篇重要文章，他给这个公式起了一个名字——“logistic function”，此外在这篇文章中，他发现在<span class="math inline">\(P(t)&lt;K/2\)</span>的时候，<span class="math inline">\(P(t)\)</span>呈凸增长趋势，在<span class="math inline">\(P(t)&gt;K/2\)</span>时P(t)呈凹增长(通过求二阶导来分析，这里略)。这个增长的趋势类似logistic分布的概率密度函数。</p>
-<p>1922年，美国生物学家Raymond Pearl基于Verhulst的方程发表了一系列相关论文，用于解释人工增长模型，并提出了另一种logistic function的表达方法。英国科学家Yule（1925）与Wilson（1925）进一步完善了该模型，其中Wilson是第一个将logistic应用于生物测定的生物学家,此后该方程被广泛用于生物医疗领域。</p>
-<p><span class="math display">\[y = \frac{be^{ax}}{1+ce^{ax}}\]</span></p>
-<p>基于这个表达式，Joseph Berkson在1944年提出了logit function，<span class="math inline">\(logit=ln(\frac{1-Q}{Q})\)</span>，假如<span class="math inline">\(Q = \frac{1}{1+e^{a-bx}}\)</span>，结果就是<span class="math inline">\(logit=a−bx\)</span>。</p>
-<p>逻辑回归虽然起源甚久，但真正意义上第一次出现logistic regression这个词是在1958年David Cox的一篇论文中，该论文主要为了解决如何求得本文定义及描述中的参数<span class="math inline">\(\beta\)</span> 。他的文章是为了解决这样一个问题，有一组取值为0，1的观测值，它们的取值<span class="math inline">\(Y_i\)</span>依赖于一些独立变量<span class="math inline">\(x_i\)</span>， 当<span class="math inline">\(Y_i=1\)</span>时对应的概率为<span class="math inline">\(θ_i=pr(Y_i=1)\)</span>。由于<span class="math inline">\(θ_i\)</span>限制在[0,1]之间，因此假设<span class="math inline">\(θ_i\)</span>与<span class="math inline">\(x_i\)</span>的关系符合logit function，即<span class="math inline">\(logit\theta_i \equiv log{\frac{\theta_i}{1-\theta_i}} = \alpha + \beta x_i\)</span>，文章主要在分析如何求解里面的参数β，这里就不提了。由于用到了logistic function，而这个问题本身又个回归问题(建立观测值与独立变量之间的关系)，因而它被称呼为logistic regression。</p>
-<p>貌似Cox在这篇文章中并不是刻意提出logistic regression，但确实这个词第一次出现就是在这篇文章中，虽然Cox之前已经有很多人做过这方面的研究了，但是他们没给个名字，因此Cox成了提出logistic regression的人。这个故事告诉我们一个道理，无论是发文章还是写软件一定要取一个言简意赅又好听又好记的名字。。。</p>
-<p>直到1973年，美国加州公共交通方案的顾问MCFadden将多项式logit模型与数学心理学中的离散抉择理论相联系，并因此获得2000年的诺贝尔经济学奖。</p>
-<p>以上是逻辑回归的历史发展中比较有代表性的几件事，J.S Cramer[1]在他的文章中有更加详细的讨论。它是由数学家对人口发展规律研究得出，后来又被应用到了微生物生长情况的研究，后来又被应用解决经济学相关问题，直到发展到今天作为一个非常重要的算法而存在于各行各业。逻辑回归作为Regression Analysis的一个分支，它实际上还受到很多Regression Analysis相关技术的启发，例如Berkson就是基于probit function提出的logit function。光它的起源到应用就能写一本书出来了。。。</p>
-<p>主要事件表格[2]</p>
-<table>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">年份</th>
-<th style="text-align: center;">事件</th>
-<th style="text-align: center;">相关论文/Reference</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1838 - 1847</td>
-<td style="text-align: center;">比利时统计学家Verhulst为logistic function命名</td>
-<td style="text-align: center;">Verhulst, Pierre-Francois (1838) Notice sur la loi que la population suit dans son accroissement. Correspondance mathématique et Physique, publiée par A. Quetelet, 10, 113-120</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">Verhulst, Pierre-Francois (1845) Recherches mathématiques sur la loi d’accroissement de la population. Nouveaux Mémoires de l’acidémie Royale des Sciences, des Lettres et des Beaux-Arts de Belgique, 18, 1-38</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">Verhulst, Pierre-Francois (1847) Deuxième Mémoire sur la loi d’accroissement de la population. Nouveaux Mémoires de l’acidémie Royale des Sciences, des Lettres et des Beaux-Arts de Belgique, 20, 1-32</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1922</td>
-<td style="text-align: center;">Pearl在研究美国人口增长时提出logistic function另一种表达方法</td>
-<td style="text-align: center;">On the Rate of Growth of the Population of the United States Since 1790 and its Mathematical RepresentationRaymond Pearl, and Lowell J. ReedPNAS 1920;6;275-288 doi:10.1073/pnas.6.6.275</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">1942</td>
-<td style="text-align: center;">Wilson将logistic function应用于生物测定</td>
-<td style="text-align: center;">Wilson, E.B. and Jane Worcester (1942) The Determination of L.D.50 and Its Sampling Error in Bio-assay. Proceedings of the National Academy of Sciences, 29, 79-85</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2001</td>
-<td style="text-align: center;">McFadden于诺贝尔奖颁奖典礼演讲</td>
-<td style="text-align: center;">McFadden, Daniel (2001) Economic Choices. (Nobel Prize acceptance speech.) American Economic Review, 91, 352-370</td>
-</tr>
-</tbody>
-</table>
-<h2 id="一些数学推导">一些数学推导</h2>
-<h3 id="sigmoid-函数">sigmoid 函数</h3>
-<p>sigmod函数是一种具有类似S型曲线的数学函数，通常sigmoid特指如下函数[3]</p>
-<p><span class="math display">\[ S(t)=\frac{1}{1+e^{-t}} \]</span></p>
-<h3 id="与线性回归的关系">与线性回归的关系</h3>
-<p>先考虑一个二分类的预测变量，正如前面所说的，显然由于分类数据的特点，已经不适合运用传统的线性函数进行分析。但是二分类事件的y的期望值<span class="math inline">\(E(y)\)</span>来说，它等价于事件发生概率，从<span class="math inline">\(y\)</span>到<span class="math inline">\(E(y)\)</span>,我们就把事件发生与否与值域在[0,1]区间的事件发生概率相联系，这提示我们可以用事件发生的概率进行代替。</p>
-<p>既然使用发生概率代替的话，一个自然而然的选择是把回归函数的值域限制在[0,1]区间内,这样当<span class="math inline">\(f(x_i)\)</span>接近负无穷时，将有<span class="math inline">\(E(y_i)\)</span>趋近于0，而在<span class="math inline">\(f(x_i)\)</span>接近正无穷时，将有<span class="math inline">\(E(y_i)\)</span>趋近于1，这样看来，显然相比于研究二元变量<span class="math inline">\(y\)</span>与<span class="math inline">\(x\)</span>的关系，研究<span class="math inline">\(y\)</span>发生的条件概率与<span class="math inline">\(x\)</span>更具适应性。</p>
-<p>可以看到</p>
-<p><span class="math display">\[ P\{Y=1|X\}=\frac{1}{1+e^{-w^Tx+b}} \]</span></p>
-<p><span class="math display">\[ P\{Y=0|X\}=1-P\{Y=1|X\}=\frac{e^{-w^Tx+b}}{1+e^{-w^Tx+b}} \]</span></p>
-<p>此时</p>
-<p><span class="math display">\[ \frac{y}{1-y}=e^{w^Tx+b} \]</span></p>
-<p>上式左边实际上就是表示“事件发生的概率”与“事件不发生的概率”之比，称之为事件的发生比，简称odds。 进一步将odds取对数，可化为线性函数</p>
-<p><span class="math display">\[ ln\frac{y}{1-y}=w^Tx+b \]</span></p>
-<p>实际上，转化为线性函数形式后，我们可以看到逻辑回归实际上就是以线性回归的形式去逼近时间发生优势比的对数，因此也有一些文献称之为“对数几率回归”。</p>
-<h3 id="损失函数">损失函数</h3>
-<p>考虑到</p>
-<p><span class="math display">\[ P\{Y=1|X\}=S(x) \]</span></p>
-<p><span class="math display">\[ P\{Y=0|X\}=1-S(x) \]</span></p>
-<p>其后验概率</p>
-<p><span class="math display">\[ P\{Y|X;w\}=S(x)^y(1-S(x))^{1-y} \]</span></p>
-<p>对于m个独立同分布的训练样本x，其<strong>极大似然估计</strong>的似然函数写作</p>
-<p><span class="math display">\[ L(w)=\prod\limits^{m}_{i=1}P(Y|X;w)=\prod\limits^{m}_{i=1}S(x_i)^{y_i}(1-S(x_i))^{1-y_i} \]</span></p>
-<p>取对数得到</p>
-<p><span class="math display">\[ l(w)=\ln{L(w)}=\sum\limits^{m}_{i=1}y_i\ln{S(x_i)}+(1-y_i)\ln{(1-S(x_i))} \]</span></p>
-<p>求<span class="math inline">\(l(w)\)</span>取最大值时的<span class="math inline">\(w\)</span>，定义损失函数<span class="math inline">\(J(w)\)</span>为</p>
-<p><span class="math display">\[ J(w)=−\frac{1}{m}l(w) \]</span></p>
-<p>问题转化为求<span class="math inline">\(J(w)\)</span>的最小值</p>
-<p>[1]<a href="https://papers.tinbergen.nl/02119.pdf" class="uri" target="_blank" rel="noopener">https://papers.tinbergen.nl/02119.pdf</a> [2]<a href="https://www.jiqizhixin.com/graph/technologies/12596e7b-f943-489c-9a5c-18fe6351c7f5" class="uri" target="_blank" rel="noopener">https://www.jiqizhixin.com/graph/technologies/12596e7b-f943-489c-9a5c-18fe6351c7f5</a> [3]<a href="https://en.wikipedia.org/wiki/Sigmoid_function" class="uri" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Sigmoid_function</a></p>
-
+          <p>在线性回归中，当因变量与自变量的关系式不再是线性时，我们通过引入衍生变量<span class="math inline">\(y’\)</span>，使其转换为线性表达形式。那么很自然地，对于我们现在面临的分类任务，我们就需要一个转换，使得分类变量0和1转化为可用的形式。</p>
+          <!--noindex-->
+          
+          <!--/noindex-->
         
       
     </div>
@@ -413,9 +338,18 @@
     
       
       
-      <div class="site-state-item site-state-tags">
+      <div class="site-state-item site-state-categories">
         
         <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
         
       </div>
