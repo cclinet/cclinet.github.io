@@ -219,11 +219,19 @@
                 
               
 
-              <time title="Created: 2019-09-09 15:47:22 / Modified: 15:48:11" itemprop="dateCreated datePublished" datetime="2019-09-09T15:47:22+08:00">2019-09-09</time>
+              <time title="Created: 2019-09-09 15:47:22" itemprop="dateCreated datePublished" datetime="2019-09-09T15:47:22+08:00">2019-09-09</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-17 10:09:59" itemprop="dateModified" datetime="2019-09-17T10:09:59+08:00">2019-09-17</time>
+              </span>
             
           
 
@@ -238,16 +246,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h1><h2 id="楔子"><a href="#楔子" class="headerlink" title="楔子"></a>楔子</h2><p>在线性回归中，当因变量与自变量的关系式不再是线性时，我们通过引入衍生变量y’，使其转换为线性表达形式。那么很自然地，对于我们现在面临的分类任务，我们就需要一个转换，使得分类变量0和1转化为可用的形式。</p>
-<h2 id="sigmoid-函数"><a href="#sigmoid-函数" class="headerlink" title="sigmoid 函数"></a>sigmoid 函数</h2><p>A sigmoid function[1] is a mathematical function having a characteristic “S”-shaped curve or sigmoid curve. Often, sigmoid function refers to the special case of the logistic function shown in the first figure and defined by the formula</p>
-<p>$$ S(t)=\frac{1}{1+e^{-t}} $$</p>
-<h2 id="与线性回归的关系"><a href="#与线性回归的关系" class="headerlink" title="与线性回归的关系"></a>与线性回归的关系</h2><p>先考虑一个二分类的预测变量，正如前面所说的，显然由于分类数据的特点，已经不适合运用传统的线性函数进行分析。但是二分类事件的y的期望值E(y)来说，它等价于事件发生概率，从y到E(y),我们就把事件发生与否与值域在[0,1]区间的事件发生概率相联系，这提示我们可以用事件发生的概率进行代替。</p>
-<p>既然使用发生概率代替的话，一个自然而然的选择是把回归函数的值域限制在[0,1]区间内,这样当f(xi)接近负无穷时，将有E( yi)趋近于0，而在f(xi)接近正无穷时，将有E(yi )趋近于1，这样看来，显然相比于研究二元变量y与x的关系，研究y发生的条件概率与x更具适应性。</p>
-<p>可以看到<br>$$ P{Y=1|X}=\frac{1}{1+e^{-w^Tx+b}} $$<br>$$ P{Y=0|X}=1-P{Y=1|X}=\frac{e^{-w^Tx+b}}{1+e^{-w^Tx+b}} $$<br>此时<br>$$ \frac{y}{1-y}=e^{w^Tx+b} $$<br>上式左边实际上就是表示“事件发生的概率”与“事件不发生的概率”之比，称之为事件的发生比，简称odds。<br>进一步将odds取对数，可化为线性函数<br>$$ ln\frac{y}{1-y}=w^Tx+b $$<br>实际上，转化为线性函数形式后，我们可以看到逻辑回归实际上就是以线性回归的形式去逼近时间发生优势比的对数，因此也有一些文献称之为“对数几率回归”。</p>
-<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>考虑到<br>$$ P{Y=1|X}=S(x) $$<br>$$ P{Y=0|X}=1-S(x) $$<br>其后验概率<br>$$ P{Y|X;w}=S(x)^y(1-S(x))^{1-y} $$<br>对于m个独立同分布的训练样本x，其<strong>极大似然估计</strong>的似然函数写作<br>$$ L(w)=\prod\limits^{m}<em>{i=1}P(Y|X;w)=\prod\limits^{m}</em>{i=1}S(x_i)^{y_i}(1-S(x_i))^{1-y_i} $$<br>取对数得到<br>$$ l(w)=\ln{L(w)}=\sum\limits^{m}_{i=1}y_i\ln{S(x_i)}+(1-y_i)\ln{(1-S(x_i))} $$</p>
-<p>求l(w)取最大值时的w，定义损失函数J(w)为<br>$$ J(w)=−\frac{1}{m}l(w) $$<br>问题转化为求$J(w)$的最小值</p>
-<p>[1]<a href="https://en.wikipedia.org/wiki/Sigmoid_function" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Sigmoid_function</a></p>
-
+          <!-- # 逻辑回归 -->
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/09/逻辑回归两三事/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
