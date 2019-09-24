@@ -55,21 +55,21 @@
   };
 </script>
 
-  <meta name="description" content="在统计学中，过拟合是“产生与特定数据集过于紧密或完全对应的分析，因此可能无法拟合其他数据或可靠地预测未来的观测结果。”过度拟合的模型是一种统计模型，其中包含的参数多于数据所能证明的参数。过度拟合的本质是在不知不觉中提取了一些残余变化（即噪声），好像这种变化代表了潜在的模型结构。当统计模型不能充分捕获数据的基础结构时，就会发生欠拟合。不合适的模型是缺少正确指定模型中出现的某些参数或术语的模型。例如，">
-<meta name="keywords" content="机器学习,过拟合,正则化">
+  <meta name="description" content="过拟合经常发生在机器学习中">
+<meta name="keywords" content="过拟合,正则化,机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="过拟合、正则化">
-<meta property="og:url" content="https://blog.cclin.me/2019/09/20/过拟合、正则化/index.html">
+<meta property="og:url" content="https://blog.cclin.me/overfitting.html">
 <meta property="og:site_name" content="卜算子">
-<meta property="og:description" content="在统计学中，过拟合是“产生与特定数据集过于紧密或完全对应的分析，因此可能无法拟合其他数据或可靠地预测未来的观测结果。”过度拟合的模型是一种统计模型，其中包含的参数多于数据所能证明的参数。过度拟合的本质是在不知不觉中提取了一些残余变化（即噪声），好像这种变化代表了潜在的模型结构。当统计模型不能充分捕获数据的基础结构时，就会发生欠拟合。不合适的模型是缺少正确指定模型中出现的某些参数或术语的模型。例如，">
+<meta property="og:description" content="过拟合经常发生在机器学习中">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.cclin.me/2019/09/20/过拟合、正则化/过拟合、正则化/overfitting.jpg">
-<meta property="og:updated_time" content="2019-09-20T02:49:45.424Z">
+<meta property="og:image" content="https://blog.cclin.me/过拟合、正则化/overfitting.jpg">
+<meta property="og:updated_time" content="2019-09-24T07:49:20.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="过拟合、正则化">
-<meta name="twitter:description" content="在统计学中，过拟合是“产生与特定数据集过于紧密或完全对应的分析，因此可能无法拟合其他数据或可靠地预测未来的观测结果。”过度拟合的模型是一种统计模型，其中包含的参数多于数据所能证明的参数。过度拟合的本质是在不知不觉中提取了一些残余变化（即噪声），好像这种变化代表了潜在的模型结构。当统计模型不能充分捕获数据的基础结构时，就会发生欠拟合。不合适的模型是缺少正确指定模型中出现的某些参数或术语的模型。例如，">
-<meta name="twitter:image" content="https://blog.cclin.me/2019/09/20/过拟合、正则化/过拟合、正则化/overfitting.jpg">
-  <link rel="canonical" href="https://blog.cclin.me/2019/09/20/过拟合、正则化/">
+<meta name="twitter:description" content="过拟合经常发生在机器学习中">
+<meta name="twitter:image" content="https://blog.cclin.me/过拟合、正则化/overfitting.jpg">
+  <link rel="canonical" href="https://blog.cclin.me/overfitting">
 
 
 <script id="page-configurations">
@@ -231,7 +231,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://blog.cclin.me/2019/09/20/过拟合、正则化/">
+    <link itemprop="mainEntityOfPage" href="https://blog.cclin.me/overfitting.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cclin">
@@ -259,11 +259,19 @@
                 
               
 
-              <time title="创建时间：2019-09-20 10:10:23 / 修改时间：10:49:45" itemprop="dateCreated datePublished" datetime="2019-09-20T10:10:23+08:00">2019-09-20</time>
+              <time title="创建时间：2019-09-20 10:10:23" itemprop="dateCreated datePublished" datetime="2019-09-20T10:10:23+08:00">2019-09-20</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-24 15:49:20" itemprop="dateModified" datetime="2019-09-24T15:49:20+08:00">2019-09-24</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -291,7 +299,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在统计学中，过拟合是“产生与特定数据集过于紧密或完全对应的分析，因此可能无法拟合其他数据或可靠地预测未来的观测结果。”过度拟合的模型是一种统计模型，其中包含的参数多于数据所能证明的参数。过度拟合的本质是在不知不觉中提取了一些残余变化（即噪声），好像这种变化代表了潜在的模型结构。当统计模型不能充分捕获数据的基础结构时，就会发生欠拟合。不合适的模型是缺少正确指定模型中出现的某些参数或术语的模型。例如，当将线性模型拟合到非线性数据时，将发生欠拟合。这样的模型往往具有较差的预测性能。</p>
+        <p>过拟合经常发生在机器学习中 <a id="more"></a> 在统计学中，过拟合是“产生与特定数据集过于紧密或完全对应的分析，因此可能无法拟合其他数据或可靠地预测未来的观测结果。”过度拟合的模型是一种统计模型，其中包含的参数多于数据所能证明的参数。过度拟合的本质是在不知不觉中提取了一些残余变化（即噪声），好像这种变化代表了潜在的模型结构。当统计模型不能充分捕获数据的基础结构时，就会发生欠拟合。不合适的模型是缺少正确指定模型中出现的某些参数或术语的模型。例如，当将线性模型拟合到非线性数据时，将发生欠拟合。这样的模型往往具有较差的预测性能。</p>
 <p>在机器学习中可能发生过拟合和欠配合。 存在过拟合的可能性是因为用于选择模型的标准与用于判断模型的适合性的标准不同。例如，可以通过最大化某些训练数据集的性能来选择模型，但其适用性可能取决于其在看不见的数据上表现良好的能力;然后，当模型开始“记忆”训练数据而不是“学习”从趋势推广时，就会发生过度拟合。 作为一个极端的例子，如果参数的数量等于或大于观察的数量，则模型可以简单地通过整体记忆数据来完美地预测训练数据。但是，这样的模型在进行预测时通常会严重失败。 过度拟合的可能性不仅取决于参数和数据的数量，还取决于模型结构与数据形状的一致性，以及模型误差的大小与数据中预期的噪声或误差水平的比较。即使拟合模型没有过多的参数，也可以预期拟合关系在新数据集上的表现不如用于拟合的数据集（有时称为收缩的现象）。</p>
 <h3 id="欠拟合的一些原因">欠拟合的一些原因</h3>
 <ul>
@@ -343,7 +351,7 @@
     <strong>本文作者： </strong>cclin</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://blog.cclin.me/2019/09/20/过拟合、正则化/" title="过拟合、正则化">https://blog.cclin.me/2019/09/20/过拟合、正则化/</a>
+    <a href="https://blog.cclin.me/overfitting.html" title="过拟合、正则化">https://blog.cclin.me/overfitting.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -358,11 +366,11 @@
           
           <div class="post-tags">
             
-              <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
-            
               <a href="/tags/过拟合/" rel="tag"># 过拟合</a>
             
               <a href="/tags/正则化/" rel="tag"># 正则化</a>
+            
+              <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
             
           </div>
         
@@ -372,7 +380,7 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/09/逻辑回归两三事/" rel="next" title="逻辑回归两三事">
+                <a href="/logistic-regression.html" rel="next" title="逻辑回归两三事">
                   <i class="fa fa-chevron-left"></i> 逻辑回归两三事
                 </a>
               
