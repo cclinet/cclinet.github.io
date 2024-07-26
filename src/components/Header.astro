@@ -2,12 +2,12 @@
 import HeaderLink from "./HeaderLink.astro";
 // import { Image } from "astro:assets";
 
-// import { SITE_TITLE } from "../consts";
+import { SITE_TITLE } from "../consts";
 ---
 
 <header>
   <div class="neu-box">
-    <h1>我的现代简约博客</h1>
+    <h1>{SITE_TITLE}</h1>
     <nav>
       <HeaderLink href="/">
         <button class="neu-button" id="home">首页</button></HeaderLink
