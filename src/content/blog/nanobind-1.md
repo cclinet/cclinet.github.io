@@ -12,9 +12,9 @@ draft: false
 
 ## nanobind 介绍
 
-Nanobind 是一个用于将C++和Python进行高效绑定的库。它主要用于在Python中调用C++代码从而实现跨语言的高效互操作。它有以下特点：
+nanobind 是一个用于将C++和Python进行高效绑定的库。它主要用于在Python中调用C++代码从而实现跨语言的高效互操作。它有以下特点：
 
-- Nanobind非常轻量，只有一个头文件和一个库文件。设计上注重性能，通过紧凑的数据结构和代码生成来减少运行时开销。
+- nanobind非常轻量，只有一个头文件和一个库文件。设计上注重性能，通过紧凑的数据结构和代码生成来减少运行时开销。
 - 支持自动类型转换，可以方便地在Python和C++之间传递复杂的数据结构。提供了直观的API，使得编写和维护绑定代码变得更加容易。
 - 与流行的pybind11库兼容，可以方便地从pybind11迁移到nanobind。
   ![sizes](https://nanobind.readthedocs.io/en/latest/_images/sizes.svg)
