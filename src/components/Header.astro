@@ -8,7 +8,7 @@ import { SITE_TITLE } from "../consts";
 <header>
   <div class="neu-box">
     <h1>{SITE_TITLE}</h1>
-    <nav>
+    <nav class="button-group">
       <HeaderLink href="/">
         <button class="neu-button" id="home">首页</button></HeaderLink
       >
@@ -19,46 +19,22 @@ import { SITE_TITLE } from "../consts";
   </div>
   <style>
     .neu-box {
-      border-radius: 15px;
-      background: var(--surface);
-      box-shadow:
-        5px 5px 15px var(--shadow-dark),
-        -5px -5px 15px var(--shadow-light);
-      padding: 20px;
-      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
     }
     h1 {
       text-align: center;
-      color: var(--text-color);
-      font-size: 2.2em;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
+      font-size: medium;
     }
-    nav {
+    .button-group {
       display: flex;
       justify-content: center;
-      margin-bottom: 20px;
+      align-items: center;
     }
     .neu-button {
-      padding: 10px 20px;
       border: none;
-      border-radius: 8px;
-      background: var(--surface);
-      color: var(--text-color);
-      font-size: 1em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow:
-        3px 3px 6px var(--shadow-dark),
-        -3px -3px 6px var(--shadow-light);
-      margin: 0 10px;
-    }
-    .neu-button:hover,
-    .neu-button:focus {
-      box-shadow:
-        inset 3px 3px 6px var(--shadow-dark),
-        inset -3px -3px 6px var(--shadow-light);
-      color: var(--accent-color);
     }
   </style>
 </header>

@@ -13,7 +13,7 @@ const description = SITE_DESCRIPTION;
 ---
 
 <BaseLayout title={title} description={description}>
-  <main class="neu-box" id="content">
+  <main id="content">
     {
       posts.map((post) => (
         <div class="article-item">
@@ -29,20 +29,13 @@ const description = SITE_DESCRIPTION;
   </main>
 </BaseLayout>
 <style>
-  neu-box {
-    border-radius: 15px;
-    background: var(--surface);
-    box-shadow:
-      5px 5px 15px var(--shadow-dark),
-      -5px -5px 15px var(--shadow-light);
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-
   #content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25%;
     flex-grow: 1;
     overflow-y: auto;
-    padding: 20px;
+    padding: 40px;
   }
 
   .article-item {

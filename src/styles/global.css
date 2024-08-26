@@ -1,13 +1,13 @@
 :root {
-  --background: #f0f2f5;
-  --surface: #ffffff;
-  --text-color: #333333;
-  --shadow-light: rgba(255, 255, 255, 0.5);
-  --shadow-dark: rgba(0, 0, 0, 0.1);
-  --accent-color: #3a86ff;
-  --secondary-text: #666666;
-  --primary-bg-color: #f8f8f8;
-  --primary-text-color: #1f1f1f;
+  /* --background: #f0f2f5; */
+  /* --surface: #ffffff; */
+  /* --text-color: #333333; */
+  /* --shadow-light: rgba(255, 255, 255, 0.5); */
+  /* --shadow-dark: rgba(0, 0, 0, 0.1); */
+  /* --accent-color: #3a86ff; */
+  /* --secondary-text: #666666; */
+  /* --primary-bg-color: #f8f8f8; */
+  /* --primary-text-color: #1f1f1f; */
 }
 
 body,

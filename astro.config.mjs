@@ -1,6 +1,6 @@
-import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
@@ -13,9 +13,10 @@ export default defineConfig({
     rehypePlugins: [[rehypeKatex, { output: "mathml" }]],
     shikiConfig: {
       themes: {
-        light: "github-light",
+        light: "catppuccin-latte",
         dark: "github-dark",
       },
+      wrap: true,
     },
   },
 });
