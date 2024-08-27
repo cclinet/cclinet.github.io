@@ -28,9 +28,34 @@ const { title, description, pubDate, updatedDate } = Astro.props;
       </div>
     </article>
   </main>
+  <footer class="footer-license">
+    <p xmlns:cc="http://creativecommons.org/ns#">
+      This work is licensed under <a
+        href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
+        target="_blank"
+        rel="license noopener noreferrer"
+        style="display:inline-block;"
+        >CC BY-NC 4.0<img
+          style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+          src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
+          alt=""
+        /><img
+          style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+          src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
+          alt=""
+        /><img
+          style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+          src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"
+          alt=""
+        /></a
+      >
+    </p>
+  </footer>
 </BaseLatout>
+
 <style>
-  main {
+  main,
+  .footer-license {
     max-width: 64rem;
     margin-left: auto;
     margin-right: auto;
@@ -38,6 +63,11 @@ const { title, description, pubDate, updatedDate } = Astro.props;
       letter-spacing: 0.025em;
     }
   }
+
+  .footer-license {
+    padding-bottom: 2rem;
+  }
+
   #title {
     text-align: center;
   }
@@ -50,8 +80,8 @@ const { title, description, pubDate, updatedDate } = Astro.props;
   #content {
     font-size: 1.25rem;
     letter-spacing: 0.01em;
-    line-height: 1.5; 
-    
+    line-height: 1.5;
+
     a {
       text-decoration: underline;
     }
