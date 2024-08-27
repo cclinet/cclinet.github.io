@@ -12,11 +12,11 @@ draft: false
 
 强化学习讨论的问题是一个智能体(agent) 怎么在一个复杂不确定的环境(environment)里面去极大化它能获得的奖励。
 
-![Reinforcement learning](../../assets/MDP-image/rl.png)
+![Reinforcement learning](../../assets/images/MDP/rl.png)
 
 ### 例子
 
-![Breakout: Recharged](../../assets/MDP-image/breakout.jpg)
+![Breakout: Recharged](../../assets/images/MDP/breakout.jpg)
 Atari 游戏
 
 在游戏过程中，大家可以发现这个 agent 得到的观测不是个独立同分布的分布，上一帧下一帧其实有非常强的连续性。
@@ -53,7 +53,7 @@ $$
 
 #### Markov Process/Markov Chain
 
-![Markov Chain](../../assets/MDP-image/markov-chain.png)
+![Markov Chain](../../assets/images/MDP/markov-chain.png)
 我们可以用状态转移矩阵(State Transition Matrix) P 来描述状态转移 $p(s_{t+1}=s'|s_t=s)$ :
 
 $$
@@ -68,7 +68,7 @@ $$
 
 #### Markov Reward Process(MRP)
 
-![MRP](../../assets/MDP-image/MRP.png)
+![MRP](../../assets/images/MDP/MRP.png)
 
 这里是我们刚才看的马尔可夫链，如果把奖励也放上去的话，就是说到达每一个状态，我们都会获得一个奖励。这里我们可以设置对应的奖励，比如说到达 $s_1$ 状态的时候，可以获得 5 的奖励，到达 $s_7$ 的时候，可以得到 10 的奖励，其它状态没有任何奖励。因为这里状态是有限的，所以我们可以用向量 R=[5,0,0,0,0,0,10] 来表示这个奖励函数，这个向量表示了每个点的奖励大小。
 
@@ -86,7 +86,7 @@ $$
 V_t(s)=\mathbb{E}[G_t|s_t=s]
 $$
 
-![MRP-compute](../../assets/MDP-image/MRP-compute.png)
+![MRP-compute](../../assets/images/MDP/MRP-compute.png)
 
 ### Markov Decision Process(MDP)
 
