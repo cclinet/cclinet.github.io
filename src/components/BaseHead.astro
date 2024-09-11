@@ -24,8 +24,9 @@ const { title, description } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-
 <link
   rel="preload"
   href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"
+  as="style"
+  onload="this.rel='stylesheet'"
 />
