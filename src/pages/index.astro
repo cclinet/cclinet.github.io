@@ -13,7 +13,7 @@ const description = SITE_DESCRIPTION;
 ---
 
 <BaseLayout title={title} description={description}>
-  <main id="content">
+  <main class="flex flex-col mx-auto">
     {
       posts.map((post) => (
         <div class="article-item">
@@ -26,18 +26,9 @@ const description = SITE_DESCRIPTION;
         </div>
       ))
     }
-  </main>
+  </mainclass="flex>
 </BaseLayout>
 <style>
-  #content {
-    display: flex;
-    flex-direction: column;
-    margin-left: 25%;
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 40px;
-  }
-
   .article-item {
     margin-bottom: 15px;
     padding: 15px;

@@ -11,8 +11,8 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 <BaseLatout title={title} description={description}>
   <main>
     <article>
-      <h1 id="title">{title}</h1>
-      <div id="date-group">
+      <h1 class="text-4xl w-full text-center">{title}</h1>
+      <div class="flex justify-between mt-3 text-sm">
         <FormattedDate date={pubDate} />
         {
           updatedDate && (
@@ -23,18 +23,18 @@ const { title, description, pubDate, updatedDate } = Astro.props;
         }
       </div>
       <hr />
-      <div id="content">
+      <div id="content" class="prose lg:prose-xl mx-auto mt-8">
         <slot />
       </div>
     </article>
   </main>
-  <footer class="footer-license">
+  <footer class="pb-4 mx-auto">
     <p xmlns:cc="http://creativecommons.org/ns#">
       This work is licensed under <a
+        class="inline-flex"
         href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
         target="_blank"
         rel="license noopener noreferrer"
-        style="display:inline-block;"
         >CC BY-NC 4.0<img
           style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
           src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
@@ -52,55 +52,3 @@ const { title, description, pubDate, updatedDate } = Astro.props;
     </p>
   </footer>
 </BaseLatout>
-
-<style>
-  main,
-  .footer-license {
-    max-width: 64rem;
-    margin-left: auto;
-    margin-right: auto;
-    @media (width < 768px) {
-      letter-spacing: 0.025em;
-    }
-  }
-
-  .footer-license {
-    padding-bottom: 2rem;
-  }
-
-  #title {
-    text-align: center;
-  }
-  #date-group {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.875rem;
-  }
-  #content {
-    font-size: 1.25rem;
-    letter-spacing: 0.01em;
-    line-height: 1.5;
-
-    a {
-      text-decoration: underline;
-    }
-    h2 {
-      font-weight: 500;
-    }
-    #footnote-label {
-      display: none;
-    }
-    .footnotes {
-      font-size: 0.875rem;
-      color: #616161;
-    }
-    sup a {
-      color: #616161;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  }
-</style>
