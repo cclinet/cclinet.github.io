@@ -16,57 +16,15 @@ const description = SITE_DESCRIPTION;
   <main class="flex flex-col mx-auto">
     {
       posts.map((post) => (
-        <div class="article-item">
+        <div class="mb-4 p-2 hover:transition">
           <a href={`/${post.slug}/`}>
-            <div class="article-title">{post.data.title}</div>
-            <div class="article-date">
+            <div class="text-lg">{post.data.title}</div>
+            <div class="text-sm">
               <FormattedDate date={post.data.pubDate} />
             </div>
           </a>
         </div>
       ))
     }
-  </mainclass="flex>
+  </main>
 </BaseLayout>
-<style>
-  .article-item {
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 8px;
-    background: var(--surface);
-    box-shadow:
-      3px 3px 6px var(--shadow-dark),
-      -3px -3px 6px var(--shadow-light);
-    transition: all 0.3s ease;
-  }
-  .article-item:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      5px 5px 10px var(--shadow-dark),
-      -5px -5px 10px var(--shadow-light);
-  }
-  .article-title {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-    color: var(--accent-color);
-  }
-  .article-date {
-    font-size: 0.9em;
-    color: var(--secondary-text);
-  }
-  /* 自定义滚动条样式 */
-  #content::-webkit-scrollbar {
-    width: 8px;
-  }
-  #content::-webkit-scrollbar-track {
-    background: var(--background);
-    border-radius: 4px;
-  }
-  #content::-webkit-scrollbar-thumb {
-    background: var(--accent-color);
-    border-radius: 4px;
-  }
-  #content::-webkit-scrollbar-thumb:hover {
-    background: #2a75e6;
-  }
-</style>

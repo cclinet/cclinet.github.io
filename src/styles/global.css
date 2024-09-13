@@ -1,31 +1,6 @@
-:root {
-  /* --background: #f0f2f5; */
-  /* --surface: #ffffff; */
-  /* --text-color: #333333; */
-  /* --shadow-light: rgba(255, 255, 255, 0.5); */
-  /* --shadow-dark: rgba(0, 0, 0, 0.1); */
-  /* --accent-color: #3a86ff; */
-  /* --secondary-text: #666666; */
-  /* --primary-bg-color: #f8f8f8; */
-  /* --primary-text-color: #1f1f1f; */
-}
-
 body,
 html {
   font-family: "LXGW WenKai", sans-serif;
-  font-weight: normal;
-  background-color: var(--background);
-  color: var(--text-color);
-  margin: 0;
-  padding: 0;
   height: 100%;
   width: 100%;
-}
-
-a {
-  text-decoration: none;
-}
-a:link,
-a:visited {
-  color: var(--primary-text-color);
 }
