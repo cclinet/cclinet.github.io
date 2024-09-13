@@ -1,40 +1,13 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-// import { Image } from "astro:assets";
-
 import { SITE_TITLE } from "../consts";
 ---
 
 <header>
-  <div class="neu-box">
-    <h1><a href="/">{SITE_TITLE}</a></h1>
-    <nav class="button-group">
-      <HeaderLink href="/">
-        <button class="neu-button" id="home">首页</button></HeaderLink
-      >
-      <HeaderLink href="/about">
-        <button class="neu-button" id="about">关于</button></HeaderLink
-      >
+  <div class="flex justify-between p-2">
+    <h1><a href="/" class="text-center font-normal">{SITE_TITLE}</a></h1>
+    <nav class="flex justify-center items-center space-x-2">
+      <a href="/"> <button id="home">首页</button></a>
+      <a href="/about"> <button id="about">关于</button></a>
     </nav>
   </div>
-  <style>
-    .neu-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem;
-    }
-    h1 {
-      text-align: center;
-      font-size: medium;
-    }
-    .button-group {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .neu-button {
-      border: none;
-    }
-  </style>
 </header>

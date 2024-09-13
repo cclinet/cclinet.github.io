@@ -1,6 +1,4 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import "../styles/global.css";
 
 interface Props {
@@ -24,9 +22,3 @@ const { title, description } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<!-- <link
-  rel="preload"
-  href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"
-  as="style"
-  onload="this.rel='stylesheet'"
-/> -->
