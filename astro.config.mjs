@@ -1,10 +1,9 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
-
-import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +11,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), tailwind()],
   markdown: {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [[rehypeKatex, { output: "mathml" }]],
+    rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
     shikiConfig: {
       themes: {
         light: "catppuccin-latte",

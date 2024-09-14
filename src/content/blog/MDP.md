@@ -127,13 +127,13 @@ $$
 ### Bellman Equation
 
 $$
-\begin{align*}
+\begin{aligned}
 V(s) &= \mathbb{E}[G_t|s_t=s] \\
      &=\mathbb{E}[R_{t+1}+\gamma R_{t+2}+ \gamma^2 R_{t+3}+\cdots| s_t=s] \\
      &= \mathbb{E}[R_{t+1}|s_t=s]+\gamma \mathbb{E}[R_{t+2}+\gamma R_{t+3}+ \gamma^2 R_{t+4}+\cdots|s_t=s] \\
      &= R(s)+\gamma \mathbb{E}[G_{t+1}|s_t=s] \\
      &= R(s) + \gamma \mathbb{E}[V(s_{t+1})|s_t=s]
-\end{align*}
+\end{aligned}
 $$
 
 ## 好玩的例子
