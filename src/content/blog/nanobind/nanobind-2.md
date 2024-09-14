@@ -10,7 +10,7 @@ draft: false
 
 ## 参数名和默认参数
 
-从上一个例子中我们可以看到，我们生成的add函数的两个参数名已经变成了 `add(arg0: int, arg1: int, /) -> int`, 这是因为 C++ 语言在编译时并不会保留这些信息。为了让python能够实现函数参数名这个功能，我们需要在bind时手工指定参数名。
+从上一个例子中我们可以看到，我们生成的 add 函数的两个参数名已经变成了 `add(arg0: int, arg1: int, /) -> int`, 这是因为 C++ 语言在编译时并不会保留这些信息。为了让 python 能够实现函数参数名这个功能，我们需要在 bind 时手工指定参数名。
 
 ```cpp
 #include <nanobind/nanobind.h>

@@ -6,7 +6,7 @@ updatedDate: "2024-09-13"
 draft: false
 ---
 
-## 什么是PID
+## 什么是 PID
 
 $$
 u(t) = K_pe(t) + K_i\int_0^te(\tau)d\tau + K_d\frac{d}{d(t)}e(t)
@@ -52,10 +52,10 @@ $$
 \end{cases}
 $$
 
-这里t 对应一个调控目标，i对应一个item，$score_i$ 是 item i的模型得分，max_score 是得分最高的item的模型分
-$r_i$是按照模型分降序排列得到的rank位置；
-$\alpha_t$的PID算法输出的调控信号；
-$w_t$是调控目标t的权重，反应当前用户对当前调控目标商品集合的总体偏好程度，计算公式为
+这里 t 对应一个调控目标，i 对应一个 item，$score_i$ 是 item i 的模型得分，max_score 是得分最高的 item 的模型分
+$r_i$是按照模型分降序排列得到的 rank 位置；
+$\alpha_t$的 PID 算法输出的调控信号；
+$w_t$是调控目标 t 的权重，反应当前用户对当前调控目标商品集合的总体偏好程度，计算公式为
 
 $$
 w_t = \frac{\sum_{i\in t} score_i \cdot e^{-0.01r}}
