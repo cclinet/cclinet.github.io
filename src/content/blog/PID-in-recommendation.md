@@ -79,7 +79,7 @@ $$
 
 ![Kp](../../assets/images/PID-in-recommendation/K_p.png)
 ![Ki](../../assets/images/PID-in-recommendation/K_i.png)
-<!-- ![Kd](../../assets/images/PID-in-recommendation/K_d.png) -->
+![Kd](../../assets/images/PID-in-recommendation/K_d.png)
 
 ---
 
