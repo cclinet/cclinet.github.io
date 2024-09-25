@@ -77,9 +77,9 @@ $$
 
 > 微分控制可以提升整定时间及系统稳定性。不过因为纯微分器不是因果系统，因此在PID系统实现时，一般会为微分控制加上一个低通滤波器以限制高频增益及噪声。实际上较少用到微分控制，估计PID控制器中只有约20%有用到微分控制
 
-![Kp](../../assets/images/PID-in-recommendation/k_p.png)
-![Ki](../../assets/images/PID-in-recommendation/k_i.png)
-![Kd](../../assets/images/PID-in-recommendation/k_d.png)
+![Kp](../../assets/images/PID-in-recommendation/K_p.png)
+![Ki](../../assets/images/PID-in-recommendation/K_i.png)
+![Kd](../../assets/images/PID-in-recommendation/K_d.png)
 
 ---
 
