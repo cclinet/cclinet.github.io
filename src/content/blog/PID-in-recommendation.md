@@ -114,7 +114,7 @@ $$
 \begin{aligned}
 u_{k} - u_{k-1} &= K_p ( e_k-e_{k-1} )\\
 &+ K_i (e_k )\\
-&+K_d (e_k - 2e_{k-1} + e_{k+2})
+&+K_d (e_k - 2e_{k-1} + e_{k-2})
 \end{aligned}
 $$
 
