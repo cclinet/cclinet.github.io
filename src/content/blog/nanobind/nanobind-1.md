@@ -6,8 +6,6 @@ updatedDate: "2024-08-08"
 draft: false
 ---
 
-# nanobind 使用说明 1
-
 这是 nanobind 的一个简单的介绍，想要详细了解 nanobind 最好的方式还是看[官方文档](https://nanobind.readthedocs.io/en/latest/index.html)。
 
 ## nanobind 介绍

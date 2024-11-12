@@ -5,8 +5,6 @@ pubDate: "2023-02-03"
 draft: false
 ---
 
-# 使用 C++ 与 JNI 的第一步
-
 这里以介绍在 Intellij IDE 中编写 jni 的步骤
 
 ## JNI 是什么
