@@ -9,7 +9,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 ---
 
 <BaseLatout title={title} description={description}>
-  <main>
+  <main class="mx-2">
     <article>
       <h1 class="text-4xl w-full text-center">{title}</h1>
       <div class="flex justify-between mt-3 text-sm">
@@ -28,7 +28,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
       </div>
     </article>
   </main>
-  <footer class="pb-4 mx-auto">
+  <footer class="pb-4 mx-auto my-8">
     <p property="cc:license">
       This work is licensed under <a
         class="inline-flex"
