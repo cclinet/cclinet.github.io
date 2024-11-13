@@ -1,13 +1,23 @@
 ---
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<header>
-  <div class="flex justify-between p-2">
-    <h1><a href="/" class="text-center font-normal">{SITE_TITLE}</a></h1>
-    <nav class="flex justify-center items-center space-x-2">
-      <a href="/"> <button id="home">首页</button></a>
-      <a href="/about"> <button id="about">关于</button></a>
-    </nav>
-  </div>
+<header
+  class="flex flex-col gap-2.5 m-8 lg:row-start-1 lg:row-end-2 lg:col-start-2 lg:col-end-3 lg:justify-between lg:items-start"
+>
+  <hgroup class="items-start border-l-2 border-l-">
+    <a
+      href="/"
+      class="text-center font-normal text-3xl lg:mx-0 lg:mt-20 lg:mb-4"
+      ><h3 class="text-lg">{SITE_DESCRIPTION}</h3>
+      <h1 class="text-4xl">{SITE_TITLE}</h1></a
+    >
+  </hgroup>
+  <nav class="flex flex-col text-center font-bold">
+    <ul>
+      <a href="/"> <button id="home" class="underline">文章</button></a>
+      <a href="/about"> <button id="about" class="underline">关于</button></a>
+    </ul>
+    <ul></ul>
+  </nav>
 </header>
