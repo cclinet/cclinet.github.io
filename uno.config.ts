@@ -6,6 +6,8 @@ import {
   presetUno,
 } from "unocss";
 
+import { SocialLinks } from "./src/consts";
+
 export default defineConfig({
   presets: [
     presetAttributify(), // required when using attributify mode
@@ -13,4 +15,5 @@ export default defineConfig({
     presetTypography(),
     presetIcons(),
   ],
+  safelist: [...SocialLinks.map((social) => `i-mdi-${social.name}`)],
 });
