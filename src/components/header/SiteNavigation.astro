@@ -1,11 +1,29 @@
 ---
-
+const socialLinks = [{ href: "https://github.com/cclinet", name: "github" }];
 ---
 
-<nav class="flex flex-col text-center font-bold">
-  <ul>
+<nav class="flex flex-col gap-4 text-center font-bold">
+  <ul
+    class="flex flex-row gap-2 justify-center text-center font-bold"
+    lg="flex-col"
+  >
     <a href="/"> <button id="home" class="underline">文章</button></a>
     <a href="/about"> <button id="about" class="underline">关于</button></a>
   </ul>
-  <ul></ul>
+  <ul flex="~ row gap-1 justify-center">
+    {
+      socialLinks.map(({ href, name }) => (
+        <li>
+          <a
+            href={href}
+            target="_blank"
+            title={name}
+            class="not-underline-hover inline-flex items-center"
+          >
+            <span class:list={[`i-mdi-${name}`, "w-6 h-6"]}>{name}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </nav>

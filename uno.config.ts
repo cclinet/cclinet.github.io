@@ -1,6 +1,7 @@
 import {
   defineConfig,
   presetAttributify,
+  presetIcons,
   presetTypography,
   presetUno,
 } from "unocss";
@@ -10,5 +11,6 @@ export default defineConfig({
     presetAttributify(), // required when using attributify mode
     presetUno(), // required
     presetTypography(),
+    presetIcons(),
   ],
 });

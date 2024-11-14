@@ -18,8 +18,8 @@ const description = SITE_DESCRIPTION;
       posts.map((post) => (
         <div class="mb-4 p-2 hover:transition">
           <a href={`/${post.slug}/`}>
-            <div class="text-lg">{post.data.title}</div>
-            <div class="text-sm">
+            <div class="text-lg underline">{post.data.title}</div>
+            <div class="text-xs font-100">
               <FormattedDate date={post.data.pubDate} />
             </div>
           </a>
