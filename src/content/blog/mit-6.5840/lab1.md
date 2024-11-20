@@ -17,7 +17,7 @@ map和reduce都是无状态的纯函数，所以wowker也不应该涉及任何�
 
 分开看，申请任务不需要区分申请map或者reduce，所以只要在worker中一直申请就好，任务一旦完成，就立即报告任务完成
 
-```go showLineNumbers
+```go
 func Worker(mapf func(string, string) []KeyValue,
 	reducef func(string, []string) string) {
 out:
@@ -107,7 +107,9 @@ func MakeCoordinator(files []string, nReduce int) *Coordinator {
 	return &c
 }
 ```
+
 根据已经完成的任务数量来判断当前阶段，只有当map全部完成时才进入reduce，如果map没有完成，有worker请求任务，则让其等待
+
 ```go
 func (c *Coordinator) Call(req *RequestArgs, res *RPCResponseArgs) error {
 	// log.Printf("%v", req)
