@@ -17,7 +17,7 @@ const { description } = Astro.props || "";
     lg="py-0 px-20 grid gap-x-6 cols-[3fr_1fr] rows-[1fr_9rem]"
   >
     <header
-      class="transition-swup-header flex flex-col gap-2.5"
+      class="flex flex-col gap-2.5"
       m="7.5 lg:(x-0 t-20 b-4)"
       lg="row-1-2 col-2-3 justify-between items-start"
     >
@@ -25,7 +25,7 @@ const { description } = Astro.props || "";
       <SiteNavigation />
     </header>
 
-    <main lg="row-start-1 row-end-3 col-start-1 lg:col-end-2 py-7.5">
+    <main lg="row-start-1 row-end-3 col-start-1 lg:col-end-2 py-20">
       <slot />
     </main>
     <footer
