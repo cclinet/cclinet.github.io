@@ -14,6 +14,9 @@ const codeCss = {
     "word-wrap": "break-word",
     "white-space": "pre-wrap",
   },
+  pre: {
+    padding: "0",
+  },
   "code[data-line-numbers]": { "counter-reset": "line" },
   "code[data-line-numbers] > [data-line]::before": {
     "counter-increment": "line",
@@ -32,6 +35,16 @@ const codeCss = {
   },
   'code[data-line-numbers-max-digits="4"] > [data-line]::before': {
     width: "2.25rem",
+  },
+  figcaption: {
+    "font-size": "0.85rem",
+    padding: "0.5rem 1rem",
+    "border-radius": "4px 4px 0 0",
+    "background-color": "RGBA(222,222,222,0.25)",
+  },
+  "pre button.rehype-pretty-copy": {
+    position: "relative",
+    "background-color": "RGBA(222,222,222,0.25)",
   },
 };
 
