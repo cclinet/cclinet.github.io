@@ -12,23 +12,15 @@ export default defineConfig({
   site: "https://blog.cclin.org",
   integrations: [mdx(), sitemap(), UnoCSS({ injectReset: true })],
   markdown: {
-    syntaxHighlight: false,
+    syntaxHighlight: "shiki",
     remarkPlugins: [remarkMath],
-    rehypePlugins: [
-      [
-        rehypePrettyCode,
-        {
-          // grid: false,
-          theme: "min-light",
-          transformers: [
-            transformerCopyButton({
-              visibility: "always",
-              feedbackDuration: 3_000,
-            }),
-          ],
-        },
-      ],
-      [rehypeKatex, { output: "htmlAndMathml" }],
-    ],
+    rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
+    shikiConfig: {
+      themes: {
+        light: "min-light",
+        dark: "min-dark",
+      },
+      wrap: true,
+    },
   },
 });

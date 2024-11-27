@@ -25,11 +25,13 @@ nanobind 是一个用于将 C++和 Python 进行高效绑定的库。它主要�
 
 首先安装 nanobind，有几种方式，比较方便的是通过 pip 安装，这里把几种安装方式都列一下
 
-```
+```sh
 #pip 安装
 python -m pip install nanobind
+
 #conda 安装
 conda install -c conda-forge nanobind
+
 # git submodule 安装
 git submodule add https://github.com/wjakob/nanobind ext/nanobind
 git submodule update --init --recursive
@@ -44,7 +46,7 @@ git submodule update --init --recursive
 - python
   - test.py
 
-```cmake
+```cmake title="CMakeLists.txt"
 cmake_minimum_required(VERSION 3.18)
 project(cuckoo VERSION 0.1.0 LANGUAGES C CXX)
 
@@ -67,7 +69,7 @@ nanobind_add_module(cuckoo cpp/cuckoo.cpp)
 
 下面则是一个简单的整数相加
 
-```cpp
+```cpp title="cpp/CMakeLists.txt"
 #include <nanobind/nanobind.h>
 
 int add(int a, int b) { return a + b; }
@@ -91,7 +93,7 @@ ln -s ../build/cuckoo.cpython-312-darwin.so cuckoo.cpython-312-darwin.so
 
 然后就可以正常运行 python 了
 
-```python
+```python title="python/test.py"
 import cuckoo
 
 print(cuckoo.add(34, 1))
