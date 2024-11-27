@@ -13,13 +13,13 @@ const description = SITE_DESCRIPTION;
 ---
 
 <BaseLayout title={title} description={description}>
-  <main class="flex flex-col mx-auto">
+  <main class="mx-auto flex flex-col">
     {
       posts.map((post) => (
         <div class="mb-4 p-2 hover:transition">
           <a href={`/${post.slug}/`}>
             <div class="text-lg underline">{post.data.title}</div>
-            <div class="text-xs font-100">
+            <div class="font-100 text-xs">
               <FormattedDate date={post.data.pubDate} />
             </div>
           </a>
