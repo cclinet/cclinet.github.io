@@ -10,7 +10,7 @@ const { description } = Astro.props || "";
 <!doctype html>
 <html lang="zh">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead description={description} title={title} />
   </head>
   <body
     class="h-100vh max-w-1200px min-w-390px mx-a p-7.5"
@@ -18,8 +18,8 @@ const { description } = Astro.props || "";
   >
     <header
       class="flex flex-col gap-2.5"
-      m="7.5 lg:(x-0 t-20 b-4)"
       lg="row-1-2 col-2-3 justify-between items-start"
+      m="7.5 lg:(x-0 t-20 b-4)"
     >
       <SiteTitle />
       <SiteNavigation />
@@ -35,8 +35,8 @@ const { description } = Astro.props || "";
         This work is licensed under <a
           class="inline-flex"
           href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
-          target="_blank"
-          rel="license noopener noreferrer">CC BY-NC 4.0</a
+          rel="license noopener noreferrer"
+          target="_blank">CC BY-NC 4.0</a
         >
       </p>
     </footer>

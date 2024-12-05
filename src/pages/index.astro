@@ -11,7 +11,7 @@ const posts = (
 ).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<BaseLayout description={SITE_DESCRIPTION} title={SITE_TITLE}>
   <main class="mx-auto flex flex-col">
     {
       posts.map((post) => (

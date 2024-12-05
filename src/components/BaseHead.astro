@@ -13,12 +13,12 @@ const { title, description } = Astro.props;
 ---
 
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="generator" content={Astro.generator} />
-<link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="canonical" href={canonicalURL} />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+<meta content={Astro.generator} name="generator" />
+<link href="/sitemap-index.xml" rel="sitemap" />
+<link href={canonicalURL} rel="canonical" />
 
 <title>{title}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
+<meta content={title} name="title" />
+<meta content={description} name="description" />

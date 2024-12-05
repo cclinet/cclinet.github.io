@@ -3,15 +3,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 ---
 
 <hgroup
-  lg="write-vertical-right items-start b-l-2px b-l-primary-solid text-left"
-  flex="~ col gap-2.5"
   class="duration-800 cursor-pointer text-center ease-in-out"
+  flex="~ col gap-2.5"
+  lg="write-vertical-right items-start b-l-2px b-l-primary-solid text-left"
 >
   <a
     class="not-underline-hover duration-800 ease-in-out"
-    lg:p="x-2.5 b-12 hover:(t-3.75 b-8.75)"
     hover:lg=" bg-primary color-background"
     href="/"
+    lg:p="x-2.5 b-12 hover:(t-3.75 b-8.75)"
     ><h3 class="text-5 font-header font-extrabold">{SITE_DESCRIPTION}</h3>
     <h1 class="text-8 font-header font-extrabold">{SITE_TITLE}</h1></a
   >

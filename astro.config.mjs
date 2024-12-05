@@ -1,10 +1,8 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import { transformerCopyButton } from "@rehype-pretty/transformers";
 import expressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
-import rehypePrettyCode from "rehype-pretty-code";
 import remarkMath from "remark-math";
 import UnoCSS from "unocss/astro";
 
