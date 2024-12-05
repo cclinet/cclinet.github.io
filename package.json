@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.0.0-beta.5",
+    "@astrojs/mdx": "^4.0.1",
     "@astrojs/rss": "^4.0.9",
     "@astrojs/sitemap": "^3.2.1",
     "@iconify-json/mdi": "^1.2.1",
@@ -20,7 +20,7 @@
     "@unocss/preset-icons": "^0.64.1",
     "@unocss/preset-typography": "^0.64.1",
     "@unocss/reset": "^0.64.1",
-    "astro": "^5.0.0-beta.12",
+    "astro": "^5.0.2",
     "astro-expressive-code": "^0.38.3",
     "katex": "^0.16.11",
     "rehype-katex": "^7.0.1",
