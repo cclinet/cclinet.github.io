@@ -15,7 +15,6 @@ Java Native Interface, 通常缩写为 JNI
 
 首先创建 Java 工程，步骤略(例子中项目名为 jni)
 
-
 ```java title="org/cclin/hellojni/HelloJNI.java"
 package org.cclin.hellojni;
 

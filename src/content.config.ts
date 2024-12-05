@@ -1,8 +1,10 @@
+// src/content.config.ts
+import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
 const blog = defineCollection({
-  type: "content",
-
+  // Load data from Markdown files on disk
+  loader: glob({ pattern: "**\/*.md", base: "./src/data/blog" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),

@@ -3,21 +3,20 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
 const posts = (
   await getCollection("blog", ({ data }) => {
     return !data.draft;
   })
 ).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-const title = SITE_TITLE;
-const description = SITE_DESCRIPTION;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main class="mx-auto flex flex-col">
     {
       posts.map((post) => (
         <div class="mb-4 p-2 hover:transition">
-          <a href={`/${post.slug}/`}>
+          <a href={`/${post.id}/`}>
             <div class="text-lg underline">{post.data.title}</div>
             <div class="font-100 text-xs">
               <FormattedDate date={post.data.pubDate} />
