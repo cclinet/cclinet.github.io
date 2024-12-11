@@ -10,7 +10,7 @@ Podman 作为 docker 的替代品，其一大特点就是没有 daemon（守护�
 
 首先你需要在如下位置创建一个 CTRNAME.container unit file
 
-```
+```bash
 /usr/share/containers/systemd/
 /etc/containers/systemd/
 # rootless
@@ -19,7 +19,7 @@ $HOME/.config/containers/systemd/
 
 随后就可以使用类似 systemd unit 的语法来创建一个 unit 文件
 
-```
+```systemd title=$HOME/.config/containers/systemd/mysleep.container
 # cat $HOME/.config/containers/systemd/mysleep.container
 [Unit]
 Description=The sleep container
@@ -38,13 +38,13 @@ WantedBy=multi-user.target default.target
 
 在创建完 unit 以后，使用如下命令同步 unit file。
 
-```
+```bash
 systemctl --user daemon-reload
 ```
 
 这将会根据 mysleep.container 文件创建 mysleep.service
 
-```
+```bash
 $ systemctl --user status mysleep.service
 ○ mysleep.service - The sleep container
  	Loaded: loaded (/home/dwalsh/.config/containers/systemd/mysleep.container; generated)
@@ -53,7 +53,7 @@ $ systemctl --user status mysleep.service
 
 随后就像管理正常的 systemd unit 一样使用
 
-```
+```bash
 $ systemctl --user start mysleep.service
 ```
 
@@ -69,7 +69,7 @@ $ systemctl --user start mysleep.service
 
 ## 另外一个例子
 
-```
+```systemd title=/etc/containers/systemd/traefik
 [Unit]
 Description=traefik container
 After=network-online.target
@@ -88,8 +88,7 @@ TimeoutStartSec=900
 # Start by default on boot
 WantedBy=multi-user.target default.target
 ```
-
-```
+```systemd title=/etc/containers/systemd/whoami
 [Unit]
 Description=whoami container
 After=network-online.target

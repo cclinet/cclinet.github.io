@@ -22,7 +22,11 @@ const { title, description, pubDate, updatedDate } = Astro.props;
       }
     </div>
     <hr />
-    <div class="prose lg:prose-xl mx-auto mt-8" id="content">
+    <div
+      class="prose lg:prose-xl mx-auto mt-8"
+      dark="prose-invert lg:prose-xl-invert"
+      id="content"
+    >
       <slot />
     </div>
   </article>

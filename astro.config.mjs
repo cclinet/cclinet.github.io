@@ -19,12 +19,5 @@ export default defineConfig({
     syntaxHighlight: false,
     remarkPlugins: [remarkMath],
     rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
-    // shikiConfig: {
-    //   themes: {
-    //     light: "min-light",
-    //     dark: "min-dark",
-    //   },
-    //   wrap: true,
-    // },
   },
 });
