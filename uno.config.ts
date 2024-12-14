@@ -29,5 +29,5 @@ export default defineConfig({
       },
     }),
   ],
-  safelist: [...SocialLinks.map((social) => `i-mdi-${social.name}`)],
+  safelist: [...SocialLinks.map(({ icons }) => icons)],
 });

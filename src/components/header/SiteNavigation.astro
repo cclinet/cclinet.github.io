@@ -16,7 +16,7 @@ import { SocialLinks } from "../../consts";
 
 <ul flex="~ row gap-1 justify-center">
   {
-    SocialLinks.map(({ href, name }) => (
+    SocialLinks.map(({ href, name, icons }) => (
       <li>
         <a
           class="not-underline-hover inline-flex items-center"
@@ -24,7 +24,7 @@ import { SocialLinks } from "../../consts";
           target="_blank"
           title={name}
         >
-          <span class:list={[`i-mdi-${name}`, "h-6 w-6"]}>{name}</span>
+          <span class:list={[icons, "h-6 w-6"]}>{name}</span>
         </a>
       </li>
     ))
