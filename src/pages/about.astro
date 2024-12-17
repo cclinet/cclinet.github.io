@@ -4,6 +4,6 @@ import BaseLatout from "../layouts/BaseLayout.astro";
 
 <BaseLatout description={"个人简介"} title={"CCLIN BLOG"}>
   <p>这里是cclin，一个会写代码的段子手</p>
-  <div id="screen"></div>
-  <script src="../components/threeD/about.ts"></script>
+  <canvas class="h-full w-full" id="renderCanvas"></canvas>
+  <script src="../components/babylon/BabylonScene.ts"></script>
 </BaseLatout>
