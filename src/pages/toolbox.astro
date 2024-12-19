@@ -1,5 +1,5 @@
 ---
-import BaseLatout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 const tools = [
   {
     name: "本网站用的技术",
@@ -11,7 +11,7 @@ const tools = [
 ];
 ---
 
-<BaseLatout description={"常用工具"} title={"CCLIN TOOLBOX"}>
+<BaseLayout description={"常用工具"} title={"CCLIN TOOLBOX"}>
   <p class="text-center">介绍一些常用工具，实时更新</p>
 
   {
@@ -28,4 +28,4 @@ const tools = [
       </>
     ))
   }
-</BaseLatout>
+</BaseLayout>

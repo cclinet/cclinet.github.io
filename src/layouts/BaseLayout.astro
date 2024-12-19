@@ -5,7 +5,7 @@ import SiteTitle from "../components/header/SiteTitle.astro";
 import SiteNavigation from "../components/header/SiteNavigation.astro";
 const { title }: { title: string } = Astro.props.frontmatter || Astro.props;
 const { description } = Astro.props || "";
-const use_cc = !["/", "/about"].includes(Astro.url.pathname);
+const use_cc = !["/", "/about", "/toolbox"].includes(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -13,8 +13,9 @@ const use_cc = !["/", "/about"].includes(Astro.url.pathname);
   <head>
     <BaseHead description={description} title={title} />
   </head>
+  <!-- TODO: overflow-y-hidden -->
   <body
-    class="h-100vh max-w-1200px min-w-390px mx-a p-7.5 font-sans"
+    class="h-100vh max-w-1200px min-w-390px mx-a p-7.5 overflow-y-hidden font-sans"
     lg="py-0 px-20 grid gap-x-6 cols-[3fr_1fr] rows-[1fr_9rem]"
   >
     <header

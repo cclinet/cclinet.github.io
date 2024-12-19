@@ -10,13 +10,6 @@ import {
 import { SocialLinks } from "./src/consts";
 
 export default defineConfig({
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ["LXGW WenKai", "Noto Sans SC", "sans-serif"],
-      },
-    },
-  },
   presets: [
     presetAttributify(), // required when using attributify mode
     presetUno(), // required
