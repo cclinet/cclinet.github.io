@@ -1,14 +1,15 @@
 import {
   ArcRotateCamera,
-  Engine,
   HemisphericLight,
   MeshBuilder,
   Scene,
   Vector3,
+  WebGPUEngine,
 } from "@babylonjs/core";
 
 const canvas = document.getElementById("renderCanvas") as HTMLCanvasElement;
-const engine = new Engine(canvas, true);
+const engine = new WebGPUEngine(canvas);
+await engine.initAsync();
 const scene = new Scene(engine);
 const camera = new ArcRotateCamera(
   "camera",
@@ -21,6 +22,7 @@ const camera = new ArcRotateCamera(
 camera.attachControl(canvas, true);
 
 const light = new HemisphericLight("light", new Vector3(0, 1, 0), scene);
+light.intensity = 0.7;
 const sphere = MeshBuilder.CreateSphere("sphere", { diameter: 2 }, scene);
 sphere.position.y = 1;
 engine.runRenderLoop(() => {
