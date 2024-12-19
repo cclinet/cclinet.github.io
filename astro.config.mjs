@@ -9,6 +9,7 @@ import UnoCSS from "unocss/astro";
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.cclin.org",
+  prefetch: true,
   integrations: [
     expressiveCode({ defaultProps: { wrap: true } }),
     mdx(),
