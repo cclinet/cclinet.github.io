@@ -15,7 +15,7 @@ const use_cc = !["/", "/about", "/toolbox"].includes(Astro.url.pathname);
   </head>
   <!-- TODO: overflow-y-hidden -->
   <body
-    class="h-100vh max-w-1200px min-w-390px mx-a p-7.5 overflow-y-hidden font-sans"
+    class="h-100vh max-w-1200px min-w-390px mx-a p-7.5 overflow-y-scroll font-sans"
     lg="py-0 px-20 grid gap-x-6 cols-[3fr_1fr] rows-[1fr_9rem]"
   >
     <header
@@ -31,7 +31,8 @@ const use_cc = !["/", "/about", "/toolbox"].includes(Astro.url.pathname);
       <slot />
     </main>
     <footer
-      class="col-end-3 mt-5 text-xs lg:col-start-2 lg:row-start-2 lg:row-end-3"
+      class="col-end-3 mt-5 text-xs"
+      lg="col-start-2 row-start-2 row-end-3"
     >
       {
         use_cc && (
