@@ -1,0 +1,52 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+
+import SiteTitle from "../components/header/SiteTitle.astro";
+import SiteNavigation from "../components/header/SiteNavigation.astro";
+const { title }: { title: string } = Astro.props.frontmatter || Astro.props;
+const { description } = Astro.props || "";
+const use_cc = !/^\/(about|toolbox)?\/?$/.test(Astro.url.pathname);
+---
+
+<!doctype html>
+<html lang="zh">
+  <head>
+    <BaseHead description={description} title={title} />
+  </head>
+  <body
+    class="h-100vh max-w-1200px min-w-390px mx-a p-7.5 overflow-y-scroll font-sans"
+    lg="py-0 px-20 grid gap-x-6 cols-[3fr_1fr] rows-[1fr_9rem]"
+  >
+    <header
+      class="m-7.5 flex flex-col gap-2.5"
+      lg="row-1-2 col-2-3 justify-between items-start mx-0 mt-20 mb-4"
+    >
+      <SiteTitle />
+      <SiteNavigation />
+    </header>
+
+    <main lg="row-start-1 row-end-3 col-start-1 lg:col-end-2 py-20">
+      <slot />
+    </main>
+    <footer
+      class="col-end-3 mt-5 text-xs pb-6"
+      lg="col-start-2 row-start-2 row-end-3"
+    >
+      {
+        use_cc && (
+          <p class="text-center" lg="'text-left" property="cc:license">
+            This work is licensed under{" "}
+            <a
+              class="inline-flex"
+              href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
+              rel="license noopener noreferrer"
+              target="_blank"
+            >
+              CC BY-NC 4.0
+            </a>
+          </p>
+        )
+      }
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+---
+
+---
+
+<span class="letter">I</span>
+
+<style>
+  @keyframes changeLetter {
+    0%,
+    10% {
+      opacity: 1;
+    }
+    50%,
+    60% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .letter {
+    display: inline-block;
+    position: relative;
+    width: 1ch;
+  }
+  .letter::before,
+  .letter::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: opacity;
+  }
+  .letter::before {
+    content: "I";
+    animation: changeLetter 6s infinite;
+  }
+
+  .letter::after {
+    content: "E";
+    animation: changeLetter 6s infinite 3s;
+  }
+</style>

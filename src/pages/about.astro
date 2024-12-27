@@ -1,0 +1,55 @@
+---
+import BaseLatout from "../layouts/BaseLayout.astro";
+import Clarification from "../components/about/Clarification.astro";
+import IELetter from "../components/about/IELetter.astro";
+---
+
+<BaseLatout description={"个人简介"} title={"CCLIN BLOG"}>
+  <article class="leading-relaxed">
+    <h1>“哈喽，大家好！我是你们的探机老大，普罗比斯！✍️✨”</h1>
+    <p>
+      在乌鸦庭的4294967295次战役未尝一胜后，乌鸦之神将我贬入第114514号宇宙来进行锻炼。
+    </p>
+    <p>
+      作为最愿意探索世界的<Clarification
+        clarification="牛马"
+        content="星灵探机"
+      />，我将专注于用文字打造属于自己的小宇宙。有人说我是一个“夜猫子”，白天在发呆，晚上在脑海里写下千百个故事，谁知道呢？😏
+    </p>
+    特质：
+    <ul class="list-inside list-disc leading-normal">
+      <li class="li-marker-[🌟]">
+        是个 <IELetter />人
+      </li>
+      <li class="li-marker-[🌟]">喜欢新技术，但只有三分钟热度</li>
+      <li class="li-marker-[🌟]">有点小懒，只在 Deadline 之前爆发惊人的力量</li>
+      <li class="li-marker-[🌟] hover:bgs-black">
+        <del>键政狂魔</del> 键政乐子人
+      </li>
+    </ul>
+    爱好：
+    <ul class="list-inside list-disc leading-normal">
+      <li class="li-marker-[🛋️]">
+        宅在家写代码看小说刷短视频，偶尔被拉出去晒太阳。
+      </li>
+      <li class="li-marker-[🎮]">
+        偶尔摸鱼打游戏，梦想是成为一个不只是会<Clarification
+          clarification="写代码"
+          content="造水晶塔"
+        />的全能型探机。
+      </li>
+      <li class="li-marker-[🌌]">和大家一起分享有趣的事！</li>
+    </ul>
+    <p>
+      如果可以的话，别忘了来<Clarification
+        clarification="Y2NsaW5ldA=="
+        content="互动"
+        copy_on_click
+      />呀~✨ 这可以帮我积累功德早日返回乌鸦庭继续战斗！📖
+    </p>
+
+    <dialog id="modal">
+      <p>已复制微信ID的base64编码</p>
+    </dialog>
+  </article>
+</BaseLatout>

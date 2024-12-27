@@ -1,0 +1,69 @@
+---
+interface Props {
+  content: string;
+  clarification: string;
+  copy_on_click?: boolean;
+}
+const { content, clarification, copy_on_click } = Astro.props;
+---
+
+<style>
+  /* 容器样式 */
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* 默认隐藏小框 */
+  .tooltip-box {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8); /* 黑色背景 */
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    bottom: 100%; /* 小框显示在元素上方 */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  /* 鼠标移上去时显示小框 */
+  .tooltip-container:hover .tooltip-box {
+    display: block;
+  }
+</style>
+
+<script>
+  const clarifications = document.querySelectorAll(".tooltip-container");
+  clarifications.forEach((clarification) => {
+    if (clarification.hasAttribute("data-copy_on_click")) {
+      clarification.addEventListener("click", () => {
+        const type = "text/plain";
+        const text =
+          clarification.getElementsByClassName("tooltip-box")[0]!.textContent!;
+        const blob = new Blob([text], { type });
+        const data = [new ClipboardItem({ [type]: blob })];
+        navigator.clipboard.write(data).then(() => {
+          const modal = document.getElementById("modal")! as HTMLDialogElement;
+          modal.showModal();
+
+          const timeoutID = setTimeout(() => {
+            modal.close();
+          }, 2000);
+
+          modal.addEventListener("close", () => {
+            clearTimeout(timeoutID);
+          });
+        });
+      });
+    }
+  });
+</script>
+<span
+  class="tooltip-container underline-dashed underline"
+  data-copy_on_click={copy_on_click}
+  >{content}<span class="tooltip-box">{clarification}</span></span
+>

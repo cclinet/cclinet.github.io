@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const tools = [
+  {
+    name: "本网站用的技术",
+    items: [
+      { link: "https://astro.build", content: "astro.js" },
+      { link: "https://unocss.dev", content: "unocss" },
+    ],
+  },
+];
+---
+
+<BaseLayout description={"常用工具"} title={"CCLIN TOOLBOX"}>
+  <p class="text-center">介绍一些常用工具，实时更新</p>
+
+  {
+    tools.map(({ name, items }) => (
+      <>
+        <h2 class="text-xl">{name}</h2>
+        <ul class="list-disc">
+          {items.map(({ link, content }) => (
+            <li>
+              <a href={link}>{content}</a>
+            </li>
+          ))}
+        </ul>
+      </>
+    ))
+  }
+</BaseLayout>

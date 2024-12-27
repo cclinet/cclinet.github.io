@@ -1,0 +1,32 @@
+---
+import { SocialLinks } from "../../consts";
+---
+
+<nav class="text-center font-bold" flex="~ col gap-4">
+  <ul
+    class="text-3.5"
+    flex="~ row gap-2 justify-center"
+    lg="flex-col items-start text-4"
+  >
+    <li><a href="/">文章</a></li>
+    <li><a href="/about">关于</a></li>
+    <li><a href="/toolbox">工具</a></li>
+  </ul>
+</nav>
+
+<ul flex="~ row gap-1 justify-center">
+  {
+    SocialLinks.map(({ href, name, icons }) => (
+      <li>
+        <a
+          class="not-underline-hover inline-flex items-center"
+          href={href}
+          target="_blank"
+          title={name}
+        >
+          <span class:list={[icons, "h-6 w-6"]}>{name}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
