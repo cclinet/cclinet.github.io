@@ -1,26 +1,13 @@
 ---
-import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import posts from "../components/posts";
+import TitleList from "../components/TitleList.astro";
 
 const pub_posts = posts.filter((post) => !post.data.draft);
 pub_posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <BaseLayout description={SITE_DESCRIPTION} title={SITE_TITLE}>
-  <ul class="mx-auto flex flex-col items-center lg:ml-10 lg:items-start">
-    {
-      pub_posts.map((post) => (
-        <li class="mb-4 p-2 hover:transition">
-          <a data-astro-prefetch href={`/${post.id}/`}>
-            <div class="text-lg underline">{post.data.title}</div>
-            <div class="font-100 text-center text-xs lg:text-left">
-              <FormattedDate date={post.data.pubDate} />
-            </div>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <TitleList posts={pub_posts} />
 </BaseLayout>

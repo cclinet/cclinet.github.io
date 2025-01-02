@@ -1,0 +1,40 @@
+---
+import BaseLatout from "../../layouts/BaseLayout.astro";
+import posts from "../../components/posts";
+const tags = posts
+  .filter((post) => !post.data.draft)
+  .flatMap((post) => post.data.tags || []);
+const result = Object.entries(
+  tags.reduce<Record<string, number>>((acc, item) => {
+    acc[item] = (acc[item] || 0) + 1;
+    return acc;
+  }, {}),
+);
+---
+
+<BaseLatout>
+  <h2>Tags</h2>
+  <canvas
+    data-tags={JSON.stringify(result)}
+    id="word-cloud-container"
+    width="800"
+    height="400"></canvas>
+  <ul>
+    {
+      tags.map((tag) => (
+        <li>
+          <a href={`/tags/${tag}`}>{tag}</a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLatout>
+<script>
+  import WordCloud from "wordcloud";
+  const container = document.getElementById("word-cloud-container")!;
+  const tags = JSON.parse(container.getAttribute("data-tags")!);
+  WordCloud(container, { list: tags });
+  document.addEventListener("wordcloudstart", () => {
+    console.log("wordcloudstart");
+  });
+</script>
