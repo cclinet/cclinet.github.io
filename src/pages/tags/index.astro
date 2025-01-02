@@ -16,9 +16,9 @@ const result = Object.entries(
   <h2>Tags</h2>
   <canvas
     data-tags={JSON.stringify(result)}
+    height="400"
     id="word-cloud-container"
-    width="800"
-    height="400"></canvas>
+    width="800"></canvas>
   <ul>
     {
       tags.map((tag) => (
@@ -31,9 +31,13 @@ const result = Object.entries(
 </BaseLatout>
 <script>
   import WordCloud from "wordcloud";
+
+  console.log(WordCloud.isSupported);
   const container = document.getElementById("word-cloud-container")!;
   const tags = JSON.parse(container.getAttribute("data-tags")!);
-  WordCloud(container, { list: tags });
+  WordCloud(container, {
+    list: tags,
+  });
   document.addEventListener("wordcloudstart", () => {
     console.log("wordcloudstart");
   });

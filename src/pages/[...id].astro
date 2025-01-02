@@ -18,9 +18,6 @@ const { Content } = await render(post);
 <BlogPost {...post.data}>
   <Content />
 </BlogPost>
-<script
-  crossorigin="anonymous"
-  defer
-  integrity="sha384-bVEnwt0PtX+1EuJoOEcm4rgTUWvb2ILTdjHfI1gUe/r5fdqrTcQaUuRdHG2DciuQ"
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/copy-tex.mjs"
-  type="module"></script>
+<script>
+  import "katex/dist/contrib/copy-tex.mjs";
+</script>
