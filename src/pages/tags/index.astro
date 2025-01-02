@@ -22,24 +22,25 @@ const result = Object.entries(
 </BaseLayout>
 <script>
   import WordCloud from "wordcloud";
+  document.addEventListener("astro:page-load", () => {
+    const container = document.getElementById(
+      "word-cloud-container",
+    ) as HTMLCanvasElement;
+    const tags = JSON.parse(container.getAttribute("data-tags")!) as [
+      string,
+      number,
+    ][];
 
-  const container = document.getElementById(
-    "word-cloud-container",
-  ) as HTMLCanvasElement;
-  const tags = JSON.parse(container.getAttribute("data-tags")!) as [
-    string,
-    number,
-  ][];
-
-  function callbackFn(item: [string, number, ...unknown[]]) {
-    window.location.href = `/tags/${item[0]}`;
-  }
-  WordCloud(container, {
-    list: tags,
-    click: (item) => {
-      callbackFn(item);
-    },
-    // gridSize: 50,
-    weightFactor: 10,
+    function callbackFn(item: [string, number, ...unknown[]]) {
+      window.location.href = `/tags/${item[0]}`;
+    }
+    WordCloud(container, {
+      list: tags,
+      click: (item) => {
+        callbackFn(item);
+      },
+      // gridSize: 50,
+      weightFactor: 10,
+    });
   });
 </script>
