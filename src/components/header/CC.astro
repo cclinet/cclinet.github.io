@@ -1,0 +1,19 @@
+---
+const use_cc = !/^\/(about|toolbox)?\/?$/.test(Astro.url.pathname);
+---
+
+{
+  use_cc && (
+    <p class="text-center  text-xs" lg="'text-left" property="cc:license">
+      This work is licensed under{" "}
+      <a
+        class="inline-flex"
+        href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
+        rel="license noopener noreferrer"
+        target="_blank"
+      >
+        CC BY-NC 4.0
+      </a>
+    </p>
+  )
+}
