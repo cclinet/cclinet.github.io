@@ -21,4 +21,7 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
     rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
   },
+  redirects: {
+    "/[...id]": "/posts/[...id]",
+  },
 });

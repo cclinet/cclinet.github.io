@@ -4,6 +4,7 @@ description: "nanobind 简介"
 pubDate: "2024-08-027"
 updatedDate: "2024-08-027"
 draft: false
+tags: ["nanobind", "python", "c++"]
 ---
 
 现在我们已经可以正常的运行一个最简单的 demo 了，接下来让我们使用 nanobind 来实现一些更高级的功能吧。

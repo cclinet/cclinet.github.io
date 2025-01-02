@@ -4,6 +4,7 @@ description: "强化学习基础-马尔可夫决策过程"
 pubDate: "2022-02-17"
 updatedDate: "2022-02-17"
 draft: false
+tags: ["reinforcement learning", "machine learing", "deep learning"]
 ---
 
 ## 强化学习简介

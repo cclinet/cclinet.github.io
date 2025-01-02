@@ -1,5 +1,5 @@
 ---
-import BaseLatout from "../../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import posts from "../../components/posts";
 const tags = posts
   .filter((post) => !post.data.draft)
@@ -12,33 +12,34 @@ const result = Object.entries(
 );
 ---
 
-<BaseLatout>
+<BaseLayout>
   <h2>Tags</h2>
   <canvas
     data-tags={JSON.stringify(result)}
-    height="400"
+    height="200"
     id="word-cloud-container"
-    width="800"></canvas>
-  <ul>
-    {
-      tags.map((tag) => (
-        <li>
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </li>
-      ))
-    }
-  </ul>
-</BaseLatout>
+    width="400"></canvas>
+</BaseLayout>
 <script>
   import WordCloud from "wordcloud";
 
-  console.log(WordCloud.isSupported);
-  const container = document.getElementById("word-cloud-container")!;
-  const tags = JSON.parse(container.getAttribute("data-tags")!);
+  const container = document.getElementById(
+    "word-cloud-container",
+  ) as HTMLCanvasElement;
+  const tags = JSON.parse(container.getAttribute("data-tags")!) as [
+    string,
+    number,
+  ][];
+
+  function callbackFn(item: [string, number, ...unknown[]]) {
+    window.location.href = `/tags/${item[0]}`;
+  }
   WordCloud(container, {
     list: tags,
-  });
-  document.addEventListener("wordcloudstart", () => {
-    console.log("wordcloudstart");
+    click: (item) => {
+      callbackFn(item);
+    },
+    // gridSize: 50,
+    weightFactor: 10,
   });
 </script>

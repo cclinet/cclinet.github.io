@@ -3,6 +3,7 @@ title: "大模型中的Packed Sequences"
 description: "大模型中的Packed Sequences"
 pubDate: "2024-12-26"
 draft: true
+tags: ["LLM", "machine learing", "deep learning"]
 ---
 
 训练大型语言模型（LLMs）是一项计算密集型任务。它需要大量的数据、强大的硬件和巧妙的优化技术。有一种技术并不常被提及，那就是使用打包序列来充分利用每个训练步骤中选择的上下文长度。

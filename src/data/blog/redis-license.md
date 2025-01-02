@@ -3,6 +3,7 @@ title: "Redis许可证变更引发的开源盈利思考"
 description: "探讨开源项目如何在当前环境中实现盈利"
 pubDate: "2024-03-25"
 updatedDate: "2024-03-26"
+tags: ["linux"]
 ---
 
 不久前，[Redis 宣布从 7.4 版本开始，开源许可证将从 BSD 更换为 RSALv2 和 SSPLv1](https://Redis.com/blog/Redis-adopts-dual-source-available-licensing/)。这并非 Redis[^1] 首次更换许可证，早在 2018 年，Redis 就已经调整了其部分模块的许可证。此外，知名的开源项目 MongoDB 和 ElasticSearch 也曾经历过类似的许可证更换。

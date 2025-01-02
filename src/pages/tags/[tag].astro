@@ -1,5 +1,5 @@
 ---
-import BaseLatout from "../../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import posts from "../../components/posts";
 import TitleList from "../../components/TitleList.astro";
 
@@ -23,7 +23,7 @@ const { tag } = Astro.params;
 const { posts: cur_posts } = Astro.props;
 ---
 
-<BaseLatout>
+<BaseLayout>
   <h2>Tag: {tag}</h2>
   <TitleList posts={cur_posts} />
-</BaseLatout>
+</BaseLayout>
