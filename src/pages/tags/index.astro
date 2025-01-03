@@ -15,10 +15,9 @@ const result = Object.entries(
 <BaseLayout>
   <h2>Tags</h2>
   <canvas
+    class="block h-3/4 w-full"
     data-tags={JSON.stringify(result)}
-    height="200"
-    id="word-cloud-container"
-    width="400"></canvas>
+    id="word-cloud-container"></canvas>
 </BaseLayout>
 <script>
   import WordCloud from "wordcloud";
@@ -26,6 +25,9 @@ const result = Object.entries(
     const container = document.getElementById(
       "word-cloud-container",
     ) as HTMLCanvasElement;
+    container.width = container.clientWidth * window.devicePixelRatio;
+    container.height = container.clientHeight * window.devicePixelRatio;
+
     const tags = JSON.parse(container.getAttribute("data-tags")!) as [
       string,
       number,
@@ -39,8 +41,9 @@ const result = Object.entries(
       click: (item) => {
         callbackFn(item);
       },
-      // gridSize: 50,
-      weightFactor: 10,
+      gridSize: 80,
+      weightFactor: 20,
+      shrinkToFit: true,
     });
   });
 </script>
