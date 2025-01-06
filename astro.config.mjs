@@ -11,7 +11,11 @@ export default defineConfig({
   site: "https://blog.cclin.org",
   prefetch: true,
   integrations: [
-    expressiveCode({ defaultProps: { wrap: true } }),
+    expressiveCode({
+      defaultProps: { wrap: true },
+      emitExternalStylesheet: true,
+    
+    }),
     mdx(),
     sitemap(),
     UnoCSS({ injectReset: true }),

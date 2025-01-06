@@ -6,22 +6,22 @@ draft: false
 tags: ["java", "c++", "jni"]
 ---
 
-这里以介绍在 Intellij IDE 中编写 jni 的步骤
-
 ## JNI 是什么
 
-Java Native Interface, 通常缩写为 JNI
+Java Native Interface, 通常缩写为 JNI,。它可以使得在JVM中运行的 Java 代码能够调用 C/C++ 或者汇编所编写的代码。JNI 可以让 C 代码创建或者使用 Java 对象，来更加高效的运行一些性能敏感型代码，也可以绕过 Java 的内存管理机制来更加高效的使用内存。很多机器学习的 Java binding 都是通过 JNI 实现的。
+
+下边举一个简单的例子来带大家写一个 JNI 程序。所用 IDE 是 Intellij IDEA。
 
 ## 编写 Java class
 
-首先创建 Java 工程，步骤略(例子中项目名为 jni)
+首先创建 Java 工程，步骤略(例子中项目名为 hellojni)
 
 ```java title="org/cclin/hellojni/HelloJNI.java"
 package org.cclin.hellojni;
 
 public class HelloJNI {
     static {
-        //加载的 so 的文件名
+        //加载的 动态链接库 的文件名
         System.loadLibrary("hello");
     }
 
@@ -37,11 +37,12 @@ public class HelloJNI {
 
 ## 生成头文件
 
-点击*编译*按钮，会在项目根目录生成 out 文件夹
+点击*编译*按钮（或者使用下边第一条命令），会在项目根目录生成 out 文件夹
 
 随后用以下命令生成头文件
 
 ```bash
+javac HelloJNI.java # 如果不使用IDEA
 javah -jni -classpath out/production/jni/ -d jni/include org.cclin.hellojni.HelloJNI
 ```
 
@@ -74,11 +75,13 @@ JNIEXPORT void JNICALL Java_org_cclin_hellojni_HelloJNI_sayHello
 
 ```
 
+接下来需要为这个生成的头文件编写对应的实现
+
 ## 配置 CmakeLists.txt 并编写实现
 
 ```cmake title="CmakeLists.txt"
 cmake_minimum_required(VERSION 3.24)
-project(jni)
+project(hellojni)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -123,3 +126,4 @@ JNIEXPORT void JNICALL Java_org_cclin_hellojni_HelloJNI_sayHello
 存储到临时文件中，再加载该临时文件，而不用通过 `Djava.library.path` 显示指定路径
 
 <https://docs.oracle.com/en/java/javase/11/docs/specs/jni/design.html>
+<https://blog.csdn.net/createchance/article/details/53783490>
