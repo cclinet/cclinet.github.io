@@ -29,8 +29,8 @@ $$
 
 $$
 \begin{aligned}
-Var(QK^T)  &= Var(Q_1K_1^T + Q_2K_2^T + ... Q_dK_d^T ) \\
-           &=Var(Q_1K_1^T) + Var(Q_2K_2^T ) + ... + Var(Q_dK_d^T)
+Var(QK^T)  &= Var(\sum_1^dQ_iK_i^T) \\
+           &=\sum_1^dVar(Q_iK_i^T)
 \end{aligned}
 $$
 
@@ -43,7 +43,7 @@ $$
 那么
 
 $$
-Var(QK^T) = \underbrace{1 + 1 + ... + 1}_{d} = d
+Var(QK^T) = \sum_i^d1 = d
 $$
 
 所以这里对 $QK^T$ 的结果除以 $\sqrt{d}$ 即可服从标准正态分布。
