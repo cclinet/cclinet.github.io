@@ -1,11 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const tools = [
+const tools: {
+  name: string;
+  items: { link: string; content: string; descrption: string }[];
+}[] = [
   {
     name: "本网站用的技术",
     items: [
-      { link: "https://astro.build", content: "astro.js" },
-      { link: "https://unocss.dev", content: "unocss" },
+      {
+        link: "https://astro.build",
+        content: "astro.js",
+        descrption: "网站框架",
+      },
+      { link: "https://unocss.dev", content: "unocss", descrption: "样式库" },
+      { link: "https://katex.org", content: "katex", descrption: "数学公式" },
+      {
+        link: "https://unifiedjs.com",
+        content: "unifiedjs",
+        descrption: "markdown渲染",
+      },
+      {
+        link: "https://github.com/timdream/wordcloud2.js",
+        content: "astro-expressive-code",
+        descrption: "代码块",
+      },
     ],
   },
 ];
@@ -18,10 +36,12 @@ const tools = [
     tools.map(({ name, items }) => (
       <>
         <h2 class="text-xl">{name}</h2>
-        <ul class="list-disc">
-          {items.map(({ link, content }) => (
-            <li>
-              <a href={link}>{content}</a>
+        <ul class="space-y-2 mt-4 flex list-disc flex-col">
+          {items.map(({ link, content, descrption }) => (
+            <li class="underline">
+              <a href={link}>
+                {content} - {descrption}
+              </a>
             </li>
           ))}
         </ul>
