@@ -2,7 +2,7 @@
 title: "nanobind 使用说明1"
 description: "nanobind 简介"
 pubDate: "2024-08-08"
-updatedDate: "2024-08-08"
+updatedDate: "2025-01-20"
 draft: false
 tags: ["nanobind", "python", "c++"]
 ---
@@ -70,7 +70,7 @@ nanobind_add_module(cuckoo cpp/cuckoo.cpp)
 
 下面则是一个简单的整数相加
 
-```cpp title="cpp/CMakeLists.txt"
+```cpp title="cpp/cuckoo.cpp"
 #include <nanobind/nanobind.h>
 
 int add(int a, int b) { return a + b; }
@@ -99,3 +99,73 @@ import cuckoo
 
 print(cuckoo.add(34, 1))
 ```
+
+现在我们已经可以正常的运行一个最简单的 demo 了，接下来让我们使用 nanobind 来实现一些更高级的功能吧。
+
+## 参数名和默认参数
+
+从上一个例子中我们可以看到，我们生成的 add 函数的两个参数名已经变成了 `add(arg0: int, arg1: int, /) -> int`, 这是因为 C++ 语言在编译时并不会保留这些信息。为了让 python 能够实现函数参数名这个功能，我们需要在 bind 时手工指定参数名。
+
+```cpp title="cpp/cuckoo.cpp"
+#include <nanobind/nanobind.h>
+
+namespace nb = nanobind;
+using namespace nb::literals;
+int add(int a, int b) { return a + b; }
+
+NB_MODULE(cuckoo, m) {
+  m.def(
+      "add", &add, "a"_a, "b"_a = 1,
+      "This function adds two numbers and increments if only one is provided.");
+      m.attr("the_answer") = 42;
+      m.doc() = "A simple example python extension";
+}
+```
+
+除了添加参数名称和默认值，我们也添加了attr和doc两个字段。他们分别导出了值和文档。
+重新编译以后，运行如下代码，会得到这样的结果
+
+```python
+import cuckoo
+
+# help(cuckoo)
+"""
+Help on module cuckoo:
+
+NAME
+    cuckoo - A simple example python extension
+
+DATA
+    add = <nanobind.nb_func object>
+        add(a: int, b: int = 1) -> int
+
+        This function adds two numbers and increments if only one is provided.
+
+    the_answer = 42
+
+FILE
+    ***/cuckoo.cpython-312-darwin.so
+"""
+print(cuckoo.add(a=40)) # 41
+print(cuckoo.the_answer) # 42
+```
+
+## 自动生成typing文件
+如果你正在使用像vscode这样的IDE, 你可能会发现IDE无法正确提示我们所写的代码，这是因为IDE无法识别.so文件的内容。幸运的是，nanobind提供了自动生成typing文件的功能。
+我们只需要在CMakeLists中添加如下代码即可实现
+```cpp title="CMakeLists.txt"
+nanobind_add_stub(
+  cuckoo_stub
+  MODULE cuckoo
+  OUTPUT cuckoo.pyi
+  PYTHON_PATH $<TARGET_FILE_DIR:cuckoo>
+  DEPENDS cuckoo
+)
+```
+这样会在build 目录下生成cuckoo.pyi文件,同样软连接或者复制过来。
+
+```shell
+ln -s ../build/cuckoo.pyi cuckoo.cpython-312-darwin.so
+```
+
+[nanobind-2](/posts/nanobind/nanobind-2/)
