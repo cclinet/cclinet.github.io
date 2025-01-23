@@ -151,8 +151,10 @@ print(cuckoo.the_answer) # 42
 ```
 
 ## 自动生成typing文件
+
 如果你正在使用像vscode这样的IDE, 你可能会发现IDE无法正确提示我们所写的代码，这是因为IDE无法识别.so文件的内容。幸运的是，nanobind提供了自动生成typing文件的功能。
 我们只需要在CMakeLists中添加如下代码即可实现
+
 ```cpp title="CMakeLists.txt"
 nanobind_add_stub(
   cuckoo_stub
@@ -162,10 +164,58 @@ nanobind_add_stub(
   DEPENDS cuckoo
 )
 ```
-这样会在build 目录下生成cuckoo.pyi文件,同样软连接或者复制过来。
+
+这样会在build 目录下生成cuckoo.pyi文件,同样软连接或者复制过来,即可获得正确的类型提示。
 
 ```shell
 ln -s ../build/cuckoo.pyi cuckoo.cpython-312-darwin.so
 ```
+
+## class 绑定
+
+接下来介绍一下类的绑定方法。其实和函数差不多，照着抄就行了。
+
+```cpp title="cpp/cuckoo.cpp"
+#include <nanobind/nanobind.h>
+
+namespace nb = nanobind;
+using namespace nb::literals;
+int add(int a, int b) { return a + b; }
+
+NB_MODULE(cuckoo, m) {
+#include <nanobind/nanobind.h>
+#include <nanobind/stl/string.h>
+
+namespace nb = nanobind;
+
+class Dog {
+public:
+  std::string name;
+  std::string bark() const { return name + ": woof!"; }
+};
+
+NB_MODULE(cuckoo, m) {
+  nb::class_<Dog>(m, "Dog")
+      .def(nb::init<>())
+      .def(nb::init<const std::string &>())
+      .def("bark", &Dog::bark)
+      .def_rw("name", &Dog::name);
+}
+```
+
+首先 `#include <nanobind/stl/string.h>`告诉 nanobind 如何把cpp的string转成python的str。
+然后`nb::class_<Dog>(m, "Dog")` 将 C++ 类型 Dog 与名为"Dog"的新 Python 类型关联起来,并将其安装在 nb::module\_ m 中。
+随后通过`.def(nb::init<>())`和`.def(nb::init<const std::string &>())`声明了两个构造函数,`.def("bark", &Dog::bark)`声明了一个方法，`.def_rw("name", &Dog::name)`声明了一个可读写的字段。
+
+对象的所有声明如下表：
+|类型|方法|
+|----------------------------|-----------------------------|
+|Methods & constructors|`.def()`|
+|Fields|`.def_ro()`, `.def_rw()`|
+|Properties|`.def_prop_ro()`, `.def_prop_rw()`|
+|Static methods|`.def_static()`|
+|Static fields|`.def_ro_static()`, `.def_rw_static()`|
+|Static properties|`.def_prop_ro_static()`, `.def_prop_rw_static()`|  
+
 
 [nanobind-2](/posts/nanobind/nanobind-2/)
