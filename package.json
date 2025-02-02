@@ -17,7 +17,7 @@
     "@astrojs/sitemap": "^3.2.1",
     "@iconify-json/ant-design": "^1.2.5",
     "@unocss/preset-icons": "^65.4.3",
-    "@unocss/preset-typography": "^0.65.3",
+    "@unocss/preset-typography": "^65.4.3",
     "@unocss/reset": "^0.65.3",
     "astro": "^5.1.7",
     "astro-expressive-code": "^0.38.3",
