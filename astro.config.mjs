@@ -8,7 +8,7 @@ import UnoCSS from "unocss/astro";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://blog.cclin.org",
+  site: "https://cclin.org",
   prefetch: true,
   integrations: [
     expressiveCode({
