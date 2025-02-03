@@ -2,9 +2,8 @@
 interface Props {
   content: string;
   clarification: string;
-  copy_on_click?: boolean;
 }
-const { content, clarification, copy_on_click } = Astro.props;
+const { content, clarification } = Astro.props;
 ---
 
 <style>
@@ -36,34 +35,8 @@ const { content, clarification, copy_on_click } = Astro.props;
   }
 </style>
 
-<script>
-  const clarifications = document.querySelectorAll(".tooltip-container");
-  clarifications.forEach((clarification) => {
-    if (clarification.hasAttribute("data-copy_on_click")) {
-      clarification.addEventListener("click", () => {
-        const type = "text/plain";
-        const text =
-          clarification.getElementsByClassName("tooltip-box")[0]!.textContent!;
-        const blob = new Blob([text], { type });
-        const data = [new ClipboardItem({ [type]: blob })];
-        navigator.clipboard.write(data).then(() => {
-          const modal = document.getElementById("modal")! as HTMLDialogElement;
-          modal.showModal();
-
-          const timeoutID = setTimeout(() => {
-            modal.close();
-          }, 2000);
-
-          modal.addEventListener("close", () => {
-            clearTimeout(timeoutID);
-          });
-        });
-      });
-    }
-  });
-</script>
 <span
   class="tooltip-container underline-dashed underline"
-  data-copy_on_click={copy_on_click}
+
   >{content}<span class="tooltip-box">{clarification}</span></span
 >
