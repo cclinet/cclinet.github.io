@@ -1,5 +1,6 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import expressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
@@ -14,7 +15,7 @@ export default defineConfig({
     expressiveCode({
       defaultProps: { wrap: true },
       emitExternalStylesheet: true,
-    
+      plugins: [pluginLineNumbers()],
     }),
     mdx(),
     sitemap(),

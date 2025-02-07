@@ -15,6 +15,7 @@
     "@astrojs/mdx": "^4.0.8",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
+    "@expressive-code/plugin-line-numbers": "^0.40.1",
     "@iconify-json/ant-design": "^1.2.5",
     "@unocss/preset-icons": "^65.4.3",
     "@unocss/preset-typography": "^65.4.3",
