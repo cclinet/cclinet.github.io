@@ -12,13 +12,8 @@ const tags = posts
       acc.push({ tag: item, count: 1 });
     }
     return acc;
-  }, []);
-
-tags.sort((a, b) => b.count - a.count);
-const rank_number = Map.groupBy(tags, ({ count }) => count);
-console.log(rank_number);
-// const sorted = result.map(({ tag, count }) => ({ tag, count }));
-// console.log(sorted);
+  }, [])
+  .sort((a, b) => b.count - a.count);
 ---
 
 <BaseLayout title="CCLIN TAGS">
@@ -26,7 +21,7 @@ console.log(rank_number);
   <ul class="mt-8 grid grid-cols-2 gap-4">
     {
       tags.map(({ tag, count }) => (
-        <li class="text-zinc-400">
+        <li class="text-zinc-900">
           <a class="underline" href={`/tags/${tag}`}>
             {tag}: {count}
           </a>
