@@ -24,6 +24,6 @@ const { posts: cur_posts } = Astro.props;
 ---
 
 <BaseLayout>
-  <h2>Tag: {tag}</h2>
+  <h2 class="text-xl">Tag: {tag}</h2>
   <TitleList posts={cur_posts} />
 </BaseLayout>

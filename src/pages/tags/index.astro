@@ -3,47 +3,35 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import posts from "../../components/posts";
 const tags = posts
   .filter((post) => !post.data.draft)
-  .flatMap((post) => post.data.tags || []);
-const result = Object.entries(
-  tags.reduce<Record<string, number>>((acc, item) => {
-    acc[item] = (acc[item] || 0) + 1;
+  .flatMap((post) => post.data.tags || [])
+  .reduce<{ tag: string; count: number }[]>((acc, item) => {
+    const existingTag = acc.find((entry) => entry.tag === item);
+    if (existingTag) {
+      existingTag.count += 1;
+    } else {
+      acc.push({ tag: item, count: 1 });
+    }
     return acc;
-  }, {}),
-);
+  }, []);
+
+tags.sort((a, b) => b.count - a.count);
+const rank_number = Map.groupBy(tags, ({ count }) => count);
+console.log(rank_number);
+// const sorted = result.map(({ tag, count }) => ({ tag, count }));
+// console.log(sorted);
 ---
 
 <BaseLayout title="CCLIN TAGS">
-  <h2>Tags</h2>
-  <canvas
-    class="block h-3/4 w-full"
-    data-tags={JSON.stringify(result)}
-    id="word-cloud-container"></canvas>
-</BaseLayout>
-<script>
-  import WordCloud from "wordcloud";
-  document.addEventListener("astro:page-load", () => {
-    const container = document.getElementById(
-      "word-cloud-container",
-    ) as HTMLCanvasElement;
-    container.width = container.clientWidth * window.devicePixelRatio;
-    container.height = container.clientHeight * window.devicePixelRatio;
-
-    const tags = JSON.parse(container.getAttribute("data-tags")!) as [
-      string,
-      number,
-    ][];
-
-    function callbackFn(item: [string, number, ...unknown[]]) {
-      window.location.href = `/tags/${item[0]}`;
+  <h2 class="text-xl">Tags</h2>
+  <ul class="mt-8 grid grid-cols-2 gap-4">
+    {
+      tags.map(({ tag, count }) => (
+        <li class="text-zinc-400">
+          <a class="underline" href={`/tags/${tag}`}>
+            {tag}: {count}
+          </a>
+        </li>
+      ))
     }
-    WordCloud(container, {
-      list: tags,
-      click: (item) => {
-        callbackFn(item);
-      },
-      gridSize: 80,
-      weightFactor: 20,
-      shrinkToFit: true,
-    });
-  });
-</script>
+  </ul>
+</BaseLayout>
