@@ -10,8 +10,7 @@ tags: ["c++"]
 
 ## 组合计算
 
-组合计算比较简单，我们用了一个简单的递归写法
-我们用cpp写的算法如下
+组合计算比较简单，这里用了一个简单的递归写法
 
 ```cpp
 void process_combinations_range(std::vector<int> &combination, int pos, int start) {
@@ -46,11 +45,15 @@ void process_combinations_range(std::vector<int> &combination, int pos, int star
 
 上面这个算法是一个单线程的算法，我们把他改成并行。
 我们对组合可以做如下处理，每个线程计算一个数字开头的组合
+
 线程1：(1,2), (1,3), (1,4)
+
 线程2：(2,3), (2,4)
+
 线程3：(3,4)
-为了高效的调度线程，我使用了TBB这个库，来自动分配任务到线程中。
-对于每个线程的子任务，我们预先填充第一位数，并从第二位数执行上边的递归算法。
+
+为了高效的调度线程，我使用了TBB这个库自动分配任务。
+对于每个线程的子任务，我们预先填充第一位数，并从第二位数开始执行上边的递归算法。
 
 ```cpp
   // 计算
@@ -67,4 +70,6 @@ void process_combinations_range(std::vector<int> &combination, int pos, int star
 ```
 
 完整代码可见 https://github.com/cclinet/permutation
-24选6的排列
+
+
+在8核M2芯片上，24选6的排列 大概率要2s
