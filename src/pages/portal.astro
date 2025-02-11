@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets"
 const friends = [
   {
     title: "Arthals' ink",
@@ -11,9 +12,22 @@ const friends = [
 ---
 
 <BaseLayout description={"友链传送门"} title={"CCLIN FRIENDS"}>
-  {
-    friends.map(({ title, description, link, avatar }) => (
-      <a href={link}>{title}</a>
-    ))
-  }
+  <div class="grid grid-cols-3">
+    {
+      friends.map(({ title, description, link, avatar }) => (
+        <a href={link} class="flex">
+          <Image
+            src={avatar}
+            alt={`${title}'s avatar`}
+            inferSize={true}
+            class="round"
+          />
+          <div>
+            <div>{title}</div>
+            <div>{description}</div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
 </BaseLayout>
