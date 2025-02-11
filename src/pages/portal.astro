@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const friends = [
+  {
+    title: "Arthals' ink",
+    description: "所见高山远木，阔云流风；所幸岁月盈余，了无拘束。",
+    link: "https://arthals.ink/",
+    avatar: "https://cdn.arthals.ink/Arthals.png",
+  },
+];
+---
+
+<BaseLayout description={"友链传送门"} title={"CCLIN FRIENDS"}>
+  {
+    friends.map(({ title, description, link, avatar }) => (
+      <a href={link}>{title}</a>
+    ))
+  }
+</BaseLayout>
