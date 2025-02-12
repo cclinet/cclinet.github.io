@@ -28,5 +28,9 @@ export default defineConfig({
   },
   redirects: {
     "/[...id]": "/posts/[...id]",
+    "/probe-circle.png": {
+      status: 301,
+      destination: "https://resources.cclin.org/probe-circle.png",
+    },
   },
 });
