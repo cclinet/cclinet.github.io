@@ -7,10 +7,12 @@ import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import UnoCSS from "unocss/astro";
 
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://cclin.org",
   prefetch: true,
+
   integrations: [
     expressiveCode({
       defaultProps: { wrap: true },
@@ -21,12 +23,15 @@ export default defineConfig({
     sitemap(),
     UnoCSS({ injectReset: true }),
   ],
+
   markdown: {
     syntaxHighlight: false,
     remarkPlugins: [remarkMath],
     rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
   },
+
   redirects: {
     "/[...id]": "/posts/[...id]",
   },
+
 });

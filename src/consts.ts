@@ -12,12 +12,12 @@ export const SocialLinks = [
   {
     href: "https://github.com/cclinet",
     name: "github",
-    icons: "i-ant-design:github-filled",
+    icons: "i-custom:github",
   },
   {
     href: "https://www.zhihu.com/people/probius33",
     name: "zhihu",
-    icons: "i-ant-design:zhihu-circle-filled",
+    icons: "i-custom:zhihu",
   },
   {
     href: "https://www.travellings.cn/go.html",
