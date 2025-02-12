@@ -1,9 +1,9 @@
 ---
 title: "nanobind 使用说明2"
 description: "nanobind 简介"
-pubDate: "2024-08-027"
-updatedDate: "2024-08-027"
-draft: false
+pubDate: "2024-08-27"
+updatedDate: "2024-08-27"
+draft: true
 tags: ["nanobind", "python", "c++"]
 ---
 
