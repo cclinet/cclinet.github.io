@@ -13,9 +13,7 @@ import { SocialLinks } from "../../consts";
     <li><a href="/about">关于</a></li>
     <li><a href="/portal">朋友</a></li>
     <li><a href="/toolbox">工具</a></li>
-
   </ul>
-  
 </nav>
 
 <ul flex="~ row gap-1 justify-center">
@@ -28,7 +26,7 @@ import { SocialLinks } from "../../consts";
           target="_blank"
           title={name}
         >
-          <span class:list={[icons, "h-6 w-6"]}>{name}</span>
+          <span class:list={[icons, "h-6 w-6"]} />
         </a>
       </li>
     ))

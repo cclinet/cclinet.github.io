@@ -5,6 +5,11 @@ export const SITE_TITLE = "探机之家";
 export const SITE_DESCRIPTION = "探机的自我修养";
 export const SocialLinks = [
   {
+    href: "/rss.xml",
+    name: "rss",
+    icons: "i-custom:rss",
+  },
+  {
     href: "https://github.com/cclinet",
     name: "github",
     icons: "i-ant-design:github-filled",
@@ -13,5 +18,10 @@ export const SocialLinks = [
     href: "https://www.zhihu.com/people/probius33",
     name: "zhihu",
     icons: "i-ant-design:zhihu-circle-filled",
+  },
+  {
+    href: "https://www.travellings.cn/go.html",
+    name: "travellings",
+    icons: "i-custom:train",
   },
 ];
