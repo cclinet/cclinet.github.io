@@ -11,6 +11,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description } = Astro.props;
 
+const isPostPage = Astro.url.pathname.startsWith("/posts/");
+const katex_version = isPostPage ? (await import("katex")).version : "0.16.9";
 ---
 
 <meta charset="utf-8" />
@@ -23,4 +25,25 @@ const { title, description } = Astro.props;
 
 <meta content={title} name="title" />
 {description && <meta content={description} name="description" />}
+
+<!-- {
+  isPostPage && (
+    <link
+      crossorigin="anonymous"
+      href={`https://cdnjs.cloudflare.com/ajax/libs/KaTeX/${katex_version}/katex.min.css`}
+      referrerpolicy="no-referrer"
+      rel="stylesheet"
+    />
+  )
+} -->
+{
+  isPostPage && (
+    <link
+      crossorigin="anonymous"
+      href={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/katex.min.css`}
+      referrerpolicy="no-referrer"
+      rel="stylesheet"
+    />
+  )
+}
 <ClientRouter />

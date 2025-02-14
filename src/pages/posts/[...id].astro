@@ -2,7 +2,7 @@
 import { render } from "astro:content";
 import posts from "../../components/posts";
 import BlogPost from "../../layouts/BlogPost.astro";
-import "katex/dist/katex.min.css";
+// import "katex/dist/katex.min.css";
 
 export async function getStaticPaths() {
   return posts.map((post) => ({

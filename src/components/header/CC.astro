@@ -1,9 +1,9 @@
 ---
-const use_cc = Astro.url.pathname.startsWith("/posts/");
+const isPostPage = Astro.url.pathname.startsWith("/posts/");
 ---
 
 {
-  use_cc && (
+  isPostPage && (
     <p class:list={["text-center text-xs lg:text-left"]} property="cc:license">
       This work is licensed under{" "}
       <a
