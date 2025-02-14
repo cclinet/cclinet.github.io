@@ -1,29 +1,49 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Clarification from "../components/about/Clarification.astro";
+
+const tools: { link: string; content: string; descrption: string }[] = [
+  {
+    link: "https://astro.build",
+    content: "astro.js",
+    descrption: "网站框架",
+  },
+  { link: "https://unocss.dev", content: "unocss", descrption: "样式库" },
+  { link: "https://katex.org", content: "katex", descrption: "数学公式" },
+  {
+    link: "https://unifiedjs.com",
+    content: "unifiedjs",
+    descrption: "markdown渲染",
+  },
+  {
+    link: "https://expressive-code.com",
+    content: "expressive-code",
+    descrption: "代码块",
+  },
+];
 ---
 
 <BaseLayout description={"个人简介"} title={"CCLIN ABOUT"}>
   <article class="leading-relaxed">
-    <h1>“哈喽，大家好！我是你们的探机朋友，普罗比斯！✍️✨”</h1>
+    <h2 class="mb-4 text-2xl">个人简介</h2>
     <p>
-      在乌鸦庭的4294967295次战役未尝一胜后，乌鸦之神将我贬入第114514号宇宙来进行锻炼。
+      我是<Clarification clarification="常用马甲cclin" content="普罗比斯" />
     </p>
     <p>
-      作为最愿意探索世界的<Clarification
+      在乌鸦庭的4294967295次战役未尝一胜后，乌鸦之神将最愿意探索世界的<Clarification
         clarification="牛马"
-        content="星灵探机"
-      />，我将专注于用文字打造属于自己的小宇宙。有人说我是一个“夜猫子”，白天在发呆，晚上在脑海里写下千百个故事，谁知道呢？😏
+        content="我"
+      />贬入第114514号宇宙来进行锻炼。
     </p>
-    特质：
+    <h3 class="mt-2 text-xl">我</h3>
     <ul class="list-inside list-disc leading-normal">
-      <li class="li-marker-[🌟]">喜欢新技术，但只有三分钟热度</li>
-      <li class="li-marker-[🌟]">有点小懒，只在 Deadline 之前爆发惊人的力量</li>
+      <li class="li-marker-[🌟]">对世界仍有好奇</li>
+      <li class="li-marker-[🌟]">中度拖延</li>
       <li class="li-marker-[🌟] hover:bgs-black">
         <del>键政狂魔</del> 键政乐子人
       </li>
     </ul>
-    爱好：
+    <h3 class="mt-2 text-xl">爱好</h3>
     <ul class="list-inside list-disc leading-normal">
       <li class="li-marker-[🛋️]">
         宅在家写代码看小说刷短视频，偶尔被拉出去晒太阳。
@@ -34,7 +54,34 @@ import Clarification from "../components/about/Clarification.astro";
           content="造水晶塔"
         />的全能型探机。
       </li>
-      <li class="li-marker-[🌌]">和大家一起分享有趣的事！</li>
     </ul>
   </article>
+  <hr class="my-8" />
+  <h2 class="mb-4 text-2xl">关于本站</h2>
+  <p>
+    <h3 class="mt-2 text-xl">技术栈</h3>
+    <ul>
+      {
+        tools.map(({ link, content, descrption }) => (
+          <li class="underline">
+            <a href={link}>
+              {content} - {descrption}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </p>
+  <p class="whitespace-pre">
+    源代码在<a
+      class="underline"
+      href="https://github.com/cclinet/cclinet.github.io">github</a
+    >
+    部署在<a class="underline" href="https://www.cloudflare.com/zh-cn/"
+      >cloudflare page</a
+    >
+    <hr class="my-8" />
+    <h2 class="mb-4 text-2xl">联系我</h2>
+    <ul class="pb-6"><li>微信: cclinet</li><li>邮箱:me@cclin.org</li></ul>
+  </p>
 </BaseLayout>

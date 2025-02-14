@@ -4,7 +4,6 @@ import SiteTitle from "../components/header/SiteTitle.astro";
 import SiteNavigation from "../components/header/SiteNavigation.astro";
 import CC from "../components/header/CC.astro";
 
-
 const { title }: { title: string } = Astro.props.frontmatter || Astro.props;
 const { description } = Astro.props ?? "";
 ---
@@ -16,15 +15,14 @@ const { description } = Astro.props ?? "";
   </head>
   <body
     class="min-h-100vh max-w-1200px min-w-390px mx-a p-7.5 overflow-y-scroll font-sans"
-    lg="py-0 px-20 grid gap-x-6 cols-[3fr_1fr] rows-[1fr_9rem]"
+    lg="py-0 px-20 grid gap-x-6 cols-[3fr_1fr] rows-[calc(100vh_-_4rem)_auto_auto]"
   >
     <header
       class="p-7.5 flex flex-col gap-2.5"
-      lg="row-1-2 col-2-3 justify-between items-start mx-0 py-20 h-100vh"
+      lg="row-1-2 col-2-3 justify-between items-start mx-0 py-20 h-[calc(100vh_-_4rem)]"
     >
       <SiteTitle />
       <SiteNavigation />
-      <div class="hidden" lg="block"><CC /></div>
     </header>
 
     <main lg="row-start-1 row-end-3 col-start-1 lg:col-end-2 pt-20">
@@ -32,7 +30,7 @@ const { description } = Astro.props ?? "";
     </main>
     <footer
       class="col-start-2 col-end-3 row-start-2 row-end-3 mt-5 pb-6"
-      lg="hidden"
+      lg="mt-0 pb-0 ml-10"
     >
       <CC />
     </footer>

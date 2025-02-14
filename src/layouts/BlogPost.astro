@@ -22,7 +22,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       }
     </div>
     <div class="flex gap-x-2">
-      {tags?.map((tag) => <a href=`/tags/${tag}`>#{tag}</a>)}
+      {tags?.map((tag) => <a  class="" href=`/tags/${tag}`>{tag}</a>)}
     </div>
     <hr />
     <div

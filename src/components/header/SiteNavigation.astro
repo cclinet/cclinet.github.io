@@ -6,17 +6,16 @@ import { SocialLinks } from "../../consts";
   <ul
     class="text-3.5"
     flex="~ row gap-2 justify-center"
-    lg="flex-col items-start text-4"
+    lg="flex-col items-start text-4 ml-4"
   >
     <li><a href="/">文章</a></li>
     <li><a href="/tags">标签</a></li>
-    <li><a href="/about">关于</a></li>
     <li><a href="/portal">朋友</a></li>
-    <li><a href="/toolbox">工具</a></li>
+    <li><a href="/about">关于</a></li>
   </ul>
 </nav>
 
-<ul flex="~ row gap-1 justify-center" class="h6">
+<ul class="h6" flex="~ row gap-1 justify-center" lg="ml-4">
   {
     SocialLinks.map(({ href, name, icons }) => (
       <li>
