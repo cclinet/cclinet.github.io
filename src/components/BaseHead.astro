@@ -46,6 +46,7 @@ const katex_version = isPostPage ? (await import("katex")).version : "0.16.9";
     />
     <script 
     crossorigin="anonymous"  
+    data-cfasync="false"
     src={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/contrib/copy-tex.min.js`}></script>
   )
 }
