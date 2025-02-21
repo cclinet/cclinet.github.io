@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
-
+import {SITE_TITLE} from "@/consts"
 interface Props {
   title: string;
   description?: string;
@@ -26,7 +26,15 @@ const katex_version = isPostPage ? (await import("katex")).version : "0.16.9";
 <meta content={title} name="title" />
 {description && <meta content={description} name="description" />}
 
-<!-- {
+<link
+  href={new URL("rss.xml", Astro.site)}
+  rel="alternate"
+  title={SITE_TITLE}
+  type="application/rss+xml"
+/>
+
+
+{/* {
   isPostPage && (
     <link
       crossorigin="anonymous"
@@ -35,7 +43,7 @@ const katex_version = isPostPage ? (await import("katex")).version : "0.16.9";
       rel="stylesheet"
     />
   )
-} -->
+} */} 
 {
   isPostPage && (
     <link
@@ -44,9 +52,10 @@ const katex_version = isPostPage ? (await import("katex")).version : "0.16.9";
       referrerpolicy="no-referrer"
       rel="stylesheet"
     />
-    <script 
+    <script   
     crossorigin="anonymous"  
     data-cfasync="false"
+    is:inline
     src={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/contrib/copy-tex.min.js`}></script>
   )
 }
