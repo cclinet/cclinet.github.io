@@ -1,5 +1,8 @@
 ---
-import { SocialLinks } from "../../consts";
+import { SocialLinks } from "@/consts";
+import { ui } from "@/i18n/ui";
+import { getRelativeLocaleUrl } from "astro:i18n";
+const locale = Astro.currentLocale as keyof typeof ui;
 ---
 
 <nav class="text-center font-bold" flex="~ col gap-4">
@@ -8,10 +11,23 @@ import { SocialLinks } from "../../consts";
     flex="~ row gap-2 justify-center"
     lg="flex-col items-start text-4 ml-4"
   >
-    <li><a href="/">文章</a></li>
-    <li><a href="/tags">标签</a></li>
-    <li><a href="/portal">朋友</a></li>
-    <li><a href="/about">关于</a></li>
+    <li>
+      <a href={getRelativeLocaleUrl(locale)}>{ui[locale]["nav.posts"]}</a>
+    </li>
+    <li>
+      <a href={getRelativeLocaleUrl(locale, "tags")}>{ui[locale]["nav.tags"]}</a
+      >
+    </li>
+    <li>
+      <a href={getRelativeLocaleUrl(locale, "portal")}
+        >{ui[locale]["nav.portal"]}</a
+      >
+    </li>
+    <li>
+      <a href={getRelativeLocaleUrl(locale, "about")}
+        >{ui[locale]["nav.about"]}</a
+      >
+    </li>
   </ul>
 </nav>
 

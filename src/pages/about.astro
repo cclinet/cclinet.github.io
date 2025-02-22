@@ -1,6 +1,7 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Clarification from "../components/about/Clarification.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Clarification from "@/components/about/Clarification.astro";
+import type { GetStaticPaths } from "astro";
 
 const tools: { link: string; content: string; descrption: string }[] = [
   {
@@ -21,6 +22,10 @@ const tools: { link: string; content: string; descrption: string }[] = [
     descrption: "代码块",
   },
 ];
+
+export const getStaticPaths = (() => {
+  return [{ params: { locale: undefined } }, { params: { locale: "en" } }];
+}) satisfies GetStaticPaths;
 ---
 
 <BaseLayout description={"个人简介"} title={"CCLIN ABOUT"}>
@@ -39,7 +44,7 @@ const tools: { link: string; content: string; descrption: string }[] = [
     <ul class="list-inside list-disc leading-normal">
       <li class="li-marker-[🌟]">对世界仍有好奇</li>
       <li class="li-marker-[🌟]">中度拖延</li>
-      <li class="li-marker-[🌟] hover:bgs-black">
+      <li class="li-marker-[🌟]">
         <del>键政狂魔</del> 键政乐子人
       </li>
     </ul>
@@ -72,16 +77,19 @@ const tools: { link: string; content: string; descrption: string }[] = [
       }
     </ul>
   </p>
-  <p class="whitespace-pre">
-    源代码在<a
-      class="underline"
-      href="https://github.com/cclinet/cclinet.github.io">github</a
-    >
-    部署在<a class="underline" href="https://www.cloudflare.com/zh-cn/"
-      >cloudflare page</a
-    >
+  <div class="mt-4">
+    <p>
+      源代码在<a
+        class="underline"
+        href="https://github.com/cclinet/cclinet.github.io">github</a
+      >
+    </p>
+    <p>
+      部署在<a class="underline" href="https://www.cloudflare.com/zh-cn/"
+        >cloudflare page</a>
+    </p>
     <hr class="my-8" />
     <h2 class="mb-4 text-2xl">联系我</h2>
     <ul class="pb-6"><li>微信: cclinet</li><li>邮箱: me@cclin.org</li></ul>
-  </p>
+  </div>
 </BaseLayout>

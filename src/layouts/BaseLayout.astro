@@ -1,15 +1,15 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import SiteTitle from "../components/header/SiteTitle.astro";
-import SiteNavigation from "../components/header/SiteNavigation.astro";
-import CC from "../components/header/CC.astro";
+import BaseHead from "@/components/BaseHead.astro";
+import SiteTitle from "@/components/header/SiteTitle.astro";
+import SiteNavigation from "@/components/header/SiteNavigation.astro";
+import CC from "@/components/header/CC.astro";
 
 const { title }: { title: string } = Astro.props.frontmatter || Astro.props;
 const { description } = Astro.props ?? "";
 ---
 
 <!doctype html>
-<html lang="zh">
+<html lang={Astro.currentLocale}>
   <head>
     <BaseHead description={description} title={title} />
   </head>

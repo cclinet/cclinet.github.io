@@ -1,5 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { GetStaticPaths } from "astro";
 import { Image } from "astro:assets";
 const friends = [
   {
@@ -9,6 +10,10 @@ const friends = [
     avatar: "https://cdn.arthals.ink/Arthals.png",
   },
 ];
+
+export const getStaticPaths = (() => {
+  return [{ params: { locale: undefined } }, { params: { locale: "en" } }];
+}) satisfies GetStaticPaths;
 ---
 
 <BaseLayout description={"友链传送门"} title={"CCLIN FRIENDS"}>

@@ -1,0 +1,106 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Clarification from "@/components/about/Clarification.astro";
+import type { GetStaticPaths } from "astro";
+
+const tools: { link: string; content: string; descrption: string }[] = [
+  {
+    link: "https://astro.build",
+    content: "astro.js",
+    descrption: " Website Framework",
+  },
+  {
+    link: "https://unocss.dev",
+    content: "unocss",
+    descrption: "Styling Library",
+  },
+  {
+    link: "https://katex.org",
+    content: "katex",
+    descrption: "Mathematical Formulas",
+  },
+  {
+    link: "https://unifiedjs.com",
+    content: "unifiedjs",
+    descrption: "Markdown Rendering",
+  },
+  {
+    link: "https://expressive-code.com",
+    content: "expressive-code",
+    descrption: "Code Blocks",
+  },
+];
+
+export const getStaticPaths = (() => {
+  return [{ params: { locale: undefined } }, { params: { locale: "en" } }];
+}) satisfies GetStaticPaths;
+---
+
+<BaseLayout description={"Personal Introduction"} title={"CCLIN ABOUT"}>
+  <article class="leading-relaxed">
+    <h2 class="mb-4 text-2xl">Personal Introduction</h2>
+    <p>
+      I am <Clarification clarification="cclin" content="Probis" />.
+    </p>
+    <p>
+      After failing in 4294967295 battles in the Raven Court, the God of Ravens
+      exiled <Clarification clarification="worker" content="me" />— the one most
+      willing to explore the world— into Universe No. 114514 for training.
+    </p>
+    <h3 class="mt-2 text-xl">About Me</h3>
+    <ul class="list-inside list-disc leading-normal">
+      <li class="li-marker-[🌟]">I am still curious about the world.</li>
+      <li class="li-marker-[🌟]">Mild procrastination.</li>
+      <li class="li-marker-[🌟]">
+        <del>Keyboard politics enthusiast</del>A fan of keyboard politics humor.
+      </li>
+    </ul>
+    <h3 class="mt-2 text-xl">Hobbies</h3>
+    <ul class="list-inside list-disc leading-normal">
+      <li class="li-marker-[🛋️]">
+        Staying at home coding, reading novels, and watching short videos,
+        occasionally dragged out to bask in the sun.
+      </li>
+      <li class="li-marker-[🎮]">
+        Sometimes slacking off with games. My dream is to become an all-around
+        Probe, not just someone who <Clarification
+          clarification="writes codes"
+          content="builds crystal towers"
+        />.
+      </li>
+    </ul>
+  </article>
+  <hr class="my-8" />
+  <h2 class="mb-4 text-2xl">About This Site</h2>
+  <p>
+    <h3 class="mt-2 text-xl">Tech Stack</h3>
+    <ul>
+      {
+        tools.map(({ link, content, descrption }) => (
+          <li class="underline">
+            <a href={link}>
+              {content} - {descrption}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </p>
+  <div class="mt-4">
+    <p>
+      The source code is on <a
+        class="underline"
+        href="https://github.com/cclinet/cclinet.github.io">github</a
+      >.
+    </p>
+    <p>
+      Deployed on <a class="underline" href="https://www.cloudflare.com/zh-cn/"
+        >cloudflare page</a
+      >.
+    </p>
+
+    <hr class="my-8" />
+    <h2 class="mb-4 text-2xl">Contact Me</h2>
+    <ul class="pb-6"><li>WeChat: cclinet</li><li>Email: me@cclin.org</li></ul>
+  </div>
+</BaseLayout>

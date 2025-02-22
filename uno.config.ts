@@ -4,7 +4,7 @@ import {
   presetAttributify,
   presetIcons,
   presetTypography,
-  presetUno,
+  presetWind3,
   presetWebFonts,
 } from "unocss";
 
@@ -14,7 +14,7 @@ import { SocialLinks } from "./src/consts";
 export default defineConfig({
   presets: [
     presetAttributify(), // required when using attributify mode
-    presetUno(), // required
+    presetWind3 (), // required
     presetTypography({}),
     presetIcons({
       collections: {

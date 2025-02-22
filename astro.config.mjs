@@ -7,7 +7,6 @@ import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import UnoCSS from "unocss/astro";
 
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://cclin.org",
@@ -29,9 +28,8 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
     rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
   },
-
-  redirects: {
-    "/[...id]": "/posts/[...id]",
+  i18n: {
+    locales: ["zh", "en"],
+    defaultLocale: "zh",
   },
-
 });

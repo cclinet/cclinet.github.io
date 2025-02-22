@@ -1,6 +1,8 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import posts from "../../components/posts";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import posts from "@/components/posts";
+import type { GetStaticPaths } from "astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 const tags = posts
   .filter((post) => !post.data.draft)
   .flatMap((post) => post.data.tags || [])
@@ -14,6 +16,10 @@ const tags = posts
     return acc;
   }, [])
   .sort((a, b) => b.count - a.count);
+
+  export const getStaticPaths = (() => {
+  return [{ params: { locale: undefined } }, { params: { locale: "en" } }];
+}) satisfies GetStaticPaths;
 ---
 
 <BaseLayout title="CCLIN TAGS">
@@ -22,7 +28,7 @@ const tags = posts
     {
       tags.map(({ tag, count }) => (
         <li class="text-zinc-900">
-          <a class="underline" href={`/tags/${tag}`}>
+          <a class="underline" href={getRelativeLocaleUrl(Astro.currentLocale!,`/tags/${tag}`)}>
             {tag}: {count}
           </a>
         </li>
