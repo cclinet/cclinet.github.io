@@ -3,7 +3,7 @@ title: "JNI初步使用"
 description: "使用 C++ 与 JNI 的第一步"
 pubDate: "2023-02-03"
 draft: false
-tags: ["java", "c++", "jni"]
+tags: ["java", "c++"]
 ---
 
 ## JNI 是什么
