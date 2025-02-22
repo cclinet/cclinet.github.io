@@ -3,6 +3,9 @@ import BaseHead from "@/components/BaseHead.astro";
 import SiteTitle from "@/components/header/SiteTitle.astro";
 import SiteNavigation from "@/components/header/SiteNavigation.astro";
 import CC from "@/components/header/CC.astro";
+import "../styles/global.css";
+// import LanguagePicker from "@/components/header/LanguagePicker.astro";
+// import ThemePicker from "@/components/header/ThemePicker.astro";
 
 const { title }: { title: string } = Astro.props.frontmatter || Astro.props;
 const { description } = Astro.props ?? "";
@@ -14,23 +17,24 @@ const { description } = Astro.props ?? "";
     <BaseHead description={description} title={title} />
   </head>
   <body
-    class="min-h-100vh max-w-1200px min-w-390px mx-a px-2 overflow-y-scroll font-sans"
-    lg="py-0 px-20 grid gap-x-6 cols-[3fr_1fr] rows-[calc(100vh_-_4rem)_auto_auto]"
+    class="min-h-screen max-w-7xl min-w-sm mx-auto lg:grid-cols-[3fr_1fr] lg:grid-rows-[calc(100vh_-_4rem)_auto_auto] overflow-y-scroll px-2 font-sans lg:grid lg:gap-x-6 lg:px-20 lg:py-0"
   >
     <header
-      class="p-4 flex flex-col gap-2.5"
-      lg="row-1-2 col-2-3 justify-between items-start mx-0 py-20 h-[calc(100vh_-_4rem)]"
+      class="lg:h-[calc(100vh_-_4rem)] flex flex-col gap-2.5 p-4 lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 lg:mx-0  lg:justify-between lg:py-20"
     >
       <SiteTitle />
       <SiteNavigation />
+      <!-- <LanguagePicker /> -->
+      <!-- <ThemePicker /> -->
     </header>
 
-    <main lg="row-start-1 row-end-3 col-start-1 lg:col-end-2 pt-20">
-      <slot />
+    <main
+      class="lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 lg:pt-20">
+      <slot>
     </main>
+
     <footer
-      class="col-start-2 col-end-3 row-start-2 row-end-3 mt-5 pb-6"
-      lg="mt-0 pb-0 ml-10"
+      class="col-start-2 col-end-3 row-start-2 row-end-3 mt-5 pb-6 lg:mt-0 lg:ml-10 lg:pb-0"
     >
       <CC />
     </footer>

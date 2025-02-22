@@ -14,7 +14,7 @@ const { posts } = Astro.props;
       <li class="mb-4 p-2 hover:transition">
         <a href={`/posts/${post.id}/`}>
           <div class="text-lg underline">{post.data.title}</div>
-          <div class="font-100 text-center text-xs lg:text-left">
+          <div class="font-thin text-center text-xs lg:text-left">
             <FormattedDate date={post.data.pubDate} />
           </div>
         </a>

@@ -10,12 +10,11 @@ const regex = new RegExp(`^\/${currentLocale}`);
 const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
 ---
 
-<div class="shadow-xs inline-flex rounded-md" role="group">
+<div class="inline-flex rounded-md shadow-xs" role="group">
   {
     languages.map(({ locale }) => (
       <a
-        class="bg-white px-2 py-1 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:z-10"
-        dark="bg-gray-800 text-white  hover:bg-gray-700 "
+        class="bg-white px-2 py-1 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:z-10 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
         href={getRelativeLocaleUrl(locale, currentUrlWithoutLocale)}
       >
         {locale}

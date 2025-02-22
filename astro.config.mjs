@@ -1,17 +1,19 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
-import UnoCSS from "unocss/astro";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://cclin.org",
   prefetch: true,
-
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
     expressiveCode({
       defaultProps: { wrap: true },
@@ -20,7 +22,6 @@ export default defineConfig({
     }),
     mdx(),
     sitemap(),
-    UnoCSS({ injectReset: true }),
   ],
 
   markdown: {
@@ -31,5 +32,8 @@ export default defineConfig({
   i18n: {
     locales: ["zh", "en"],
     defaultLocale: "zh",
+  },
+  experimental: {
+    svg: true,
   },
 });

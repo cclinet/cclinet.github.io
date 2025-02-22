@@ -1,8 +1,9 @@
 ---
-import { SocialLinks } from "@/consts";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import LanguagePicker from "./LanguagePicker.astro";
-import ThemePicker from "./ThemePicker.astro";
+import Github from "@/svgs/github.svg";
+import Rss from "@/svgs/rss.svg";
+import Travellings from "@/svgs/travellings.svg";
+import Zhihu from "@/svgs/zhihu.svg";
 const ui = {
   zh: {
     "nav.posts": "文章",
@@ -19,13 +20,34 @@ const ui = {
 } as const;
 
 const locale = Astro.currentLocale as keyof typeof ui;
+
+const SocialLinks = [
+  {
+    href: "/rss.xml",
+    name: "rss",
+    icon: Rss,
+  },
+  {
+    href: "https://github.com/cclinet",
+    name: "github",
+    icon: Github,
+  },
+  {
+    href: "https://www.zhihu.com/people/probius33",
+    name: "zhihu",
+    icon: Zhihu,
+  },
+  {
+    href: "https://www.travellings.cn/go.html",
+    name: "travellings",
+    icon: Travellings,
+  },
+] as const;
 ---
 
-<nav class="text-center font-bold" flex="~ col gap-4">
+<nav class="flex flex-col gap-4 text-center font-bold">
   <ul
-    class="text-3.5"
-    flex="~ row gap-2 justify-center"
-    lg="flex-col items-start text-4 ml-4"
+    class="text-3.5 lg:text-4 flex flex-row justify-center gap-2 lg:flex-col lg:items-start"
   >
     <li>
       <a href={getRelativeLocaleUrl(locale)}>{ui[locale]["nav.posts"]}</a>
@@ -46,23 +68,20 @@ const locale = Astro.currentLocale as keyof typeof ui;
     </li>
   </ul>
 </nav>
-<div lg="ml-4">
-  <ul class="h6" flex="~ row gap-1 justify-center">
-    {
-      SocialLinks.map(({ href, name, icon }) => (
-        <li>
-          <a
-            class="not-underline-hover inline-flex items-center"
-            href={href}
-            target="_blank"
-            title={name}
-          >
-            <span class:list={[icon, "h-6 w-6"]} />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-  <LanguagePicker />
-  <ThemePicker />
-</div>
+
+<ul class="h6 flex flex-row justify-center gap-1">
+  {
+    SocialLinks.map(({ href, name, icon: Icon }) => (
+      <li>
+        <a
+          class="not-underline-hover inline-flex items-center"
+          href={href}
+          target="_blank"
+          title={name}
+        >
+          <Icon size={24} />
+        </a>
+      </li>
+    ))
+  }
+</ul>
