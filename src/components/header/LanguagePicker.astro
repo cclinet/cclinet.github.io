@@ -6,7 +6,7 @@ const languages = [
   { locale: "en", icon: "i:custom:en-light" },
 ];
 const currentLocale = Astro.currentLocale as "zh" | "en";
-const regex = new RegExp(`^\/${currentLocale}`);
+const regex = new RegExp(`^/${currentLocale}`);
 const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
 ---
 

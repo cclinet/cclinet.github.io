@@ -215,7 +215,6 @@ NB_MODULE(cuckoo, m) {
 |Properties|`.def_prop_ro()`, `.def_prop_rw()`|
 |Static methods|`.def_static()`|
 |Static fields|`.def_ro_static()`, `.def_rw_static()`|
-|Static properties|`.def_prop_ro_static()`, `.def_prop_rw_static()`|  
-
+|Static properties|`.def_prop_ro_static()`, `.def_prop_rw_static()`|
 
 [nanobind-2](/posts/nanobind/nanobind-2/)

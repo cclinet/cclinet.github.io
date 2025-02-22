@@ -3,7 +3,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import posts from "@/components/posts";
 import TitleList from "@/components/TitleList.astro";
 
-
 export async function getStaticPaths() {
   const tagToPostsMap = posts
     .filter((post) => !post.data.draft)
@@ -13,7 +12,6 @@ export async function getStaticPaths() {
       });
       return acc;
     }, {});
-
 
   return Object.entries(tagToPostsMap).flatMap(([tag, posts]) =>
     [undefined, "en"].map((locale) => ({

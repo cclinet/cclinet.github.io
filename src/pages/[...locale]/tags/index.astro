@@ -17,7 +17,7 @@ const tags = posts
   }, [])
   .sort((a, b) => b.count - a.count);
 
-  export const getStaticPaths = (() => {
+export const getStaticPaths = (() => {
   return [{ params: { locale: undefined } }, { params: { locale: "en" } }];
 }) satisfies GetStaticPaths;
 ---
@@ -28,7 +28,10 @@ const tags = posts
     {
       tags.map(({ tag, count }) => (
         <li class="text-zinc-900">
-          <a class="underline" href={getRelativeLocaleUrl(Astro.currentLocale!,`/tags/${tag}`)}>
+          <a
+            class="underline"
+            href={getRelativeLocaleUrl(Astro.currentLocale!, `/tags/${tag}`)}
+          >
             {tag}: {count}
           </a>
         </li>

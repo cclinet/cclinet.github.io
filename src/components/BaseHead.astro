@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
-import {SITE_TITLE} from "@/consts"
+import { SITE_TITLE } from "@/consts";
 interface Props {
   title: string;
   description?: string;
@@ -33,8 +33,8 @@ const katex_version = isPostPage ? (await import("katex")).version : "0.16.9";
   type="application/rss+xml"
 />
 
-
-{/* {
+{
+  /* {
   isPostPage && (
     <link
       crossorigin="anonymous"
@@ -43,20 +43,26 @@ const katex_version = isPostPage ? (await import("katex")).version : "0.16.9";
       rel="stylesheet"
     />
   )
-} */} 
+} */
+}
 {
-  isPostPage && (
-    <link
-      crossorigin="anonymous"
-      href={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/katex.min.css`}
-      referrerpolicy="no-referrer"
-      rel="stylesheet"
-    />
-    <script   
-    crossorigin="anonymous"  
-    data-cfasync="false"
-    is:inline
-    src={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/contrib/copy-tex.min.js`}></script>
+  (
+    <>
+      isPostPage && (
+      <link
+        crossorigin="anonymous"
+        href={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/katex.min.css`}
+        referrerpolicy="no-referrer"
+        rel="stylesheet"
+      />
+      <script
+        crossorigin="anonymous"
+        data-cfasync="false"
+        is:inline
+        src={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/contrib/copy-tex.min.js`}
+      />
+      )
+    </>
   )
 }
 <ClientRouter />

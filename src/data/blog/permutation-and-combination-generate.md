@@ -71,5 +71,4 @@ void process_combinations_range(std::vector<int> &combination, int pos, int star
 
 完整代码可见 https://github.com/cclinet/permutation
 
-
 在8核M2芯片上，24选6的排列 大概率要2s

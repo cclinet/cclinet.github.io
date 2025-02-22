@@ -22,15 +22,18 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       }
     </div>
     <div class="flex gap-x-4 text-sm text-zinc-500">
-      {tags?.map((tag) => <a  class="" href=`/tags/${tag}`>{tag}</a>)}
+      {
+        tags?.map((tag) => (
+          <a class="" href={`/tags/${tag}`}>
+            {tag}
+          </a>
+        ))
+      }
     </div>
 
     <hr />
 
-    <div
-      class="prose lg:prose-xl mx-auto mb-10 mt-8 dark:prose-invert"
-      id="content"
-    >
+    <div class="prose lg:prose-xl prose-zinc mx-auto mt-8 mb-10" id="content">
       <slot />
     </div>
   </article>

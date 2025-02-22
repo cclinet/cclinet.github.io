@@ -9,6 +9,7 @@ draft: true
 https://rwh.readthedocs.io/en/latest/chp/1.html
 https://www.w3cschool.cn/hsriti/
 https://juejin.cn/post/7330071686489735208
+
 ## 安装
 
 安装haskell对于程序员来说应该没有任何挑战了。我个人比较推荐通过 [ghcup](https://www.haskell.org/ghcup/) 的方式安装。
@@ -30,4 +31,5 @@ ghcup tui
 ```sh title=~/.zshrc
 export PATH="${HOME}/.ghcup/bin":${PATH}
 ```
+
 这样我们通过ghci命令即可进入交互式编程的环境。
