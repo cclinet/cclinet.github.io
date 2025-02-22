@@ -1,7 +1,23 @@
 ---
 import { SocialLinks } from "@/consts";
-import { ui } from "@/i18n/ui";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import LanguagePicker from "./LanguagePicker.astro";
+import ThemePicker from "./ThemePicker.astro";
+const ui = {
+  zh: {
+    "nav.posts": "文章",
+    "nav.tags": "标签",
+    "nav.portal": "朋友",
+    "nav.about": "关于",
+  },
+  en: {
+    "nav.posts": "Posts",
+    "nav.tags": "Tags",
+    "nav.portal": "Portal",
+    "nav.about": "About",
+  },
+} as const;
+
 const locale = Astro.currentLocale as keyof typeof ui;
 ---
 
@@ -30,20 +46,23 @@ const locale = Astro.currentLocale as keyof typeof ui;
     </li>
   </ul>
 </nav>
-
-<ul class="h6" flex="~ row gap-1 justify-center" lg="ml-4">
-  {
-    SocialLinks.map(({ href, name, icons }) => (
-      <li>
-        <a
-          class="not-underline-hover inline-flex items-center"
-          href={href}
-          target="_blank"
-          title={name}
-        >
-          <span class:list={[icons, "h-6 w-6"]} />
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<div lg="ml-4">
+  <ul class="h6" flex="~ row gap-1 justify-center">
+    {
+      SocialLinks.map(({ href, name, icon }) => (
+        <li>
+          <a
+            class="not-underline-hover inline-flex items-center"
+            href={href}
+            target="_blank"
+            title={name}
+          >
+            <span class:list={[icon, "h-6 w-6"]} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <LanguagePicker />
+  <ThemePicker />
+</div>

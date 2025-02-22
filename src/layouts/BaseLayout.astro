@@ -14,11 +14,11 @@ const { description } = Astro.props ?? "";
     <BaseHead description={description} title={title} />
   </head>
   <body
-    class="min-h-100vh max-w-1200px min-w-390px mx-a p-7.5 overflow-y-scroll font-sans"
+    class="min-h-100vh max-w-1200px min-w-390px mx-a px-2 overflow-y-scroll font-sans"
     lg="py-0 px-20 grid gap-x-6 cols-[3fr_1fr] rows-[calc(100vh_-_4rem)_auto_auto]"
   >
     <header
-      class="p-7.5 flex flex-col gap-2.5"
+      class="p-4 flex flex-col gap-2.5"
       lg="row-1-2 col-2-3 justify-between items-start mx-0 py-20 h-[calc(100vh_-_4rem)]"
     >
       <SiteTitle />

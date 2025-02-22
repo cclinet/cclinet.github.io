@@ -1,0 +1,47 @@
+---
+const theme = [{ theme: "dark" }, { theme: "light" }];
+---
+
+<div>
+  {
+    theme.map(({ theme }) => (
+      <button
+        id="theme-toggle"
+        type="button"
+        class="bg-white px-2 py-1 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:z-10"
+        dark="bg-gray-800 text-white  hover:bg-gray-700"
+      >
+        {theme}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  // const theme = (() => {
+  //   const localStorageTheme = localStorage?.getItem("theme") ?? "";
+  //   if (["dark", "light"].includes(localStorageTheme)) {
+  //     return localStorageTheme;
+  //   }
+  //   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  //     return "dark";
+  //   }
+  //   return "light";
+  // })();
+  // if (theme === "light") {
+  //   document.body.classList.remove("dark");
+  // } else {
+  //   document.body.classList.add("dark");
+  // }
+  // window.localStorage.setItem("theme", theme);
+  const themeToggleButton = document.getElementById("theme-toggle")!;
+  themeToggleButton.addEventListener("click", () => {
+    if (document.body.classList.contains("dark")) {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light"); // 保存用户的选择
+    } else {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark"); // 保存用户的选择
+    }
+  });
+</script>

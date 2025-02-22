@@ -1,20 +1,26 @@
 import {
   defineConfig,
-  toEscapedSelector as e,
   presetAttributify,
   presetIcons,
   presetTypography,
-  presetWind3,
   presetWebFonts,
+  presetWind3,
 } from "unocss";
 
-import { GithubIcon, ZhihuIcon, rssIcon, trainIcon } from "./icon";
+import {
+  ENLight,
+  GithubIcon,
+  ZHLight,
+  ZhihuIcon,
+  rssIcon,
+  trainIcon,
+} from "./icon";
 import { SocialLinks } from "./src/consts";
 
 export default defineConfig({
   presets: [
-    presetAttributify(), // required when using attributify mode
-    presetWind3 (), // required
+    presetAttributify(),
+    presetWind3(),
     presetTypography({}),
     presetIcons({
       collections: {
@@ -23,6 +29,8 @@ export default defineConfig({
           train: trainIcon,
           zhihu: ZhihuIcon,
           github: GithubIcon,
+          zhLight: ZHLight,
+          enLight: ENLight,
         },
       },
     }),
@@ -33,19 +41,5 @@ export default defineConfig({
       },
     }),
   ],
-  safelist: [...SocialLinks.map(({ icons }) => icons)],
-  rules: [
-    [
-      /^li-marker-\[(.+)\]$/,
-      ([, content], { rawSelector }) => {
-        const selector = e(rawSelector);
-        // 返回一个字符串而不是对象
-        return `
-${selector}::marker {
-  content: "${content}";
-}
-`;
-      },
-    ],
-  ],
+  safelist: [...SocialLinks.map(({ icon }) => icon), "i-custom:ZHLight", "i-custom:ENLight"],
 });
