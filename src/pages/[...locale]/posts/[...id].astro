@@ -1,11 +1,12 @@
 ---
 import { render } from "astro:content";
-import posts from "../../components/posts";
-import BlogPost from "../../layouts/BlogPost.astro";
+import posts from "@/components/posts";
+import BlogPost from "@/layouts/BlogPost.astro";
+import { getLocalePath } from "i18n/utils";
 
 export async function getStaticPaths() {
   return posts.map((post) => ({
-    params: { id: post.id },
+    params: { locale: getLocalePath(post.locale), id: post.id },
     props: post,
   }));
 }

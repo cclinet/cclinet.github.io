@@ -12,7 +12,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description } = Astro.props;
 
 const isPostPage = Astro.url.pathname.startsWith("/posts/");
-const katex_version = isPostPage ? (await import("katex")).version : "0.16.9";
+const katex_version = (await import("katex")).version;
 ---
 
 <meta charset="utf-8" />
@@ -45,24 +45,26 @@ const katex_version = isPostPage ? (await import("katex")).version : "0.16.9";
   )
 } */
 }
-{
-  (
-    <>
-      isPostPage && (
+<>
+  {
+    isPostPage && (
       <link
         crossorigin="anonymous"
         href={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/katex.min.css`}
         referrerpolicy="no-referrer"
         rel="stylesheet"
       />
+    )
+  }{
+    isPostPage && (
       <script
         crossorigin="anonymous"
         data-cfasync="false"
         is:inline
         src={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/contrib/copy-tex.min.js`}
       />
-      )
-    </>
-  )
-}
-<ClientRouter />
+    )
+  }
+
+  <ClientRouter />
+</>
