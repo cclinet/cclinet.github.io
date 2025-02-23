@@ -4,13 +4,9 @@ import { locales, SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import posts from "@/components/posts";
 import TitleList from "@/components/TitleList.astro";
 import type { GetStaticPaths } from "astro";
-import { getLocalePath } from "i18n/utils";
-
-const pub_posts = posts.filter((post) => !post.data.draft);
-pub_posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+import { getLocalePath } from "@/i18n/utils";
 
 export const getStaticPaths = (() => {
-  // return [{ params: { locale: undefined } }, { params: { locale: "en" } }];
   return locales.map((locale) => ({
     params: { locale: getLocalePath(locale) },
     props: { locale },
@@ -18,8 +14,13 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 const { locale } = Astro.props;
+
+const pub_posts = posts.filter(
+  (post) => !post.data.draft && post.locale === locale,
+);
+pub_posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <BaseLayout description={SITE_DESCRIPTION} title={SITE_TITLE}>
-  <TitleList posts={pub_posts.filter((post) => post.locale == locale)} />
+  <TitleList posts={pub_posts} />
 </BaseLayout>

@@ -1,23 +1,31 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import ZH from "@/svgs/zh.svg";
+import EN from "@/svgs/en.svg";
 
 const languages = [
-  { locale: "zh", icon: "i-custom:zh-light" },
-  { locale: "en", icon: "i:custom:en-light" },
+  { locale: "zh", icon: ZH },
+  { locale: "en", icon: EN },
 ];
 const currentLocale = Astro.currentLocale as "zh" | "en";
 const regex = new RegExp(`^/${currentLocale}`);
 const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
 ---
 
-<div class="inline-flex rounded-md shadow-xs" role="group">
+<div class="flex justify-center rounded-md lg:justify-start" role="group">
   {
-    languages.map(({ locale }) => (
+    languages.map(({ locale, icon: Icon }) => (
       <a
-        class="bg-white px-2 py-1 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:z-10 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+        class="text-sm font-medium"
         href={getRelativeLocaleUrl(locale, currentUrlWithoutLocale)}
       >
-        {locale}
+        <Icon
+          size={24}
+          class="h-4 lg:h-6"
+          class:list={{ "cursor-default": currentLocale === locale }}
+        >
+          {locale}
+        </Icon>
       </a>
     ))
   }

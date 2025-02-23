@@ -4,7 +4,7 @@ import SiteTitle from "@/components/header/SiteTitle.astro";
 import SiteNavigation from "@/components/header/SiteNavigation.astro";
 import CC from "@/components/header/CC.astro";
 import "../styles/global.css";
-// import LanguagePicker from "@/components/header/LanguagePicker.astro";
+import LanguagePicker from "@/components/header/LanguagePicker.astro";
 // import ThemePicker from "@/components/header/ThemePicker.astro";
 
 const { title }: { title: string } = Astro.props.frontmatter || Astro.props;
@@ -24,7 +24,7 @@ const { description } = Astro.props ?? "";
     >
       <SiteTitle />
       <SiteNavigation />
-      <!-- <LanguagePicker /> -->
+      <LanguagePicker />
       <!-- <ThemePicker /> -->
     </header>
 
@@ -32,12 +32,11 @@ const { description } = Astro.props ?? "";
       class="lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 lg:pt-20"
     >
       <slot />
-
-      <footer
-        class="col-start-2 col-end-3 row-start-2 row-end-3 mt-5 pb-6 lg:mt-0 lg:ml-10 lg:pb-0"
-      >
-        <CC />
-      </footer>
     </main>
+    <footer
+      class="col-start-2 col-end-3 row-start-2 row-end-3 mt-5 pb-6 lg:mt-0 lg:ml-10 lg:pb-0"
+    >
+      <CC />
+    </footer>
   </body>
 </html>

@@ -20,6 +20,12 @@ const ui = {
 } as const;
 
 const locale = Astro.currentLocale as keyof typeof ui;
+const NavLinks = [
+  { href: "/", name: "nav.posts" },
+  { href: "/tags", name: "nav.tags" },
+  { href: "/portal", name: "nav.portal" },
+  { href: "/about", name: "nav.about" },
+] as const;
 
 const SocialLinks = [
   {
@@ -47,34 +53,24 @@ const SocialLinks = [
 
 <nav class="flex flex-col gap-4 text-center font-bold">
   <ul
-    class="text-3.5 lg:text-4 flex flex-row justify-center gap-2 lg:flex-col lg:items-start"
+    class="flex flex-row justify-center gap-2 lg:flex-col lg:items-start"
   >
-    <li>
-      <a href={getRelativeLocaleUrl(locale)}>{ui[locale]["nav.posts"]}</a>
-    </li>
-    <li>
-      <a href={getRelativeLocaleUrl(locale, "tags")}>{ui[locale]["nav.tags"]}</a
-      >
-    </li>
-    <li>
-      <a href={getRelativeLocaleUrl(locale, "portal")}
-        >{ui[locale]["nav.portal"]}</a
-      >
-    </li>
-    <li>
-      <a href={getRelativeLocaleUrl(locale, "about")}
-        >{ui[locale]["nav.about"]}</a
-      >
-    </li>
+    {
+      NavLinks.map(({ href, name }) => (
+        <li class="hover:scale-120">
+          <a href={getRelativeLocaleUrl(locale, href)}>{ui[locale][name]}</a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
 
-<ul class="h6 flex flex-row justify-center gap-1">
+<ul class="flex flex-row justify-center gap-1 lg:justify-start">
   {
     SocialLinks.map(({ href, name, icon: Icon }) => (
       <li>
         <a
-          class="not-underline-hover inline-flex items-center"
+          class="inline-flex items-center"
           href={href}
           target="_blank"
           title={name}

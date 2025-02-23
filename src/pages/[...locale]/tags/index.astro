@@ -3,8 +3,19 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import posts from "@/components/posts";
 import type { GetStaticPaths } from "astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { locales } from "@/consts";
+import { getLocalePath } from "@/i18n/utils";
+
+export const getStaticPaths = (() => {
+  return locales.map((locale) => ({
+    params: { locale: getLocalePath(locale) },
+    props: { locale },
+  }));
+}) satisfies GetStaticPaths;
+const { locale } = Astro.props;
+
 const tags = posts
-  .filter((post) => !post.data.draft)
+  .filter((post) => !post.data.draft && post.locale === locale)
   .flatMap((post) => post.data.tags || [])
   .reduce<{ tag: string; count: number }[]>((acc, item) => {
     const existingTag = acc.find((entry) => entry.tag === item);
@@ -16,10 +27,6 @@ const tags = posts
     return acc;
   }, [])
   .sort((a, b) => b.count - a.count);
-
-export const getStaticPaths = (() => {
-  return [{ params: { locale: undefined } }, { params: { locale: "en" } }];
-}) satisfies GetStaticPaths;
 ---
 
 <BaseLayout title="CCLIN TAGS">

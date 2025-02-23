@@ -2,23 +2,26 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import posts from "@/components/posts";
 import TitleList from "@/components/TitleList.astro";
+import { locales } from "@/consts";
+import { getLocalePath } from "@/i18n/utils";
 
 export async function getStaticPaths() {
-  const tagToPostsMap = posts
-    .filter((post) => !post.data.draft)
-    .reduce((acc: { [key: string]: typeof posts }, post) => {
-      (post.data.tags || []).forEach((tag) => {
-        acc[tag] = [...(acc[tag] || []), post];
-      });
-      return acc;
-    }, {});
+  const pages = locales.flatMap((locale) => {
+    const tagToPostsMap = posts
+      .filter((post) => !post.data.draft && locale === post.locale)
+      .reduce((acc: { [key: string]: typeof posts }, post) => {
+        (post.data.tags || []).forEach((tag) => {
+          acc[tag] = [...(acc[tag] || []), post];
+        });
+        return acc;
+      }, {});
 
-  return Object.entries(tagToPostsMap).flatMap(([tag, posts]) =>
-    [undefined, "en"].map((locale) => ({
-      params: { locale, tag },
+    return Object.entries(tagToPostsMap).map(([tag, posts]) => ({
+      params: { locale: getLocalePath(locale), tag },
       props: { posts },
-    })),
-  );
+    }));
+  });
+  return pages;
 }
 
 const { tag } = Astro.params;
