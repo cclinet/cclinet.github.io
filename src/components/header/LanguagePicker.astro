@@ -16,13 +16,14 @@ const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
   {
     languages.map(({ locale, icon: Icon }) => (
       <a
+        aria-label={locale}
         class="text-sm font-medium"
         href={getRelativeLocaleUrl(locale, currentUrlWithoutLocale)}
       >
         <Icon
-          size={24}
           class="h-4 lg:h-6"
           class:list={{ "cursor-default": currentLocale === locale }}
+          size={24}
         >
           {locale}
         </Icon>

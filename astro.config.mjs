@@ -17,6 +17,7 @@ export default defineConfig({
   integrations: [
     expressiveCode({
       defaultProps: { wrap: true },
+      themes: ["catppuccin-latte"],
       emitExternalStylesheet: true,
       plugins: [pluginLineNumbers()],
     }),
