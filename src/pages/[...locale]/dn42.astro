@@ -1,0 +1,77 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { locales, SITE_TITLE } from "@/consts";
+import type { GetStaticPaths } from "astro";
+import { getLocalePath } from "@/i18n/utils";
+
+export const getStaticPaths = (() => {
+  return locales.map((locale) => ({
+    params: { locale: getLocalePath(locale) },
+    props: { locale },
+  }));
+}) satisfies GetStaticPaths;
+
+const property = [
+  {
+    key: "ASN",
+    value: "AS4242420066",
+  },
+  {
+    key: "Channel",
+    value: "IPv6 & IPv4",
+  },
+  {
+    key: "IPv4",
+    value: "172.20.172.66",
+  },
+  {
+    key: "IPv6",
+    value: "fe80::0066",
+  },
+  {
+    key: "Endpoint",
+    value: "derp-tokyo.cclin.top:20066",
+  },
+  {
+    key: "PublicKey",
+    value: "0pUh1kUfiaw8Zwnej/Yi4nHd2nEobIFy5kGpwROwGHw=",
+  },
+];
+---
+
+<BaseLayout description={"dn42"} title={SITE_TITLE}>
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead>
+      <tr>
+        <th
+          class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase"
+          scope="col">Property</th
+        >
+        <th
+          class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase"
+          scope="col">Value</th
+        >
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      {
+        property.map(({ key, value }) => (
+          <tr class="hover:bg-gray-100">
+            <td class="px-6 py-4 text-sm font-medium text-gray-800">{key}</td>
+            <td class="dn42-value cursor-copy px-6 py-4 text-end text-sm font-medium">
+              {value}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  <script>
+    const buttons = document.querySelectorAll("td.dn42-value");
+    buttons.forEach((button) => {
+      button.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(button.textContent!.trim());
+      });
+    });
+  </script>
+</BaseLayout>

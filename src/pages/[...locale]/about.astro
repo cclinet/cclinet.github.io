@@ -1,8 +1,8 @@
 ---
+import { locales } from "@/consts";
+import { getLocalePath } from "@/i18n/utils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { GetStaticPaths } from "astro";
-
-const locale = Astro.currentLocale as "zh" | "en";
 
 const introduction = {
   zh: "我是 cclin，一名钱包正在减肥的推荐系统工程师。",
@@ -38,8 +38,13 @@ const tools: { link: string; content: string; descrption: string }[] = [
 ];
 
 export const getStaticPaths = (() => {
-  return [{ params: { locale: undefined } }, { params: { locale: "en" } }];
+  return locales.map((locale) => ({
+    params: { locale: getLocalePath(locale) },
+    props: { locale },
+  }));
 }) satisfies GetStaticPaths;
+
+const { locale } = Astro.props;
 ---
 
 <BaseLayout description={"Personal Introduction"} title={"CCLIN ABOUT"}>

@@ -24,11 +24,13 @@ export default defineConfig({
     mdx(),
     sitemap(),
   ],
-
   markdown: {
     syntaxHighlight: false,
     remarkPlugins: [remarkMath],
     rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
+  },
+  image: {
+    remotePatterns: [{ protocol: "https" }],
   },
   i18n: {
     locales: ["zh", "en"],

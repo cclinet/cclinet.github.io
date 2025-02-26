@@ -1,4 +1,6 @@
 ---
+import { locales } from "@/consts";
+import { getLocalePath } from "@/i18n/utils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { GetStaticPaths } from "astro";
 import { Image } from "astro:assets";
@@ -12,7 +14,10 @@ const friends = [
 ];
 
 export const getStaticPaths = (() => {
-  return [{ params: { locale: undefined } }, { params: { locale: "en" } }];
+  return locales.map((locale) => ({
+    params: { locale: getLocalePath(locale) },
+    props: { locale },
+  }));
 }) satisfies GetStaticPaths;
 ---
 
