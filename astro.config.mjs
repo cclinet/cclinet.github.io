@@ -31,6 +31,7 @@ export default defineConfig({
   },
   image: {
     remotePatterns: [{ protocol: "https" }],
+    experimentalLayout: "responsive",
   },
   i18n: {
     locales: ["zh", "en"],
@@ -38,5 +39,7 @@ export default defineConfig({
   },
   experimental: {
     svg: true,
+    responsiveImages: true,
+    clientPrerender: true,
   },
 });
