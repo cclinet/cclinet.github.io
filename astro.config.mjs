@@ -10,7 +10,6 @@ import remarkMath from "remark-math";
 // https://astro.build/config
 export default defineConfig({
   site: "https://cclin.org",
-  prefetch: true,
   vite: {
     plugins: [tailwindcss()],
   },
