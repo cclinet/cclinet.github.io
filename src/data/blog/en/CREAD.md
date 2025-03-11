@@ -1,5 +1,5 @@
 ---
-title: "AAAI'24 Kwa" Watch Time Modeling: CREAD"
+title: "AAAI'24 Kwai Watch Time Modeling: CREAD"
 description: "AAAI'24 Kwai Watch Time Modeling: CREAD"
 pubDate: "2024-07-01"
 updatedDate: "2024-07-01"
@@ -13,7 +13,7 @@ This is an article from Kwai, mainly discussing two topics: modeling watch time 
 
 Kwai's short video watch time distribution exhibits a similar pattern to our live streaming watch time, where data is extremely imbalanced and follows a typical long-tail distribution.
 
-![Watch Time Distribution](../../resources/CREAD/watch-time-density-percentile.jpg "Watch Time Distribution")
+![Watch Time Distribution](../images/CREAD/watch-time-density-percentile.jpg "Watch Time Distribution")
 
 Usually, there are several methods for predicting watch time:
 
@@ -27,7 +27,7 @@ Usually, there are several methods for predicting watch time:
 
 The solution proposed by this article is to use multiple classification tasks to approximate a regression task. The specific approach is similar to our method for handling continuous features, by discretizing watch time into multiple buckets and predicting whether the value falls into each bucket.
 
-![Prediction Framework](../../resources/CREAD/framework.png "Prediction Framework")
+![Prediction Framework](../images/CREAD/framework.png "Prediction Framework")
 
 It is important to note that the discretization method here does not use one-hot encoding, but rather predicts the probability of exceeding a certain time threshold:
 
@@ -113,7 +113,7 @@ The author points out that discretizing continuous data introduces two types of 
 2. Recovery Error
    During discretization, using summation instead of integration omits the detailed probability density within each bucket, which introduces error.
 
-![Two Types of Errors](../../resources/CREAD/error-types.png "Two Types of Errors")
+![Two Types of Errors](../images/CREAD/error-types.png "Two Types of Errors")
 
 Clearly, these two errors cannot be reduced simultaneously. To reduce learning error, we need larger bucket widths, which increases recovery error.
 
@@ -121,11 +121,11 @@ Traditionally, there are two bucketing methods: equal-width bucketing and equal-
 
 The author derives the following error formula:
 
-![Error Formula](../../resources/CREAD/image.png)
+![Error Formula](../images/CREAD/image.png)
 
 Where $A_w$, $A_b$ represent learning error and recovery error respectively:
 
-![Error Formula 2](../../resources/CREAD/image-2.png)
+![Error Formula 2](../images/CREAD/image-2.png)
 
 In Formula (21), $\beta$ can be considered a hyperparameter. The problem is not yet solved, because Formula (21) only tells us how to calculate the error corresponding to $t_m$, but not how to set $t_m$ to minimize the error.
 
@@ -147,7 +147,7 @@ Then, the author introduces a heuristic method (balancing between equal-frequenc
 
   This approach results in overly large intervals in the long-tail buckets, increasing recovery error.
 
-![Bucketing](../../resources/CREAD/discretization.png "Bucketing")
+![Bucketing](../images/CREAD/discretization.png "Bucketing")
 
 Combining the two formulas gives:
 
@@ -166,13 +166,13 @@ $$
 \gamma(z,\alpha)=\frac{1-e^{-\alpha z}}{1-e^{-\alpha}}
 $$
 
-![Effect of Different Alpha](../../resources/CREAD/shifting.png)
+![Effect of Different Alpha](../images/CREAD/shifting.png)
 
 ## Experiments and Hyperparameters
 
-![Experimental Results](../../resources/CREAD/image-3.png)
-![Hyperparameters](../../resources/CREAD/image-4.png)
-![Online A/B](../../resources/CREAD/image-5.png)
+![Experimental Results](../images/CREAD/image-3.png)
+![Hyperparameters](../images/CREAD/image-4.png)
+![Online A/B](../images/CREAD/image-5.png)
 
 - https://zhuanlan.zhihu.com/p/678883395  
 - https://arxiv.org/pdf/2401.07521  

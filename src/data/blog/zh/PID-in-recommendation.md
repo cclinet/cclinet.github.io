@@ -11,7 +11,7 @@ tags: ["recommendation", "machine learing", "deep learning"]
 
 PID算法是闭环控制系统中常用的算法，PID分别是 Proportion（比例）、Integral（积分）、Differential（微分）的首字母缩写。它是一种结合比例、积分和微分三个环节于一体的闭环控制算法。在闭环控制系统中，引入了反馈回路，利用输出（实际值）和输入（目标值）的偏差，对系统进行控制，避免偏离预定目标。闭环控制系统又称反馈控制系统具体的控制流程如下图所示：
 
-![PID](./pid.png)
+![PID](../images/PID-in-recommendation/pid.png)
 
 连续控制的理想PID控制公式：
 
@@ -38,7 +38,7 @@ $$
 u = K_p \cdot e
 $$
 
-![Proportion](./p.png)
+![Proportion](../images/PID-in-recommendation/p.png)
 
 > 假设我们现在需要调节棚内温度为 30℃，而实际温度为 10℃，此时的偏差 e=20，由比例环节的公式可知，当 e 确定时，$K_p$ 越大则输出 u 越大，也就是温控系统的调节力度越大，这样就可以更快地达到目标温度,在比例环节中，比例系数 $K_p$ 和偏差 e 越大则系统消除偏差的时间越短
 
@@ -50,7 +50,7 @@ $$
 
 > 假设我们现在需要调节棚内温度为 30℃，而实际温度为 25℃，此时偏差 e=5， $K_p$ 为固定值1，如果此时的输出可以让大棚在半个小时之内升温 5℃，而外部的温差可以让大棚在半个小时之内降温 5℃，也就是说，输出 u 的作用刚好被外部影响抵消了，这就使得偏差会一直存在
 
-![Steady-state error](./steady-state-error.png)
+![Steady-state error](../images/PID-in-recommendation/steady-state-error.png)
 
 > 积分环节可以对偏差 e 进行积分，只要存在偏差，积分环节就会不断起作用，主要用于消除静态误差，提高系统的无差度。引入积分环节后，比例+积分环节的公式如下：
 
@@ -58,7 +58,7 @@ $$
 u(t) = K_pe(t) + K_i\int_0^te(\tau)d\tau
 $$
 
-![Integral](./i.png)
+![Integral](../images/PID-in-recommendation/i.png)
 
 > 只要系统还存在偏差，积分环节就会不断地累计偏差。当系统偏差为 0的时候，说明已经达到目标值，此时的累计偏差不再变化，但是积分环节依旧在发挥作用（此时往往作用最大），这就很容易产生超调的现象了。因此，我们需要引入微分环节，提前减弱输出，抑制超调的发生。
 
@@ -78,7 +78,7 @@ $$
 
 > 微分控制可以提升整定时间及系统稳定性。不过因为纯微分器不是因果系统，因此在PID系统实现时，一般会为微分控制加上一个低通滤波器以限制高频增益及噪声。实际上较少用到微分控制，估计PID控制器中只有约20%有用到微分控制
 
-![PID_Compensation_Animated](./PID_Compensation_Animated.gif)
+![PID_Compensation_Animated](../images/PID-in-recommendation/PID_Compensation_Animated.gif)
 
 ---
 
