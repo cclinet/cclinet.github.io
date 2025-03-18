@@ -85,12 +85,14 @@ The loss function consists of three parts:
 
 1. Classification Loss
    Using cross-entropy:
+
    $$
    \mathcal{L}_{ce} = \sum_{m=1}^{M}-y_m\log(\hat{\Theta}_m)-(1-y_m)\log(1-\hat{\Theta}_m)
    $$
 
 2. Recovery Loss
    Using Huber loss:
+
    $$
    \mathcal{L}_{restore}=\ell(\hat{y},y)
    $$
@@ -174,10 +176,9 @@ $$
 ![Hyperparameters](../images/CREAD/image-4.png)
 ![Online A/B](../images/CREAD/image-5.png)
 
-- https://zhuanlan.zhihu.com/p/678883395  
-- https://arxiv.org/pdf/2401.07521  
-- https://zhuanlan.zhihu.com/p/671950137  
-- https://arxiv.org/pdf/2306.03392  
-- https://zhuanlan.zhihu.com/p/678368070  
-- https://arxiv.org/pdf/2206.06003  
-
+- https://zhuanlan.zhihu.com/p/678883395
+- https://arxiv.org/pdf/2401.07521
+- https://zhuanlan.zhihu.com/p/671950137
+- https://arxiv.org/pdf/2306.03392
+- https://zhuanlan.zhihu.com/p/678368070
+- https://arxiv.org/pdf/2206.06003

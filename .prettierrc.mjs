@@ -8,6 +8,7 @@ export default {
   importOrder: ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
+  tailwindStylesheet: "./src/styles/global.css",
   plugins: [
     "prettier-plugin-astro",
     "@trivago/prettier-plugin-sort-imports",

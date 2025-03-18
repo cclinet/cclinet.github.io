@@ -10,19 +10,19 @@ tags: ["python", "deep learning"]
 
 随着现代神经网络规模的迅速增长，从几十亿到几千亿的模型变得非常常见，我们的硬件能力显得相对有限。程序性能受到计算带宽、内存带宽和延迟三个因素的制约。为了解决这一问题，一种自然的思路是通过降低精度来提升性能，即使用较少位数存储相同数量的值，以减轻内存带宽压力。在处理器上，降低精度数再计算也可以提高算术运算的吞吐量。
 
-![image1](./compute-time.png)
+![image1](../images/mixed-precision-training/compute-time.png)
 
-![image2](./gpu.png)
+![image2](../images/mixed-precision-training/gpu.png)
 
 ## 混合精度训练步骤
 
 详细的混合精度训练步骤如下图所示：
-![step](./step.png)
+![step](../images/mixed-precision-training/step.png)
 
 ## IEEE754
 
 在上世纪六七十年代，各计算机公司采用不同的浮点数表示，缺乏业界通用标准，给数据交换和计算机协同工作带来不便。1980年，英特尔推出了8087浮点数协处理器，其浮点数表示法及定义的运算被IEEE采用作为浮点数的标准，于1985年发布。
-![ieee754](./ieee754.png)
+![ieee754](../images/mixed-precision-training/ieee754.png)
 
 ### 整体解释
 
@@ -70,7 +70,7 @@ $$
 在深度学习中，使用FP16替换FP32可能导致下溢（Underflow）的问题。下溢指的是更新（权重梯度乘以学习率）变得太小，在FP16中无法表示。通过在FP32中计算更新，可以避免这个问题，确保模型的准确性。
 
 另一种解释是，权重值与权重更新的比率非常大，即使在FP16中可表示，右移它以与权重对齐的过程中仍可能变为零。这可能发生在标准化的权重值的幅度至少比权重更新的幅度大2048倍时。通过在FP32中计算更新可以抵消这种效应。
-![gradient-histogram](./gradient-histogram.png)
+![gradient-histogram](../images/mixed-precision-training/gradient-histogram.png)
 
 ### loss缩放
 
