@@ -1,9 +1,9 @@
 ---
-title: "mit-6.5840(6.824) lab1"
-description: "mit-6.5840 lab1"
-pubDate: "2024-10-30"
+title: "mit-6.5840(6.824) lab2"
+description: "mit-6.5840 lab2"
+pubDate: "2025-3-18"
 updatedDate: "2024-10-30"
-draft: false
+draft: true
 tags: ["go", "distributed systems"]
 ---
 
@@ -39,7 +39,6 @@ out:
 	}
 }
 ```
-
 
 对于coordinator，利用channel的机制来避免外部的锁
 channel 和其他语言的管道应该是一样的东西，理解起来还是挺简单的

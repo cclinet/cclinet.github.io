@@ -23,7 +23,8 @@ const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
         <Icon
           class="h-4 lg:h-6"
           class:list={{ "cursor-default": currentLocale === locale }}
-          size={24}
+          width={24}
+          height={24}
         >
           {locale}
         </Icon>
