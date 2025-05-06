@@ -30,7 +30,7 @@ export default defineConfig({
   },
   image: {
     remotePatterns: [{ protocol: "https" }],
-    experimentalLayout: "responsive",
+    experimentalLayout: "constrained",
   },
   i18n: {
     locales: ["zh", "en"],
