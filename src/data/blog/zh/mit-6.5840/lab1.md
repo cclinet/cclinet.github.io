@@ -40,7 +40,6 @@ out:
 }
 ```
 
-
 对于coordinator，利用channel的机制来避免外部的锁
 channel 和其他语言的管道应该是一样的东西，理解起来还是挺简单的
 

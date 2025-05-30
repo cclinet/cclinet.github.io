@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import { SITE_TITLE } from "@/consts";
-import { Font } from "astro:assets";
+
 interface Props {
   title: string;
   description?: string;
@@ -55,9 +55,6 @@ const katex_version = (await import("katex")).version;
         referrerpolicy="no-referrer"
         rel="stylesheet"
       />
-    )
-  }{
-    isPostPage && (
       <script
         crossorigin="anonymous"
         data-cfasync="false"
@@ -66,6 +63,6 @@ const katex_version = (await import("katex")).version;
       />
     )
   }
-  <Font cssVariable="--font-lxgw" />
+
   <ClientRouter />
 </>

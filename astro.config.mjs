@@ -3,7 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
@@ -37,13 +37,6 @@ export default defineConfig({
     defaultLocale: "zh",
   },
   experimental: {
-    fonts: [
-      {
-        provider: fontProviders.fontsource(),
-        name: "LXGW WenKai",
-        cssVariable: "--font-lxgw",
-      },
-    ],
     responsiveImages: true,
     clientPrerender: true,
   },

@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@theme inline {
-  --font-sans: var(--font-lxgw);
+@font-face {
+  font-family: "LXGWWenKaiMonoLite-Regular";
+  src: url("/fonts/LXGWWenKaiMonoLite-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-lxgw: "LXGWWenKaiMonoLite-Regular";
 }
