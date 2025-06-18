@@ -14,5 +14,17 @@ const blog = defineCollection({
     tags: z.array(z.string()).optional(),
   }),
 });
+const math_collection = defineCollection({
+  // Load data from Markdown files on disk
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/data/math" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    draft: z.boolean().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
 
-export const collections = { blog };
+export const collections = { blog, math_collection };

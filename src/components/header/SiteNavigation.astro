@@ -7,12 +7,14 @@ import Zhihu from "@/svgs/zhihu.svg";
 const ui = {
   zh: {
     "nav.posts": "文章",
+    "nav.math": "数学",
     "nav.tags": "标签",
     "nav.portal": "朋友",
     "nav.about": "关于",
   },
   en: {
     "nav.posts": "Posts",
+    "nav.math": "Math",
     "nav.tags": "Tags",
     "nav.portal": "Portal",
     "nav.about": "About",
@@ -22,6 +24,7 @@ const ui = {
 const locale = Astro.currentLocale as keyof typeof ui;
 const NavLinks = [
   { href: "/", name: "nav.posts" },
+  { href: "/math", name: "nav.math" },
   { href: "/tags", name: "nav.tags" },
   { href: "/portal", name: "nav.portal" },
   { href: "/about", name: "nav.about" },
