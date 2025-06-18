@@ -11,7 +11,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description } = Astro.props;
 
-const isPostPage = Astro.url.pathname.startsWith("/posts/");
+const useMath = (() => {
+  const pathComponents = Astro.url.pathname.split("/");
+  return pathComponents.includes("posts") || pathComponents.includes("math");
+})();
+
 const katex_version = (await import("katex")).version;
 ---
 
@@ -34,7 +38,7 @@ const katex_version = (await import("katex")).version;
 />
 
 {
-  isPostPage && (
+  useMath && (
     <>
       <link
         crossorigin="anonymous"

@@ -3,6 +3,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { GetStaticPaths } from "astro";
 import { locales } from "@/consts";
 import { getLocalePath } from "@/i18n/utils";
+import { mathCollection } from "@/posts";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 export const getStaticPaths = (() => {
   return locales.map((locale) => ({
@@ -10,8 +12,17 @@ export const getStaticPaths = (() => {
     props: { locale },
   }));
 }) satisfies GetStaticPaths;
+
+const locale = Astro.currentLocale!;
 ---
 
 <BaseLayout title="CCLIN MATH">
   <div>这里是一些数学相关的内容</div>
+  {
+    mathCollection.map(({ category, id, data: { title } }) => (
+      <a href={getRelativeLocaleUrl(locale, `/math/${category}/${id}/`)}>
+        {title}
+      </a>
+    ))
+  }
 </BaseLayout>
