@@ -1,0 +1,17 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { locales } from "@/consts";
+import { getLocalePath } from "@/i18n/utils";
+
+export const getStaticPaths = (() => {
+  return locales.map((locale) => ({
+    params: { locale: getLocalePath(locale) },
+    props: { locale },
+  }));
+}) satisfies GetStaticPaths;
+---
+
+<BaseLayout title="CCLIN MATH">
+  <div>这里是一些数学相关的内容</div>
+</BaseLayout>

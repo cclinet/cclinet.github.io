@@ -1,7 +1,7 @@
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 
-import posts from "../components/posts";
+import posts from "../posts";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 const pub_posts = posts.filter((post) => !post.data.draft);
