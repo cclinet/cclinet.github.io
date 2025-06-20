@@ -25,10 +25,10 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params;
-const { posts: cur_posts } = Astro.props;
+const { posts: curPosts } = Astro.props;
 ---
 
 <BaseLayout>
   <h2 class="mb-8 text-xl">Tag: {tag}</h2>
-  <TitleList posts={cur_posts} />
+  <TitleList posts={curPosts} />
 </BaseLayout>

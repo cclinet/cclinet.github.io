@@ -15,12 +15,12 @@ export const getStaticPaths = (() => {
 
 const { locale } = Astro.props;
 
-const pub_posts = posts.filter(
+const pubPosts = posts.filter(
   (post) => !post.data.draft && post.locale === locale,
 );
-pub_posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+pubPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <BaseLayout description={SITE_DESCRIPTION} title={SITE_TITLE}>
-  <TitleList posts={pub_posts} />
+  <TitleList posts={pubPosts} />
 </BaseLayout>

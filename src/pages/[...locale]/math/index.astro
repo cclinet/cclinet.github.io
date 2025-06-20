@@ -4,7 +4,6 @@ import type { GetStaticPaths } from "astro";
 import { locales } from "@/consts";
 import { getLocalePath } from "@/i18n/utils";
 import { mathCollection } from "@/posts";
-import { getRelativeLocaleUrl } from "astro:i18n";
 
 export const getStaticPaths = (() => {
   return locales.map((locale) => ({
@@ -13,16 +12,42 @@ export const getStaticPaths = (() => {
   }));
 }) satisfies GetStaticPaths;
 
-const locale = Astro.currentLocale!;
+const mathTitleMap = (() => {
+  let title: Map<string, { title: string; url: string }[]> = new Map();
+  for (const eachMathContent of mathCollection) {
+    if (!title.has(eachMathContent.category)) {
+      title.set(eachMathContent.category, []);
+    }
+    title.get(eachMathContent.category)!.push({
+      title: eachMathContent.data.title,
+      url: `${eachMathContent.category}/${eachMathContent.id}/`,
+    });
+  }
+  return title;
+})();
+
+const MathTitle = Array.from(
+  mathTitleMap.entries().map(([category, data]) => ({
+    category: category,
+    data: data,
+  })),
+);
+
+console.log(MathTitle);
 ---
 
 <BaseLayout title="CCLIN MATH">
   <div>这里是一些数学相关的内容</div>
   {
-    mathCollection.map(({ category, id, data: { title } }) => (
-      <a href={getRelativeLocaleUrl(locale, `/math/${category}/${id}/`)}>
-        {title}
-      </a>
+    MathTitle.map(({ category, data }) => (
+      <>
+        <h2>{category}</h2>
+        <div class="flex flex-col">
+          {data.map(({ title, url }) => (
+            <a href={`${url}`}>{title}</a>
+          ))}
+        </div>
+      </>
     ))
   }
 </BaseLayout>

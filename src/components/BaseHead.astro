@@ -16,7 +16,7 @@ const useMath = (() => {
   return pathComponents.includes("posts") || pathComponents.includes("math");
 })();
 
-const katex_version = (await import("katex")).version;
+const katexVersion = (await import("katex")).version;
 ---
 
 <meta charset="utf-8" />
@@ -42,7 +42,7 @@ const katex_version = (await import("katex")).version;
     <>
       <link
         crossorigin="anonymous"
-        href={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/katex.min.css`}
+        href={`https://cdn.jsdelivr.net/npm/katex@${katexVersion}/dist/katex.min.css`}
         referrerpolicy="no-referrer"
         rel="stylesheet"
       />
@@ -50,7 +50,7 @@ const katex_version = (await import("katex")).version;
         crossorigin="anonymous"
         data-cfasync="false"
         is:inline
-        src={`https://cdn.jsdelivr.net/npm/katex@${katex_version}/dist/contrib/copy-tex.min.js`}
+        src={`https://cdn.jsdelivr.net/npm/katex@${katexVersion}/dist/contrib/copy-tex.min.js`}
       />
     </>
   )
