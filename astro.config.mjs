@@ -29,15 +29,15 @@ export default defineConfig({
     rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
   },
   image: {
+    responsiveImages: true,
     remotePatterns: [{ protocol: "https" }],
-    experimentalLayout: "constrained",
+    layout: "constrained",
   },
   i18n: {
     locales: ["zh", "en"],
     defaultLocale: "zh",
   },
   experimental: {
-    responsiveImages: true,
     clientPrerender: true,
   },
 });
