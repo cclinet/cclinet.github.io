@@ -1,7 +1,7 @@
 ```shell
-    npx npm-check-updates -u
+npx npm-check-updates -u
 ```
 
 ```shell
-    npx prettier . --write
+npx prettier . --write
 ```
