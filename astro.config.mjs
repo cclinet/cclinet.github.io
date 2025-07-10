@@ -6,12 +6,13 @@ import expressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import devtoolsJson from "vite-plugin-devtools-json";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://cclin.org",
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), devtoolsJson()],
   },
   integrations: [
     expressiveCode({
@@ -37,7 +38,5 @@ export default defineConfig({
     locales: ["zh", "en"],
     defaultLocale: "zh",
   },
-  experimental: {
-    clientPrerender: true,
-  },
+  experimental: {},
 });
