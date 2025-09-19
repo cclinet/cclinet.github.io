@@ -6,13 +6,13 @@
 }
 
 @font-face {
-  font-family: "LXGWWenKaiMonoLite-Regular";
-  src: url("/fonts/LXGWWenKaiMonoLite-Regular.ttf") format("truetype");
+  font-family: "LXGWNeoXiHei";
+  src: url("/fonts/LXGWNeoXiHei.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @theme {
-  --font-lxgw: "LXGWWenKaiMonoLite-Regular";
+  --font-lxgw: "LXGWNeoXiHei";
 }
