@@ -24,7 +24,7 @@
     "astro-expressive-code": "^0.41.3",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^4.1.14"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
