@@ -1,0 +1,23 @@
+---
+import { render } from "astro:content";
+import { quantCollection } from "@/posts";
+import { getLocalePath } from "@/i18n/utils";
+import QuantPost from "@/layouts/QuantPost.astro";
+
+export async function getStaticPaths() {
+  return quantCollection.map((post) => ({
+    params: {
+      locale: getLocalePath(post.locale),
+      id: `${post.category}/${post.id}`,
+    },
+    props: post,
+  }));
+}
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<QuantPost {...post.data}>
+  <Content />
+</QuantPost>

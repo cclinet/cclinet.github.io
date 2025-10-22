@@ -24,4 +24,13 @@ const mathCollection = defineCollection({
   }),
 });
 
-export const collections = { blog, mathCollection };
+const quantCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/data/quant" }),
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.coerce.date(),
+    draft: z.boolean().optional(),
+  }),
+});
+
+export const collections = { blog, mathCollection, quantCollection };
