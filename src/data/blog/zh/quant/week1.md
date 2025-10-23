@@ -68,7 +68,7 @@ df = (
 
 df = df.with_columns(
     pl.col("close").rolling_mean(5).alias("MA5"),
-    pl.col("close").rolling_mean(30).alias("MA30"),
+    pl.col("close").rolling_mean(20).alias("MA20"),
 )
 
 fig = go.Figure()
@@ -94,9 +94,9 @@ fig.add_trace(
 fig.add_trace(
     go.Scatter(
         x=df["date"],
-        y=df["MA30"],
+        y=df["MA20"],
         mode="lines",
-        name="MA30",
+        name="MA20",
         line=dict(width=1.2, color="blue"),
     )
 )

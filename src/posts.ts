@@ -20,16 +20,5 @@ const mathCollection = (await getCollection("mathCollection")).map((post) => {
   };
 });
 
-const quantCollection = (await getCollection("quantCollection")).map((post) => {
-  const [locale, category, ...idComponents] = post.id.split("/");
-  const id = idComponents.join("/");
-  return {
-    ...post,
-    locale: locale!,
-    category: category!,
-    id,
-  };
-});
-
 export default posts;
-export { mathCollection, quantCollection };
+export { mathCollection };
