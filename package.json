@@ -19,7 +19,7 @@
     "@astrojs/sitemap": "^3.6.0",
     "@expressive-code/plugin-line-numbers": "^0.41.3",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.15",
+    "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.14.8",
     "astro-expressive-code": "^0.41.3",
     "rehype-katex": "^7.0.1",
