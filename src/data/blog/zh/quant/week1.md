@@ -19,6 +19,27 @@ pandas 也是类似的逻辑，文档写的很详细我就不再重复了
 baostock 提供了 5 分钟级别的数据
 
 ```python
+---
+title: "量化交易学习-week1"
+description: "量化交易学习"
+pubDate: "2025-10-23"
+draft: false
+---
+
+## 学习 polars的`.groupby()`, `.rolling()`, `.resample()`
+
+量化交易中最常见的是对于时间序列数据的处理
+对于 polars 来说常见的 api 是 `group_by`, `rolling`, `groupby_dynamic`, `resample`
+
+https://pola-rs.github.io/polars-book-cn/user-guide/dsl/groupby.html
+https://pola-rs.github.io/polars-book-cn/user-guide/timeseries/intro.html
+
+pandas 也是类似的逻辑，文档写的很详细我就不再重复了
+
+来试试实践吧
+baostock 提供了 5 分钟级别的数据
+
+```python
 import baostock as bs
 import plotly.graph_objects as go
 import polars as pl
@@ -103,5 +124,8 @@ fig.add_trace(
 
 fig.update_xaxes(type="category")
 fig.show()
+
+```
+
 
 ```
