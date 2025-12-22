@@ -39,5 +39,6 @@ export default defineConfig({
   },
   experimental: {
     chromeDevtoolsWorkspace: true,
+    svgo: true,
   },
 });
