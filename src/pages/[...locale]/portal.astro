@@ -25,7 +25,7 @@ export const getStaticPaths = (() => {
   <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
     {
       friends.map(({ title, description, link, avatar }) => (
-        <a class="flex h-16 items-center rounded-3xl border p-4" href={link}>
+        <a class="flex h-18 items-center rounded-3xl border p-4" href={link}>
           <Image
             alt={`${title}'s avatar`}
             class="size-16 rounded-full"
@@ -42,24 +42,4 @@ export const getStaticPaths = (() => {
     }
   </div>
 
-  <hr class="my-8" />
-
-  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-    <a
-      class="flex h-16 items-center rounded-3xl border p-4"
-      href="https://www.travellings.cn/go.html"
-    >
-      <Image
-        alt="开往"
-        class="size-16 rounded-full"
-        height={32}
-        src="https://www.travellings.cn/assets/travelling.png"
-        width={32}
-      />
-      <div>
-        <div>开往</div>
-        <div class="text-sm whitespace-pre">下一个世界……</div>
-      </div>
-    </a>
-  </div>
 </BaseLayout>

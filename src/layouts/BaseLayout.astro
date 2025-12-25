@@ -17,7 +17,7 @@ const { description } = Astro.props ?? "";
     <BaseHead description={description} title={title} />
   </head>
   <body
-    class="mx-auto min-h-screen max-w-7xl min-w-sm overflow-y-scroll px-2 font-lxgw lg:grid lg:grid-cols-[3fr_1fr] lg:grid-rows-[calc(100vh-4rem)_auto_auto] lg:gap-x-6 lg:px-20 lg:py-0"
+    class="mx-auto min-h-screen max-w-7xl min-w-sm overflow-y-scroll px-2 lg:grid lg:grid-cols-[3fr_1fr] lg:grid-rows-[calc(100vh-4rem)_auto_auto] lg:gap-x-6 lg:px-20 lg:py-0"
   >
     <header
       class="flex flex-col gap-2.5 p-4 lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 lg:mx-0 lg:h-[calc(100vh-4rem)] lg:justify-between lg:py-20"
@@ -37,18 +37,6 @@ const { description } = Astro.props ?? "";
       class="col-start-2 col-end-3 row-start-2 row-end-3 mt-5 pb-6 lg:mt-0 lg:ml-10 lg:pb-0"
     >
       <CC />
-      <div id="file">
-        <a href="https://beian.miit.gov.cn/"
-          >京ICP备19044057号-1
-        </a>
-      </div>
     </footer>
-    <script>
-      import { isChina } from "@/utils/is_china";
-      if (!isChina()) {
-        const element = document.getElementById("file")!;
-        element.remove();
-      }
-    </script>
   </body>
 </html>

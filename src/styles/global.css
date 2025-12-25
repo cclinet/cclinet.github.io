@@ -4,15 +4,3 @@
 @view-transition {
   navigation: auto;
 }
-
-@font-face {
-  font-family: "LXGWNeoXiHei";
-  src: url("/fonts/LXGWNeoXiHei.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@theme {
-  --font-lxgw: "LXGWNeoXiHei";
-}
