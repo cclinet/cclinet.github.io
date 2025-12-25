@@ -1,34 +1,11 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { SITE_NAVIGATION } from "@/consts";
 import Github from "@/svgs/github.svg";
 import Rss from "@/svgs/rss.svg";
 import Travellings from "@/svgs/travellings.svg";
 import Zhihu from "@/svgs/zhihu.svg";
-const ui = {
-  zh: {
-    "nav.posts": "文章",
-    // "nav.math": "数学",
-    "nav.tags": "标签",
-    "nav.portal": "朋友",
-    "nav.about": "关于",
-  },
-  en: {
-    "nav.posts": "Posts",
-    // "nav.math": "Math",
-    "nav.tags": "Tags",
-    "nav.portal": "Portal",
-    "nav.about": "About",
-  },
-} as const;
-
-const locale = Astro.currentLocale as keyof typeof ui;
-const NavLinks = [
-  { href: "/", name: "nav.posts" },
-  // { href: "/math", name: "nav.math" },
-  { href: "/tags", name: "nav.tags" },
-  { href: "/portal", name: "nav.portal" },
-  { href: "/about", name: "nav.about" },
-] as const;
+const locale = Astro.currentLocale!;
 
 const SocialLinks = [
   {
@@ -54,12 +31,27 @@ const SocialLinks = [
 ] as const;
 ---
 
-<nav class="flex flex-col gap-4 text-center font-bold">
-  <ul class="flex flex-row justify-center gap-2 lg:flex-col lg:items-start">
+<nav class="text-center font-bold">
+  <ul class="flex flex-col gap-0 text-left lg:items-start lg:gap-4">
     {
-      NavLinks.map(({ href, name }) => (
-        <li class="hover:scale-120">
-          <a href={getRelativeLocaleUrl(locale, href)}>{ui[locale][name]}</a>
+      SITE_NAVIGATION.map((group) => (
+        <li class="flex flex-col gap-2">
+          <h3 class="nav-group-trigger text-sm font-bold tracking-wider text-gray-500 uppercase lg:pointer-events-none dark:text-gray-400">
+            {group.group}
+          </h3>
+
+          <ul class="hidden flex-col gap-2 py-2 pl-2 lg:flex">
+            {group.items.map(({ name, href }) => (
+              <li class="transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                <a
+                  href={getRelativeLocaleUrl(locale, href)}
+                  class="block py-0 text-base font-medium text-gray-900 lg:py-1 dark:text-gray-100"
+                >
+                  {name}
+                </a>
+              </li>
+            ))}
+          </ul>
         </li>
       ))
     }
@@ -82,3 +74,23 @@ const SocialLinks = [
     ))
   }
 </ul>
+<script>
+  function initNav() {
+    const triggers = document.querySelectorAll(".nav-group-trigger");
+
+    // 2. 遍历每一个触发器
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        // 3. 找到这个标题对应的下一个兄弟元素 (即 ul 列表)
+        const content = trigger.nextElementSibling!;
+
+        // 5. 切换显隐 Class
+        // toggle('hidden') 会在 hidden 存在时删除它，不存在时添加它
+        content.classList.toggle("hidden");
+        content.classList.toggle("flex"); // 确保显示时有 flex 布局
+      });
+    });
+  }
+  initNav();
+  document.addEventListener("astro:page-load", initNav);
+</script>

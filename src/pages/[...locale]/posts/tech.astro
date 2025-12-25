@@ -1,0 +1,34 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { locales, SITE_TITLE } from "@/consts";
+import posts from "@/posts";
+import TitleList from "@/components/TitleList.astro";
+import type { GetStaticPaths } from "astro";
+import { getLocalePath } from "@/i18n/utils";
+
+export const getStaticPaths = (() => {
+  return locales.map((locale) => ({
+    params: { locale: getLocalePath(locale) },
+    props: { locale },
+  }));
+}) satisfies GetStaticPaths;
+
+const { locale } = Astro.props;
+
+// Filter for Tech posts (tags include "tech" case-insensitive)
+const techPosts = posts.filter(
+  (post) =>
+    !post.data.draft &&
+    post.locale === locale &&
+    post.data.tags?.some((tag) => tag.toLowerCase() === "tech"),
+);
+techPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout description="技术专栏文章" title={`技术专栏 - ${SITE_TITLE}`}>
+  <div class="mb-8">
+    <h1 class="mb-4 text-3xl font-bold">技术专栏</h1>
+    <p class="text-gray-600 dark:text-gray-400">分享技术见解与开发经验。</p>
+  </div>
+  <TitleList posts={techPosts} />
+</BaseLayout>

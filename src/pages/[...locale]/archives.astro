@@ -1,0 +1,72 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { locales, SITE_TITLE } from "@/consts";
+import posts from "@/posts";
+import FormattedDate from "@/components/FormattedDate.astro";
+import type { GetStaticPaths } from "astro";
+import { getLocalePath } from "@/i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+export const getStaticPaths = (() => {
+  return locales.map((locale) => ({
+    params: { locale: getLocalePath(locale) },
+    props: { locale },
+  }));
+}) satisfies GetStaticPaths;
+
+const { locale } = Astro.props;
+
+const allPosts = posts.filter(
+  (post) => !post.data.draft && post.locale === locale,
+);
+allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const postsByYear = allPosts.reduce(
+  (acc, post) => {
+    const year = post.data.pubDate.getFullYear();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  },
+  {} as Record<number, typeof allPosts>,
+);
+
+const years = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+---
+
+<BaseLayout description="文章归档" title={`归档 - ${SITE_TITLE}`}>
+  <div class="mx-auto max-w-3xl">
+    <h1 class="mb-8 text-3xl font-bold">归档</h1>
+
+    <div class="flex flex-col gap-8">
+      {
+        years.map((year) => (
+          <section>
+            <h2 class="mb-4 border-b pb-2 text-2xl font-bold text-gray-800 dark:text-gray-200">
+              {year}
+            </h2>
+            <ul class="flex flex-col gap-4">
+              {postsByYear[year]!.map((post) => (
+                <li class="group flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+                  <a
+                    href={getRelativeLocaleUrl(locale, `/posts/${post.id}/`)}
+                    class="text-lg font-medium text-gray-900 transition-colors hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+                  >
+                    {post.data.title}
+                  </a>
+                  <div class="text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
+                    <FormattedDate date={post.data.pubDate} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

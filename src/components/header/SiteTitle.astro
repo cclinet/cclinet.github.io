@@ -3,14 +3,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 ---
 
 <hgroup
-  class="lg:item-start cursor-pointer text-center duration-800 ease-in-out lg:items-start lg:border-l-2 lg:border-zinc-200 lg:text-left lg:[writing-mode:vertical-lr]"
+  class="cursor-pointer text-center duration-800 ease-in-out lg:items-start lg:border-l-2 lg:border-zinc-200 lg:text-left"
 >
   <a
-    class="flex flex-col duration-800 ease-in-out lg:gap-4 lg:py-4 lg:pb-12"
+    class="flex flex-col duration-800 ease-in-out lg:gap-4 lg:py-4 lg:pb-12 lg:[writing-mode:vertical-lr]"
     href="/"
   >
-    <div class="font-header text-4xl font-extrabold">{SITE_TITLE}</div>
-    <div class="font-header font-extrabold text-zinc-700 lg:text-xl">
+    <div class="text-4xl font-extrabold">{SITE_TITLE}</div>
+    <div class="font-extrabold text-zinc-700 lg:text-xl">
       {SITE_DESCRIPTION}
     </div>
   </a>
