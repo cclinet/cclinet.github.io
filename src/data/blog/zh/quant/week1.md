@@ -18,7 +18,7 @@ pandas 也是类似的逻辑，文档写的很详细我就不再重复了
 来试试实践吧
 baostock 提供了 5 分钟级别的数据
 
-```python
+````python
 ---
 title: "量化交易学习-week1"
 description: "量化交易学习"
@@ -125,7 +125,8 @@ fig.add_trace(
 fig.update_xaxes(type="category")
 fig.show()
 
-```
+````
 
+```
 
 ```

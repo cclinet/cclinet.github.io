@@ -16,7 +16,9 @@ const locale = Astro.currentLocale!;
       // Bento Grid 逻辑：第一篇文章作为“头条”占据更大版面
       // 您后续可以根据 post.data.tags?.includes('tech') 来动态调整 spanClass
       const isFeatured = index === 0;
-      const spanClass = isFeatured ? "md:col-span-2 md:row-span-2" : "col-span-1";
+      const spanClass = isFeatured
+        ? "md:col-span-2 md:row-span-2"
+        : "col-span-1";
 
       return (
         <article
@@ -32,7 +34,7 @@ const locale = Astro.currentLocale!;
             <span class="sr-only">View {post.data.title}</span>
           </a>
           <div class="mb-4">
-            <h3 class="text-xl font-bold leading-tight text-gray-900 group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400">
+            <h3 class="text-xl leading-tight font-bold text-gray-900 group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400">
               {post.data.title}
             </h3>
           </div>

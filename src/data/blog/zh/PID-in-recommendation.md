@@ -4,7 +4,7 @@ description: "PAI-Rec 中的流量调控算法"
 pubDate: "2024-09-13"
 updatedDate: "2024-09-13"
 draft: false
-tags: ["recommendation", "machine learing", "deep learning"]
+tags: ["recommendation system", "machine learing"]
 ---
 
 ## 什么是 PID

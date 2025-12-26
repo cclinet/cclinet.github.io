@@ -3,7 +3,7 @@ title: "为什么 attention 需要除以sqrt(d)"
 description: "为什么 attention 需要除以sqrt(d)"
 pubDate: "2025-01-07"
 draft: false
-tags: ["deep learning", "LLM"]
+tags: ["machine learning", "LLM"]
 ---
 
 attention is all you need 的论文中，计算attention的公式如下
