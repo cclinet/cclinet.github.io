@@ -11,6 +11,12 @@ const friends = [
     link: "https://arthals.ink/",
     avatar: "https://cdn.arthals.ink/Arthals.png",
   },
+  {
+    title: "糖菓·部落",
+    description: "Never drown the flame of hope",
+    link: "https://candinya.com",
+    avatar: "https://candinya.com/images/candinya.webp",
+  },
 ];
 
 export const getStaticPaths = (() => {
@@ -33,7 +39,7 @@ export const getStaticPaths = (() => {
             src={avatar}
             width={32}
           />
-          <div>
+          <div class="pl-2">
             <div>{title}</div>
             <div class="text-sm whitespace-pre">{description}</div>
           </div>
@@ -41,5 +47,4 @@ export const getStaticPaths = (() => {
       ))
     }
   </div>
-
 </BaseLayout>

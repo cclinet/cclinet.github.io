@@ -24,6 +24,9 @@ export const SITE_NAVIGATION = [
   },
   {
     group: "关于",
-    items: [{ name: "关于我", href: "/about" }],
+    items: [
+      { name: "朋友", href: "/portal" },
+      { name: "关于我", href: "/about" },
+    ],
   },
 ];
