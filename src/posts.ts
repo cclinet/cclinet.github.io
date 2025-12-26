@@ -11,7 +11,7 @@ const posts = (await getCollection("blog"))
     };
   })
   .filter((post) => {
-    return !post.data.isChinaIllegal;
+    return !post.data.draft;
   });
 
 const mathCollection = (await getCollection("mathCollection")).map((post) => {
