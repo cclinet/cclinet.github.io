@@ -26,9 +26,7 @@ quantPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 <BaseLayout description="量化交易系列文章" title={`量化交易 - ${SITE_TITLE}`}>
   <div class="mb-8">
     <h1 class="mb-4 text-3xl font-bold">量化交易</h1>
-    <p class="text-gray-600 dark:text-gray-400">
-      探索量化交易的世界，分享策略与心得。
-    </p>
+    <p class="text-gray-600">探索量化交易的世界，分享策略与心得。</p>
   </div>
   <TitleList posts={quantPosts} />
 </BaseLayout>

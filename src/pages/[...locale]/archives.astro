@@ -46,7 +46,7 @@ const years = Object.keys(postsByYear)
       {
         years.map((year) => (
           <section>
-            <h2 class="mb-4 border-b pb-2 text-2xl font-bold text-gray-800 dark:text-gray-200">
+            <h2 class="mb-4 border-b pb-2 text-2xl font-bold text-gray-800">
               {year}
             </h2>
             <ul class="flex flex-col gap-4">
@@ -54,11 +54,11 @@ const years = Object.keys(postsByYear)
                 <li class="group flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
                   <a
                     href={getRelativeLocaleUrl(locale, `/posts/${post.id}/`)}
-                    class="text-lg font-medium text-gray-900 transition-colors hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+                    class="text-lg font-medium text-gray-900 transition-colors hover:text-blue-600"
                   >
                     {post.data.title}
                   </a>
-                  <div class="text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
+                  <div class="text-sm whitespace-nowrap text-gray-500">
                     <FormattedDate date={post.data.pubDate} />
                   </div>
                 </li>
