@@ -4,7 +4,7 @@ description: "自我救赎之路"
 pubDate: "2025-07-08"
 updatedDate: "2025-07-08"
 isChinaIllegal: true
-tags: ["personal"]
+tags: ["Personal"]
 ---
 
 最近情绪很不好，仔细分析了下，自己应该是又掉入了政治性抑郁的漩涡。

@@ -1,7 +1,8 @@
-// src/content.config.ts
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { defineCollection } from "astro:content";
+import { ALLOWED_TAGS } from "./consts";
+
 
 const blog = defineCollection({
   // Load data from Markdown files on disk
@@ -13,7 +14,7 @@ const blog = defineCollection({
     isChinaIllegal: z.boolean().optional(),
     updatedDate: z.coerce.date().optional(),
     draft: z.boolean().optional(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.enum(ALLOWED_TAGS)).optional(),
   }),
 });
 const mathCollection = defineCollection({

@@ -5,7 +5,7 @@ pubDate: "2025-05-30"
 updatedDate: "2025-05-30"
 draft: false
 isChinaIllegal: true
-tags: ["personal"]
+tags: ["Personal"]
 ---
 
 24号中午 12:45，我正躺在床上开心的刷着迷雾大陆，突然收到一条微信通知，因为违反相关政策，我的群聊和朋友圈已经被封禁。我以为封禁是只能看不能说，没想到群聊连看都看不了。

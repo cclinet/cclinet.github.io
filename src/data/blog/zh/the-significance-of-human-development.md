@@ -4,7 +4,7 @@ description: "关于代际牺牲与人类发展目的论的深度研究报告"
 pubDate: "2025-12-31"
 draft: false
 isChinaIllegal: false
-tags: ["personal"]
+tags: ["Personal"]
 ---
 
 >这是 gemini 深度思考的一个报告，我原始的问题是“如果每代人都是发展过程中的代价，那么人类发展是为了什么呢”

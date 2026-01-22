@@ -3,7 +3,7 @@ title: "2024年过去了，我很怀念他"
 description: "我的2024"
 pubDate: "2025-02-03"
 draft: false
-tags: ["personal"]
+tags: ["Personal"]
 ---
 
 ## 工作

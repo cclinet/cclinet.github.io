@@ -4,7 +4,7 @@ description: "mit-6.5840 lab1"
 pubDate: "2024-10-30"
 updatedDate: "2024-10-30"
 draft: false
-tags: ["go", "distributed systems"]
+tags: ["Distributed Systems"]
 ---
 
 ## 思路

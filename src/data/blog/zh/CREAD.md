@@ -4,7 +4,7 @@ description: "AAAI'24「快手」观看时长建模：CREAD"
 pubDate: "2024-07-01"
 updatedDate: "2024-07-01"
 draft: false
-tags: ["recommendation", "machine learing"]
+tags: ["Recommendation System", "Machine Learning"]
 ---
 
 这是一篇来自快手的文章，主要讲了两件事，第一件事是如何对观看时长进行建模，第二件事是如何对连续特征进行分桶。

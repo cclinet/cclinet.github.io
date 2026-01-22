@@ -2,7 +2,7 @@
 title: "使用 Systemd 运行 Podman"
 description: "使用 Systemd 运行 Podman"
 pubDate: "2024-04-02"
-tags: ["linux"]
+tags: ["Linux"]
 ---
 
 Podman 作为 docker 的替代品，其一大特点就是没有 daemon（守护进程），它直接将容器作为一个进程运行在系统中。那么很自然的，本地的容器服务将会由 systemd 来管理。Podman 曾经使用`podman generate systemd`来生成 systemd 文件，在 4.4 版本，podman 合并了 Quadlet，使得 使用 systemd 管理容器变得更加简单。

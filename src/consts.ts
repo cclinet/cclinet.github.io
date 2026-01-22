@@ -27,3 +27,17 @@ export const SITE_NAVIGATION = [
     ],
   },
 ];
+
+export const ALLOWED_TAGS = [
+  "Quant",
+  "NLP",
+  "LLM",
+  "Machine Learning",
+  "C++",
+  "Python",
+  "Linux",
+  "Distributed Systems",
+  "Recommendation System",
+  "Nanobind",
+  "Personal",
+] as const;

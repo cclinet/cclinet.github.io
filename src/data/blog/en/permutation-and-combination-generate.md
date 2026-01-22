@@ -3,7 +3,7 @@ title: "Efficient Generation of Permutations and Combinations Using C++ Multithr
 description: "C++ code for efficiently generating permutations and combinations using TBB multithreading."
 pubDate: "2025-02-07"
 draft: false
-tags: ["c++"]
+tags: ["C++"]
 ---
 
 Permutations and combinations are well-known topics, so I won’t go into too much detail here. I’ll just briefly explain the algorithm.

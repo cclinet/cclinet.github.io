@@ -4,7 +4,7 @@ description: "AAAI'24 Kwai Watch Time Modeling: CREAD"
 pubDate: "2024-07-01"
 updatedDate: "2024-07-01"
 draft: false
-tags: ["recommendation", "machine learing", "deep learning"]
+tags: ["Recommendation System", "Machine Learning"]
 ---
 
 This is an article from Kwai, mainly discussing two topics: modeling watch time and bucketing continuous features.

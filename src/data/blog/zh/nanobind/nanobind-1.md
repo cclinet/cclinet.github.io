@@ -4,7 +4,7 @@ description: "nanobind 简介"
 pubDate: "2024-08-08"
 updatedDate: "2025-01-20"
 draft: false
-tags: ["nanobind", "python", "c++"]
+tags: ["Nanobind", "Python", "C++"]
 ---
 
 这是 nanobind 的一个简单的介绍，想要详细了解 nanobind 最好的方式还是看[官方文档](https://nanobind.readthedocs.io/en/latest/index.html)。
