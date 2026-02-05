@@ -1,8 +1,8 @@
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { defineCollection } from "astro:content";
-import { ALLOWED_TAGS } from "./consts";
 
+import { ALLOWED_TAGS } from "./consts";
 
 const blog = defineCollection({
   // Load data from Markdown files on disk

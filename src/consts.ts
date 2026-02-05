@@ -40,4 +40,5 @@ export const ALLOWED_TAGS = [
   "Recommendation System",
   "Nanobind",
   "Personal",
+  "Agent",
 ] as const;
