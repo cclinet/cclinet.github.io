@@ -32,6 +32,7 @@ export default defineConfig({
     responsiveImages: true,
     remotePatterns: [{ protocol: "https" }],
     layout: "constrained",
+    dangerouslyProcessSVG: true
   },
   i18n: {
     locales: ["zh", "en"],
