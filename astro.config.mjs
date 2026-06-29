@@ -6,7 +6,7 @@ import expressiveCode from "astro-expressive-code";
 import { defineConfig, svgoOptimizer } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
-
+import { unified } from '@astrojs/markdown-remark';
 // https://astro.build/config
 export default defineConfig({
   site: "https://cclin.org",
@@ -24,9 +24,11 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    syntaxHighlight: false,
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
+    processor: unified({
+      syntaxHighlight: false,
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
+    })
   },
   image: {
     responsiveImages: true,
