@@ -208,13 +208,14 @@ NB_MODULE(cuckoo, m) {
 随后通过`.def(nb::init<>())`和`.def(nb::init<const std::string &>())`声明了两个构造函数,`.def("bark", &Dog::bark)`声明了一个方法，`.def_rw("name", &Dog::name)`声明了一个可读写的字段。
 
 对象的所有声明如下表：
-|类型|方法|
-|----------------------------|-----------------------------|
-|Methods & constructors|`.def()`|
-|Fields|`.def_ro()`, `.def_rw()`|
-|Properties|`.def_prop_ro()`, `.def_prop_rw()`|
-|Static methods|`.def_static()`|
-|Static fields|`.def_ro_static()`, `.def_rw_static()`|
-|Static properties|`.def_prop_ro_static()`, `.def_prop_rw_static()`|
+
+| 类型                   | 方法                                             |
+| ---------------------- | ------------------------------------------------ |
+| Methods & constructors | `.def()`                                         |
+| Fields                 | `.def_ro()`, `.def_rw()`                         |
+| Properties             | `.def_prop_ro()`, `.def_prop_rw()`               |
+| Static methods         | `.def_static()`                                  |
+| Static fields          | `.def_ro_static()`, `.def_rw_static()`           |
+| Static properties      | `.def_prop_ro_static()`, `.def_prop_rw_static()` |
 
 [nanobind-2](/posts/nanobind/nanobind-2/)

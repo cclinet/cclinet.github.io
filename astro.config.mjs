@@ -1,3 +1,4 @@
+import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
@@ -6,7 +7,7 @@ import expressiveCode from "astro-expressive-code";
 import { defineConfig, svgoOptimizer } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
-import { unified } from '@astrojs/markdown-remark';
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://cclin.org",
@@ -28,13 +29,13 @@ export default defineConfig({
       syntaxHighlight: false,
       remarkPlugins: [remarkMath],
       rehypePlugins: [[rehypeKatex, { output: "htmlAndMathml" }]],
-    })
+    }),
   },
   image: {
     responsiveImages: true,
     remotePatterns: [{ protocol: "https" }],
     layout: "constrained",
-    dangerouslyProcessSVG: true
+    dangerouslyProcessSVG: true,
   },
   i18n: {
     locales: ["zh", "en"],
