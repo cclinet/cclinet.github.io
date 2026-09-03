@@ -2,6 +2,7 @@
 title: "AAAI'24「快手」观看时长建模：CREAD"
 description: "AAAI'24「快手」观看时长建模：CREAD"
 pubDate: "2024-07-01"
+section: tech
 updatedDate: "2024-07-01"
 draft: false
 tags: ["Recommendation System", "Machine Learning"]

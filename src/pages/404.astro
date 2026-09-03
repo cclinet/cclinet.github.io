@@ -1,20 +1,25 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import { messages } from "@/i18n/messages";
 ---
 
-<BaseLayout description={SITE_DESCRIPTION} title={SITE_TITLE}>
+<BaseLayout
+  description={messages.zh.site.description}
+  title={messages.zh.site.title}
+>
   <div class="flex h-full flex-col items-center">
     <h1
       class="flex w-full flex-col items-center space-y-4 pt-20 text-2xl lg:text-4xl lg:font-bold"
     >
-      <span class="text-gray-800">404 - 页面找不到了！</span>
-      <span class="text-gray-600">404 - The page can't be found!</span>
+      <span class="text-gray-800">{messages.zh.pages.notFound.title}</span>
+      <span class="text-gray-600">{messages.en.pages.notFound.title}</span>
     </h1>
     <p class="flex flex-col items-center lg:text-xl">
-      <span class="mt-6 text-xl text-gray-700">我们努力寻找，但没有结果。</span>
+      <span class="mt-6 text-xl text-gray-700"
+        >{messages.zh.pages.notFound.description}</span
+      >
       <span class="mb-6 text-xl text-gray-500"
-        >We searched hard, but no luck.</span
+        >{messages.en.pages.notFound.description}</span
       >
     </p>
   </div>

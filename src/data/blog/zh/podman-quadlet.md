@@ -2,6 +2,7 @@
 title: "使用 Systemd 运行 Podman"
 description: "使用 Systemd 运行 Podman"
 pubDate: "2024-04-02"
+section: tech
 tags: ["Linux"]
 ---
 

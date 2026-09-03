@@ -1,6 +1,7 @@
 ---
 title: "Pocket Flow: 设计模式"
 pubDate: "2025-11-20"
+section: tech
 tags: ["LLM", "Agent"]
 draft: true
 description: "探索基于 Pocket Flow 强大的图抽象所能实现的多种设计模式，包括多智能体、工作流和 RAG。"

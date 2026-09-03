@@ -2,6 +2,8 @@
 title: "低频量化交易的五个进阶方向"
 description: "结合NLP、图神经网络和宏观状态识别的低频量化交易策略探索，适合从推荐系统转型的量化实践。"
 pubDate: "2026-01-22"
+section: quant
+series: quant-trading
 tags: ["Quant", "NLP"]
 ---
 

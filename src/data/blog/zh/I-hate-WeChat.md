@@ -2,9 +2,9 @@
 title: 我恨微信
 description: "马化腾的骑着驴去上班，别人问他：你怎么骑着驴啊？他说：我的马没了！"
 pubDate: "2025-05-30"
+section: personal
 updatedDate: "2025-05-30"
 draft: false
-isChinaIllegal: true
 tags: ["Personal"]
 ---
 

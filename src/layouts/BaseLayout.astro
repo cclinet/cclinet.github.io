@@ -3,12 +3,15 @@ import BaseHead from "@/components/BaseHead.astro";
 import SiteTitle from "@/components/header/SiteTitle.astro";
 import SiteNavigation from "@/components/header/SiteNavigation.astro";
 import CC from "@/components/header/CC.astro";
-import "../styles/global.css";
 import LanguagePicker from "@/components/header/LanguagePicker.astro";
 // import ThemePicker from "@/components/header/ThemePicker.astro";
 
-const { title }: { title: string } = Astro.props.frontmatter || Astro.props;
-const { description } = Astro.props ?? "";
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>

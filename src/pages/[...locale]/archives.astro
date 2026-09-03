@@ -1,46 +1,26 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { locales, SITE_TITLE } from "@/consts";
-import posts from "@/posts";
+import { getLocaleStaticPaths, getLocalizedPath } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
+import { getPostsByYear } from "@/lib/content";
 import FormattedDate from "@/components/FormattedDate.astro";
 import type { GetStaticPaths } from "astro";
-import { getLocalePath } from "@/i18n/utils";
-import { getRelativeLocaleUrl } from "astro:i18n";
 
-export const getStaticPaths = (() => {
-  return locales.map((locale) => ({
-    params: { locale: getLocalePath(locale) },
-    props: { locale },
-  }));
-}) satisfies GetStaticPaths;
+export const getStaticPaths = (() =>
+  getLocaleStaticPaths()) satisfies GetStaticPaths;
 
 const { locale } = Astro.props;
-
-const allPosts = posts.filter(
-  (post) => !post.data.draft && post.locale === locale,
-);
-allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-
-const postsByYear = allPosts.reduce(
-  (acc, post) => {
-    const year = post.data.pubDate.getFullYear();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(post);
-    return acc;
-  },
-  {} as Record<number, typeof allPosts>,
-);
-
-const years = Object.keys(postsByYear)
-  .map(Number)
-  .sort((a, b) => b - a);
+const t = getMessages(locale);
+const postsByYear = getPostsByYear(locale);
+const years = [...postsByYear.keys()].sort((a, b) => b - a);
 ---
 
-<BaseLayout description="文章归档" title={`归档 - ${SITE_TITLE}`}>
+<BaseLayout
+  description={t.pages.archives.description}
+  title={`${t.pages.archives.title} - ${t.site.title}`}
+>
   <div class="mx-auto max-w-3xl">
-    <h1 class="mb-8 text-3xl font-bold">归档</h1>
+    <h1 class="mb-8 text-3xl font-bold">{t.pages.archives.title}</h1>
 
     <div class="flex flex-col gap-8">
       {
@@ -50,10 +30,10 @@ const years = Object.keys(postsByYear)
               {year}
             </h2>
             <ul class="flex flex-col gap-4">
-              {postsByYear[year]!.map((post) => (
+              {postsByYear.get(year)!.map((post) => (
                 <li class="group flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
                   <a
-                    href={getRelativeLocaleUrl(locale, `/posts/${post.id}/`)}
+                    href={getLocalizedPath(locale, `/posts/${post.slug}/`)}
                     class="text-lg font-medium text-gray-900 transition-colors hover:text-blue-600"
                   >
                     {post.data.title}

@@ -1,48 +1,30 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { GetStaticPaths } from "astro";
-import { locales } from "@/consts";
-import { getLocalePath } from "@/i18n/utils";
-import { mathCollection } from "@/posts";
+import { getLocaleStaticPaths } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
+import { getMathPostsByCategory } from "@/lib/content";
 
-export const getStaticPaths = (() => {
-  return locales.map((locale) => ({
-    params: { locale: getLocalePath(locale) },
-    props: { locale },
-  }));
-}) satisfies GetStaticPaths;
+export const getStaticPaths = (() =>
+  getLocaleStaticPaths()) satisfies GetStaticPaths;
 
-const mathTitleMap = (() => {
-  let title: Map<string, { title: string; url: string }[]> = new Map();
-  for (const eachMathContent of mathCollection) {
-    if (!title.has(eachMathContent.category)) {
-      title.set(eachMathContent.category, []);
-    }
-    title.get(eachMathContent.category)!.push({
-      title: eachMathContent.data.title,
-      url: `${eachMathContent.category}/${eachMathContent.id}/`,
-    });
-  }
-  return title;
-})();
-
-const MathTitle = Array.from(
-  mathTitleMap.entries().map(([category, data]) => ({
-    category: category,
-    data: data,
-  })),
-);
+const { locale } = Astro.props;
+const t = getMessages(locale);
+const postsByCategory = getMathPostsByCategory(locale);
 ---
 
-<BaseLayout title="CCLIN MATH">
-  <div>这里是一些数学相关的内容</div>
+<BaseLayout
+  description={t.pages.math.description}
+  title={`${t.pages.math.title} - ${t.site.title}`}
+>
+  <div>{t.pages.math.introduction}</div>
   {
-    MathTitle.map(({ category, data }) => (
+    [...postsByCategory].map(([category, posts]) => (
       <>
         <h2>{category}</h2>
         <div class="flex flex-col">
-          {data.map(({ title, url }) => (
-            <a href={`${url}`}>{title}</a>
+          {posts.map((post) => (
+            <a href={`${post.category}/${post.slug}/`}>{post.data.title}</a>
           ))}
         </div>
       </>

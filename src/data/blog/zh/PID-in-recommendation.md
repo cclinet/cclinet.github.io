@@ -2,6 +2,7 @@
 title: PAI-Rec 中的流量调控算法
 description: "PAI-Rec 中的流量调控算法"
 pubDate: "2024-09-13"
+section: tech
 updatedDate: "2024-09-13"
 draft: false
 tags: ["Recommendation System", "Machine Learning"]

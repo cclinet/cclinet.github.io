@@ -1,53 +1,39 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { SITE_NAVIGATION } from "@/consts";
+import { getLocale, getLocalizedPath } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
+import { NAVIGATION_GROUPS, SOCIAL_LINKS } from "@/config/site";
 import Github from "@/svgs/github.svg";
 import Rss from "@/svgs/rss.svg";
 import Travellings from "@/svgs/travellings.svg";
 import Zhihu from "@/svgs/zhihu.svg";
-const locale = Astro.currentLocale!;
+const locale = getLocale(Astro.currentLocale);
+const t = getMessages(locale);
 
-const SocialLinks = [
-  {
-    href: "/rss.xml",
-    name: "rss",
-    icon: Rss,
-  },
-  {
-    href: "https://github.com/cclinet",
-    name: "github",
-    icon: Github,
-  },
-  {
-    href: "https://www.zhihu.com/people/probius33",
-    name: "zhihu",
-    icon: Zhihu,
-  },
-  {
-    href: "https://www.travellings.cn/go.html",
-    name: "travellings",
-    icon: Travellings,
-  },
-] as const;
+const socialIcons = {
+  rss: Rss,
+  github: Github,
+  zhihu: Zhihu,
+  travellings: Travellings,
+};
 ---
 
 <nav class="text-center font-bold">
   <ul class="flex flex-col gap-0 text-left lg:items-start lg:gap-4">
     {
-      SITE_NAVIGATION.map((group) => (
+      NAVIGATION_GROUPS.map((group) => (
         <li class="flex flex-col gap-1">
           <h3 class="nav-group-trigger text-sm font-bold tracking-wider text-gray-500 uppercase lg:pointer-events-none">
-            {group.group}
+            {t.navigation.groups[group.label]}
           </h3>
 
           <ul class="hidden flex-col gap-1 pl-2 lg:flex">
-            {group.items.map(({ name, href }) => (
+            {group.items.map(({ label, href }) => (
               <li class="transition-colors hover:text-blue-600">
                 <a
-                  href={getRelativeLocaleUrl(locale, href)}
+                  href={getLocalizedPath(locale, href)}
                   class="block py-0 text-base font-medium text-gray-900"
                 >
-                  {name}
+                  {t.navigation.items[label]}
                 </a>
               </li>
             ))}
@@ -60,18 +46,24 @@ const SocialLinks = [
 
 <ul class="flex flex-row justify-center gap-1 lg:justify-start">
   {
-    SocialLinks.map(({ href, name, icon: Icon }) => (
-      <li>
-        <a
-          aria-label={name}
-          class="inline-flex items-center"
-          href={href}
-          target="_blank"
-        >
-          <Icon width={24} height={24} />
-        </a>
-      </li>
-    ))
+    SOCIAL_LINKS.map(({ id, href, external }) => {
+      const Icon = socialIcons[id];
+      const url = external ? href : getLocalizedPath(locale, href);
+
+      return (
+        <li>
+          <a
+            aria-label={id}
+            class="inline-flex items-center"
+            href={url}
+            rel={external ? "noopener noreferrer" : undefined}
+            target={external ? "_blank" : undefined}
+          >
+            <Icon width={24} height={24} />
+          </a>
+        </li>
+      );
+    })
   }
 </ul>
 <script>

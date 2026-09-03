@@ -1,13 +1,12 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLocale, getLocalizedPath } from "@/i18n/utils";
+import { locales } from "@/i18n/config";
 import ZH from "@/svgs/zh.svg";
 import EN from "@/svgs/en.svg";
 
-const languages = [
-  { locale: "zh", icon: ZH },
-  { locale: "en", icon: EN },
-];
-const currentLocale = Astro.currentLocale as "zh" | "en";
+const icons = { zh: ZH, en: EN };
+const languages = locales.map((locale) => ({ locale, icon: icons[locale] }));
+const currentLocale = getLocale(Astro.currentLocale);
 const regex = new RegExp(`^/${currentLocale}`);
 const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
 ---
@@ -18,7 +17,7 @@ const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
       <a
         aria-label={locale}
         class="text-sm font-medium"
-        href={getRelativeLocaleUrl(locale, currentUrlWithoutLocale)}
+        href={getLocalizedPath(locale, currentUrlWithoutLocale)}
       >
         <Icon
           class="h-4 lg:h-6"

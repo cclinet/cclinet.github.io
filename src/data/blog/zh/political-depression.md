@@ -2,8 +2,8 @@
 title: "我陷入了政治性抑郁"
 description: "自我救赎之路"
 pubDate: "2025-07-08"
+section: personal
 updatedDate: "2025-07-08"
-isChinaIllegal: true
 tags: ["Personal"]
 ---
 

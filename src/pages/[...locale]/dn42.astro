@@ -1,15 +1,14 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { locales, SITE_TITLE } from "@/consts";
 import type { GetStaticPaths } from "astro";
-import { getLocalePath } from "@/i18n/utils";
+import { getLocaleStaticPaths } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
 
-export const getStaticPaths = (() => {
-  return locales.map((locale) => ({
-    params: { locale: getLocalePath(locale) },
-    props: { locale },
-  }));
-}) satisfies GetStaticPaths;
+export const getStaticPaths = (() =>
+  getLocaleStaticPaths()) satisfies GetStaticPaths;
+
+const locale = Astro.props.locale;
+const t = getMessages(locale);
 
 const property = [
   {
@@ -34,7 +33,7 @@ const property = [
   },
   {
     key: "Endpoint",
-    value: "dn42-tokyo.cclin.top:<2+你的 AS 后四位>",
+    value: `dn42-tokyo.cclin.top:<2+${t.pages.dn42.endpointPlaceholder}>`,
   },
   {
     key: "PublicKey",
@@ -43,17 +42,17 @@ const property = [
 ];
 ---
 
-<BaseLayout description={"dn42"} title={SITE_TITLE}>
+<BaseLayout description={t.pages.dn42.description} title={t.pages.dn42.title}>
   <table class="min-w-full divide-y divide-gray-200">
     <thead>
       <tr>
         <th
           class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase"
-          scope="col">Property</th
+          scope="col">{t.pages.dn42.property}</th
         >
         <th
           class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase"
-          scope="col">Value</th
+          scope="col">{t.pages.dn42.value}</th
         >
       </tr>
     </thead>

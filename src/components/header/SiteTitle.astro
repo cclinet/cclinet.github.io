@@ -1,5 +1,9 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getLocale, getLocalizedPath } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
+
+const locale = getLocale(Astro.currentLocale);
+const t = getMessages(locale);
 ---
 
 <hgroup
@@ -7,11 +11,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 >
   <a
     class="flex flex-col duration-800 ease-in-out lg:gap-4 lg:py-4 lg:pb-12 lg:[writing-mode:vertical-lr]"
-    href="/"
+    href={getLocalizedPath(locale, "/")}
   >
-    <div class="text-4xl font-extrabold">{SITE_TITLE}</div>
+    <div class="text-4xl font-extrabold">{t.site.title}</div>
     <div class="font-extrabold text-zinc-700 lg:text-xl">
-      {SITE_DESCRIPTION}
+      {t.site.description}
     </div>
   </a>
 </hgroup>

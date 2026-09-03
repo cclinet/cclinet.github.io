@@ -1,37 +1,39 @@
 ---
-import { locales } from "@/consts";
-import { getLocalePath } from "@/i18n/utils";
+import { getLocaleStaticPaths } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
 import type { GetStaticPaths } from "astro";
 import BaseHead from "@/components/BaseHead.astro";
 
-export const getStaticPaths = (() => {
-  return locales.map((locale) => ({
-    params: { locale: getLocalePath(locale) },
-    props: { locale },
-  }));
-}) satisfies GetStaticPaths;
+export const getStaticPaths = (() =>
+  getLocaleStaticPaths()) satisfies GetStaticPaths;
+
+const locale = Astro.props.locale;
+const t = getMessages(locale);
 ---
 
 <!doctype html>
 <html lang={Astro.currentLocale}>
   <head>
-    <BaseHead description={"心愿兑换券"} title={"心愿兑换券"} />
+    <BaseHead
+      description={t.pages.loveCoupon.title}
+      title={t.pages.loveCoupon.title}
+    />
   </head>
   <body>
     <div class="flex h-dvh flex-col bg-rose-50">
       <div
         class="h-h-full mx-auto my-auto flex h-1/3 w-xl flex-col items-center justify-center gap-y-4 rounded-4xl border-4 border-dashed bg-white"
       >
-        <h1 class="text-3xl text-rose-500">心愿兑换券</h1>
-        <div class="pt-4 text-rose-300">送给我美丽的老婆</div>
-        <div class="bg-rose-400 text-white">实现你的一个愿望</div>
+        <h1 class="text-3xl text-rose-500">{t.pages.loveCoupon.title}</h1>
+        <div class="pt-4 text-rose-300">{t.pages.loveCoupon.recipient}</div>
+        <div class="bg-rose-400 text-white">{t.pages.loveCoupon.benefit}</div>
         <div>
-          <h2 class="text-amber-400">使用条款：</h2>
-          完全没有
+          <h2 class="text-amber-400">{t.pages.loveCoupon.termsHeading}</h2>
+          {t.pages.loveCoupon.terms}
         </div>
         <p class="flex w-full px-2 text-gray-300">
-          <span>过期时间：</span>
-          <span>永不♾️</span>
+          <span>{t.pages.loveCoupon.expiryLabel}</span>
+          <span>{t.pages.loveCoupon.expiry}</span>
           <span class="grow"></span>
           <span class="justify-self-end">No. 5201314</span>
         </p>

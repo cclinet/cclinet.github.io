@@ -1,11 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import type { Locale } from "@/i18n/config";
+import { getMessages } from "@/i18n/messages";
+import { getLocalizedPath } from "@/i18n/utils";
 import BaseLayout from "./BaseLayout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & { locale: Locale };
 
-const { title, description, pubDate, updatedDate, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, locale } = Astro.props;
+const t = getMessages(locale);
 ---
 
 <BaseLayout description={description} title={title}>
@@ -16,7 +20,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
       {
         updatedDate && (
           <div>
-            Last updated on <FormattedDate date={updatedDate} />
+            {t.labels.lastUpdated} <FormattedDate date={updatedDate} />
           </div>
         )
       }
@@ -24,9 +28,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     <div class="flex gap-x-4 text-sm text-zinc-500">
       {
         tags?.map((tag) => (
-          <a class="" href={`/tags/${tag}`}>
-            {tag}
-          </a>
+          <a href={getLocalizedPath(locale, `/tags/${tag}`)}>{tag}</a>
         ))
       }
     </div>

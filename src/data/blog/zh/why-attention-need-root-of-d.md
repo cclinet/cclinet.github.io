@@ -2,6 +2,7 @@
 title: "为什么 attention 需要除以sqrt(d)"
 description: "为什么 attention 需要除以sqrt(d)"
 pubDate: "2025-01-07"
+section: tech
 draft: false
 tags: ["Machine Learning", "LLM"]
 ---

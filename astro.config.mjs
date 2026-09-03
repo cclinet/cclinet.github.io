@@ -8,6 +8,8 @@ import { defineConfig, svgoOptimizer } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
+import { defaultLocale, locales } from "./src/i18n/config.ts";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://cclin.org",
@@ -38,8 +40,8 @@ export default defineConfig({
     dangerouslyProcessSVG: true,
   },
   i18n: {
-    locales: ["zh", "en"],
-    defaultLocale: "zh",
+    locales,
+    defaultLocale,
   },
   experimental: {
     chromeDevtoolsWorkspace: true,

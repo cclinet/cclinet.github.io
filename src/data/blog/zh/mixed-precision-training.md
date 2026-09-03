@@ -2,6 +2,7 @@
 title: "混合精度训练"
 description: "一个关于混合精度训练的简单介绍"
 pubDate: "2024-01-03"
+section: tech
 draft: false
 tags: ["Python", "Machine Learning"]
 ---

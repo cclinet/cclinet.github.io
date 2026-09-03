@@ -1,20 +1,21 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLocale, getLocalizedPath } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
+import type { BlogPost } from "@/lib/content";
 import FormattedDate from "./FormattedDate.astro";
-import type { CollectionEntry } from "astro:content";
+
 interface Props {
-  posts: CollectionEntry<"blog">[];
+  posts: BlogPost[];
 }
 
 const { posts } = Astro.props;
-const locale = Astro.currentLocale!;
+const locale = getLocale(Astro.currentLocale);
+const t = getMessages(locale);
 ---
 
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:ml-10 lg:grid-cols-3">
   {
     posts.map((post, index) => {
-      // Bento Grid 逻辑：第一篇文章作为“头条”占据更大版面
-      // 您后续可以根据 post.data.tags?.includes('tech') 来动态调整 spanClass
       const isFeatured = index === 0;
       const spanClass = isFeatured
         ? "md:col-span-2 md:row-span-2"
@@ -28,10 +29,12 @@ const locale = Astro.currentLocale!;
           ]}
         >
           <a
-            href={getRelativeLocaleUrl(locale, `/posts/${post.id}/`)}
+            href={getLocalizedPath(locale, `/posts/${post.slug}/`)}
             class="absolute inset-0 z-10"
           >
-            <span class="sr-only">View {post.data.title}</span>
+            <span class="sr-only">
+              {t.labels.viewPost}: {post.data.title}
+            </span>
           </a>
           <div class="mb-4">
             <h3 class="text-xl leading-tight font-bold text-gray-900 group-hover:text-blue-600">

@@ -1,14 +1,14 @@
 ---
 import { render } from "astro:content";
-import { mathCollection } from "@/posts";
 import { getLocalePath } from "@/i18n/utils";
+import { getAllMathPosts } from "@/lib/content";
 import MathPost from "@/layouts/MathPost.astro";
 
 export async function getStaticPaths() {
-  return mathCollection.map((post) => ({
+  return getAllMathPosts().map((post) => ({
     params: {
       locale: getLocalePath(post.locale),
-      id: `${post.category}/${post.id}`,
+      id: `${post.category}/${post.slug}`,
     },
     props: post,
   }));

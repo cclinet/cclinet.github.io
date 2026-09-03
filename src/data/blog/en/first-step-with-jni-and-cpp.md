@@ -2,6 +2,7 @@
 title: "Introductory Use of JNI"
 description: "The first steps in using C++ with JNI"
 pubDate: "2023-02-03"
+section: tech
 draft: false
 tags: ["C++"]
 ---

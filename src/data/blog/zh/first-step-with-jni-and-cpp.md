@@ -2,6 +2,7 @@
 title: "JNI初步使用"
 description: "使用 C++ 与 JNI 的第一步"
 pubDate: "2023-02-03"
+section: tech
 draft: false
 tags: ["C++"]
 ---

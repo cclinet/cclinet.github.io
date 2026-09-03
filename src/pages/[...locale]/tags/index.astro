@@ -1,44 +1,27 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import posts from "@/posts";
+import { getLocaleStaticPaths, getLocalizedPath } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
+import { getTagSummaries } from "@/lib/content";
 import type { GetStaticPaths } from "astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { locales } from "@/consts";
-import { getLocalePath } from "@/i18n/utils";
 
-export const getStaticPaths = (() => {
-  return locales.map((locale) => ({
-    params: { locale: getLocalePath(locale) },
-    props: { locale },
-  }));
-}) satisfies GetStaticPaths;
+export const getStaticPaths = (() =>
+  getLocaleStaticPaths()) satisfies GetStaticPaths;
 const { locale } = Astro.props;
-
-const tags = posts
-  .filter((post) => !post.data.draft && post.locale === locale)
-  .flatMap((post) => post.data.tags || [])
-  .reduce<{ tag: string; count: number }[]>((acc, item) => {
-    const existingTag = acc.find((entry) => entry.tag === item);
-    if (existingTag) {
-      existingTag.count += 1;
-    } else {
-      acc.push({ tag: item, count: 1 });
-    }
-    return acc;
-  }, [])
-  .sort((a, b) => b.count - a.count);
+const t = getMessages(locale);
+const tags = getTagSummaries(locale);
 ---
 
-<BaseLayout title="CCLIN TAGS">
-  <h2 class="mb-8 text-xl">Tags</h2>
+<BaseLayout
+  description={t.pages.tags.description}
+  title={`${t.pages.tags.title} - ${t.site.title}`}
+>
+  <h2 class="mb-8 text-xl">{t.pages.tags.title}</h2>
   <ul class="grid grid-cols-2 gap-4">
     {
       tags.map(({ tag, count }) => (
         <li class="text-zinc-900">
-          <a
-            class="underline"
-            href={getRelativeLocaleUrl(Astro.currentLocale!, `/tags/${tag}`)}
-          >
+          <a class="underline" href={getLocalizedPath(locale, `/tags/${tag}`)}>
             {tag}: {count}
           </a>
         </li>

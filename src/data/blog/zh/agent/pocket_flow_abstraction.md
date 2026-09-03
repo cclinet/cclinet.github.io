@@ -1,6 +1,7 @@
 ---
 title: "Pocket Flow: 核心抽象"
 pubDate: "2025-11-20"
+section: tech
 tags: ["LLM", "Agent"]
 draft: true
 description: "深入解析 Pocket Flow 如何仅用 100 行代码实现 LLM 框架的核心抽象：图 (Graph)。"

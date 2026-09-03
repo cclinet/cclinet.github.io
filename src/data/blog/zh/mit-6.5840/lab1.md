@@ -2,6 +2,7 @@
 title: "mit-6.5840(6.824) lab1"
 description: "mit-6.5840 lab1"
 pubDate: "2024-10-30"
+section: tech
 updatedDate: "2024-10-30"
 draft: false
 tags: ["Distributed Systems"]

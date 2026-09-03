@@ -2,6 +2,7 @@
 title: "2024年过去了，我很怀念他"
 description: "我的2024"
 pubDate: "2025-02-03"
+section: personal
 draft: false
 tags: ["Personal"]
 ---

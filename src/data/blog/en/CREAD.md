@@ -2,6 +2,7 @@
 title: "AAAI'24 Kwai Watch Time Modeling: CREAD"
 description: "AAAI'24 Kwai Watch Time Modeling: CREAD"
 pubDate: "2024-07-01"
+section: tech
 updatedDate: "2024-07-01"
 draft: false
 tags: ["Recommendation System", "Machine Learning"]

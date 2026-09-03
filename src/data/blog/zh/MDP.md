@@ -2,6 +2,7 @@
 title: 强化学习基础-马尔可夫决策过程
 description: "强化学习基础-马尔可夫决策过程"
 pubDate: "2022-02-17"
+section: tech
 updatedDate: "2022-02-17"
 draft: false
 tags: ["Machine Learning"]

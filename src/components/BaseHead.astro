@@ -1,13 +1,16 @@
 ---
 import "../styles/global.css";
-import { SITE_TITLE } from "@/consts";
+import { getLocale, getLocalizedFilePath } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
 
 interface Props {
   title: string;
-  description?: string;
+  description?: string | undefined;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const locale = getLocale(Astro.currentLocale);
+const t = getMessages(locale);
 
 const { title, description } = Astro.props;
 
@@ -31,9 +34,9 @@ const katexVersion = (await import("katex")).version;
 {description && <meta content={description} name="description" />}
 
 <link
-  href={new URL("rss.xml", Astro.site)}
+  href={new URL(getLocalizedFilePath(locale, "/rss.xml"), Astro.site)}
   rel="alternate"
-  title={SITE_TITLE}
+  title={t.site.title}
   type="application/rss+xml"
 />
 

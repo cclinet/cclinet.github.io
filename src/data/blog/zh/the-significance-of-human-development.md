@@ -2,8 +2,8 @@
 title: 历史的祭坛与发展的终极图景
 description: "关于代际牺牲与人类发展目的论的深度研究报告"
 pubDate: "2025-12-31"
+section: personal
 draft: false
-isChinaIllegal: false
 tags: ["Personal"]
 ---
 

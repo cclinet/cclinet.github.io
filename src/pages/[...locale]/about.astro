@@ -1,88 +1,81 @@
 ---
-import { locales } from "@/consts";
-import { getLocalePath } from "@/i18n/utils";
+import { getLocaleStaticPaths } from "@/i18n/utils";
+import { getMessages } from "@/i18n/messages";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { GetStaticPaths } from "astro";
 
-const introduction = {
-  zh: "我是 cclin，一名准备做量化开发的推荐算法工程师。",
-  en: "I'm cclin, a Recommendation System Engineer transitioning into Quantitative Development.",
-};
-
-const tools: { link: string; content: string; descrption: string }[] = [
+const tools: { link: string; content: string; description: string }[] = [
   {
     link: "https://astro.build",
     content: "astro.js",
-    descrption: " Website Framework",
+    description: "Website Framework",
   },
   {
     link: "https://tailwindcss.com",
     content: "tailwindcss",
-    descrption: "Styling Library",
+    description: "Styling Library",
   },
   {
     link: "https://katex.org",
     content: "katex",
-    descrption: "Mathematical Formulas",
+    description: "Mathematical Formulas",
   },
   {
     link: "https://unifiedjs.com",
     content: "unifiedjs",
-    descrption: "Markdown Rendering",
+    description: "Markdown Rendering",
   },
   {
     link: "https://expressive-code.com",
     content: "expressive-code",
-    descrption: "Code Blocks",
+    description: "Code Blocks",
   },
 ];
 
-export const getStaticPaths = (() => {
-  return locales.map((locale) => ({
-    params: { locale: getLocalePath(locale) },
-    props: { locale },
-  }));
-}) satisfies GetStaticPaths;
+export const getStaticPaths = (() =>
+  getLocaleStaticPaths()) satisfies GetStaticPaths;
 
 const { locale } = Astro.props;
+const t = getMessages(locale);
 ---
 
-<BaseLayout description={"Personal Introduction"} title={"CCLIN ABOUT"}>
+<BaseLayout description={t.pages.about.description} title={t.pages.about.title}>
   <article class="leading-relaxed">
-    <h2 class="mb-4 text-2xl">Personal Introduction</h2>
-    <p>{introduction[locale]}</p>
+    <h2 class="mb-4 text-2xl">{t.pages.about.introductionHeading}</h2>
+    <p>{t.pages.about.introduction}</p>
   </article>
   <hr class="my-8" />
-  <h2 class="mb-4 text-2xl">About This Site</h2>
-  <p>
-    <h3 class="mt-2 text-xl">Tech Stack</h3>
+  <h2 class="mb-4 text-2xl">{t.pages.about.siteHeading}</h2>
+  <section>
+    <h3 class="mt-2 text-xl">{t.pages.about.stackHeading}</h3>
     <ul>
       {
-        tools.map(({ link, content, descrption }) => (
+        tools.map(({ link, content, description }) => (
           <li class="underline">
             <a href={link}>
-              {content} - {descrption}
+              {content} - {description}
             </a>
           </li>
         ))
       }
     </ul>
-  </p>
+  </section>
   <div class="mt-4">
     <p>
-      The source code is on <a
-        class="underline"
-        href="https://github.com/cclinet/cclinet.github.io">github</a
+      {t.pages.about.sourceCodeLead}
+      <a class="underline" href="https://github.com/cclinet/cclinet.github.io"
+        >github</a
       >.
     </p>
     <p>
-      Deployed on <a class="underline" href="https://www.cloudflare.com/zh-cn/"
+      {t.pages.about.deploymentLead}
+      <a class="underline" href="https://www.cloudflare.com/zh-cn/"
         >cloudflare page</a
       >.
     </p>
 
     <hr class="my-8" />
-    <h2 class="mb-4 text-2xl">Contact Me</h2>
+    <h2 class="mb-4 text-2xl">{t.pages.about.contactHeading}</h2>
     <ul class="pb-6">
       <li>matrix: @cclinet:nya.one</li>
       <li>Email: me@cclin.org</li>

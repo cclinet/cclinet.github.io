@@ -2,6 +2,8 @@
 title: "量化交易学习-week1"
 description: "量化交易学习"
 pubDate: "2025-10-23"
+section: quant
+series: quant-trading
 draft: false
 ---
 

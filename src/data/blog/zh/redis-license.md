@@ -2,6 +2,7 @@
 title: "Redis许可证变更引发的开源盈利思考"
 description: "探讨开源项目如何在当前环境中实现盈利"
 pubDate: "2024-03-25"
+section: tech
 updatedDate: "2024-03-26"
 tags: ["Linux"]
 ---
