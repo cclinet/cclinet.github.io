@@ -17,12 +17,12 @@ const socialIcons = {
 };
 ---
 
-<nav class="text-center font-bold">
-  <ul class="flex flex-col gap-0 text-left lg:items-start lg:gap-4">
+<nav class="font-bold lg:order-2">
+  <ul class="flex flex-col gap-1 text-left lg:items-start lg:gap-4">
     {
       NAVIGATION_GROUPS.map((group) => (
         <li class="flex flex-col gap-1">
-          <h3 class="nav-group-trigger text-sm font-bold tracking-wider text-gray-500 uppercase lg:pointer-events-none">
+          <h3 class="nav-group-trigger cursor-pointer rounded-md px-2 py-1 text-sm font-bold tracking-wider text-gray-500 uppercase transition-colors hover:bg-zinc-100 lg:pointer-events-none lg:px-0 lg:py-0 lg:hover:bg-transparent">
             {t.navigation.groups[group.label]}
           </h3>
 
@@ -44,7 +44,7 @@ const socialIcons = {
   </ul>
 </nav>
 
-<ul class="flex flex-row justify-center gap-1 lg:justify-start">
+<ul class="flex flex-row justify-center gap-0.5 lg:order-3 lg:justify-start">
   {
     SOCIAL_LINKS.map(({ id, href, external }) => {
       const Icon = socialIcons[id];
@@ -54,7 +54,7 @@ const socialIcons = {
         <li>
           <a
             aria-label={id}
-            class="inline-flex items-center"
+            class="inline-flex items-center rounded-full p-1.5 transition-colors hover:bg-zinc-100"
             href={url}
             rel={external ? "noopener noreferrer" : undefined}
             target={external ? "_blank" : undefined}

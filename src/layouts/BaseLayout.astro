@@ -20,14 +20,18 @@ const { title, description } = Astro.props;
     <BaseHead description={description} title={title} />
   </head>
   <body
-    class="mx-auto min-h-screen max-w-7xl min-w-sm overflow-y-scroll px-2 lg:grid lg:grid-cols-[3fr_1fr] lg:grid-rows-[calc(100vh-4rem)_auto_auto] lg:gap-x-6 lg:px-20 lg:pt-0 lg:pb-10"
+    class="mx-auto min-h-screen max-w-7xl min-w-sm overflow-y-scroll bg-zinc-50/40 px-4 text-zinc-900 antialiased sm:px-6 lg:grid lg:grid-cols-[3fr_1fr] lg:grid-rows-[calc(100vh-4rem)_auto_auto] lg:gap-x-6 lg:px-20 lg:pt-0 lg:pb-10"
   >
     <header
-      class="flex flex-col gap-2.5 p-4 lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 lg:mx-0 lg:h-[calc(100vh-4rem)] lg:justify-between lg:py-20"
+      class="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-4 py-6 lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 lg:mx-0 lg:flex lg:h-[calc(100vh-4rem)] lg:flex-col lg:items-stretch lg:justify-between lg:py-20"
     >
       <SiteTitle />
-      <SiteNavigation />
       <LanguagePicker />
+      <div
+        class="col-span-2 flex items-start justify-between gap-4 lg:contents"
+      >
+        <SiteNavigation />
+      </div>
       <!-- <ThemePicker /> -->
     </header>
 

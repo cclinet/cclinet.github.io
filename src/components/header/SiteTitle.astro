@@ -7,14 +7,18 @@ const t = getMessages(locale);
 ---
 
 <hgroup
-  class="cursor-pointer text-center duration-800 ease-in-out lg:items-start lg:border-l-2 lg:border-zinc-200 lg:text-left"
+  class="min-w-0 cursor-pointer text-left duration-800 ease-in-out lg:order-1 lg:items-start lg:border-l-2 lg:border-zinc-200"
 >
   <a
-    class="flex flex-col duration-800 ease-in-out lg:gap-4 lg:py-4 lg:pb-12 lg:[writing-mode:vertical-lr]"
+    class="flex min-w-0 flex-col duration-800 ease-in-out lg:gap-4 lg:py-4 lg:pb-12 lg:[writing-mode:vertical-lr]"
     href={getLocalizedPath(locale, "/")}
   >
-    <div class="text-4xl font-extrabold">{t.site.title}</div>
-    <div class="font-extrabold text-zinc-700 lg:text-xl">
+    <div class="truncate text-3xl font-extrabold lg:text-4xl">
+      {t.site.title}
+    </div>
+    <div
+      class="truncate text-sm font-semibold text-zinc-600 lg:text-xl lg:font-extrabold lg:text-zinc-700"
+    >
       {t.site.description}
     </div>
   </a>

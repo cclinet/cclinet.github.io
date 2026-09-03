@@ -11,7 +11,10 @@ const regex = new RegExp(`^/${currentLocale}`);
 const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
 ---
 
-<div class="flex justify-center rounded-md lg:justify-start" role="group">
+<div
+  class="flex justify-end gap-1 rounded-md lg:order-4 lg:justify-start"
+  role="group"
+>
   {
     languages.map(({ locale, icon: Icon }) => (
       <a
@@ -20,7 +23,7 @@ const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
         href={getLocalizedPath(locale, currentUrlWithoutLocale)}
       >
         <Icon
-          class="h-4 lg:h-6"
+          class="h-5 lg:h-6"
           class:list={{ "cursor-default": currentLocale === locale }}
           width={24}
           height={24}

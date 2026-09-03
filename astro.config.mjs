@@ -13,6 +13,9 @@ import { defaultLocale, locales } from "./src/i18n/config.ts";
 // https://astro.build/config
 export default defineConfig({
   site: "https://cclin.org",
+  server: {
+    host: true,
+  },
   vite: {
     plugins: [tailwindcss()],
   },
