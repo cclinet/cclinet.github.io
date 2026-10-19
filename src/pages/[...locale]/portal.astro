@@ -31,22 +31,20 @@ const t = getMessages(locale);
   title={`${t.pages.portal.title} - ${t.site.title}`}
 >
   <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-    {
-      friends.map(({ title, description, link, avatar }) => (
-        <a class="flex h-18 items-center rounded-3xl border p-4" href={link}>
-          <Image
-            alt={`${title}'s avatar`}
-            class="size-16 rounded-full"
-            height={32}
-            src={avatar}
-            width={32}
-          />
-          <div class="pl-2">
-            <div>{title}</div>
-            <div class="text-sm whitespace-pre">{description}</div>
-          </div>
-        </a>
-      ))
-    }
+    {friends.map(({ title, description, link, avatar }) => (
+      <a class="flex h-18 items-center rounded-3xl border p-4" href={link}>
+        <Image
+          alt={`${title}'s avatar`}
+          class="size-16 rounded-full"
+          height={32}
+          src={avatar}
+          width={32}
+        />
+        <div class="pl-2">
+          <div>{title}</div>
+          <div class="text-sm whitespace-pre">{description}</div>
+        </div>
+      </a>
+    ))}
   </div>
 </BaseLayout>

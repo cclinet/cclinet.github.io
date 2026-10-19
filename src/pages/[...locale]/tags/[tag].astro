@@ -25,6 +25,8 @@ const t = getMessages(locale);
   description={`${t.pages.tags.description}: ${tag}`}
   title={`${tag} - ${t.pages.tags.title}`}
 >
-  <h2 class="mb-8 text-xl">{t.labels.tag}: {tag}</h2>
+  <h2 class="mb-8 text-xl">
+    {t.labels.tag}: {tag}
+  </h2>
   <TitleList posts={curPosts} />
 </BaseLayout>

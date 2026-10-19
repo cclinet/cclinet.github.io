@@ -49,29 +49,29 @@ const t = getMessages(locale);
   <section>
     <h3 class="mt-2 text-xl">{t.pages.about.stackHeading}</h3>
     <ul>
-      {
-        tools.map(({ link, content, description }) => (
-          <li class="underline">
-            <a href={link}>
-              {content} - {description}
-            </a>
-          </li>
-        ))
-      }
+      {tools.map(({ link, content, description }) => (
+        <li class="underline">
+          <a href={link}>
+            {content} - {description}
+          </a>
+        </li>
+      ))}
     </ul>
   </section>
   <div class="mt-4">
     <p>
       {t.pages.about.sourceCodeLead}
-      <a class="underline" href="https://github.com/cclinet/cclinet.github.io"
-        >github</a
-      >.
+      <a class="underline" href="https://github.com/cclinet/cclinet.github.io">
+        github
+      </a>
+      .
     </p>
     <p>
       {t.pages.about.deploymentLead}
-      <a class="underline" href="https://www.cloudflare.com/zh-cn/"
-        >cloudflare page</a
-      >.
+      <a class="underline" href="https://www.cloudflare.com/zh-cn/">
+        cloudflare page
+      </a>
+      .
     </p>
 
     <hr class="my-8" />

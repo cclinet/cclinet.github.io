@@ -48,25 +48,27 @@ const property = [
       <tr>
         <th
           class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase"
-          scope="col">{t.pages.dn42.property}</th
+          scope="col"
         >
+          {t.pages.dn42.property}
+        </th>
         <th
           class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase"
-          scope="col">{t.pages.dn42.value}</th
+          scope="col"
         >
+          {t.pages.dn42.value}
+        </th>
       </tr>
     </thead>
     <tbody class="divide-y divide-gray-200">
-      {
-        property.map(({ key, value }) => (
-          <tr class="hover:bg-gray-100">
-            <td class="px-6 py-4 text-sm font-medium text-gray-800">{key}</td>
-            <td class="dn42-value cursor-copy px-6 py-4 text-end text-sm font-medium">
-              {value}
-            </td>
-          </tr>
-        ))
-      }
+      {property.map(({ key, value }) => (
+        <tr class="hover:bg-gray-100">
+          <td class="px-6 py-4 text-sm font-medium text-gray-800">{key}</td>
+          <td class="dn42-value cursor-copy px-6 py-4 text-end text-sm font-medium">
+            {value}
+          </td>
+        </tr>
+      ))}
     </tbody>
   </table>
   <script>

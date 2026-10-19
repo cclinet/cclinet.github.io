@@ -6,18 +6,16 @@ const isPostPage = Astro.url.pathname.split("/").includes("posts");
 const t = getMessages(getLocale(Astro.currentLocale));
 ---
 
-{
-  isPostPage && (
-    <p class="text-center text-xs lg:text-left" property="cc:license">
-      {t.labels.licensePrefix}{" "}
-      <a
-        class="inline-flex"
-        href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
-        rel="license noopener noreferrer"
-        target="_blank"
-      >
-        CC BY-NC 4.0
-      </a>
-    </p>
-  )
-}
+{isPostPage && (
+  <p class="text-center text-xs lg:text-left" property="cc:license">
+    {t.labels.licensePrefix}{" "}
+    <a
+      class="inline-flex"
+      href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
+      rel="license noopener noreferrer"
+      target="_blank"
+    >
+      CC BY-NC 4.0
+    </a>
+  </p>
+)}

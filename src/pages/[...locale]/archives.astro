@@ -23,30 +23,28 @@ const years = [...postsByYear.keys()].sort((a, b) => b - a);
     <h1 class="mb-8 text-3xl font-bold">{t.pages.archives.title}</h1>
 
     <div class="flex flex-col gap-8">
-      {
-        years.map((year) => (
-          <section>
-            <h2 class="mb-4 border-b pb-2 text-2xl font-bold text-gray-800">
-              {year}
-            </h2>
-            <ul class="flex flex-col gap-4">
-              {postsByYear.get(year)!.map((post) => (
-                <li class="group flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
-                  <a
-                    href={getLocalizedPath(locale, `/posts/${post.slug}/`)}
-                    class="text-lg font-medium text-gray-900 transition-colors hover:text-blue-600"
-                  >
-                    {post.data.title}
-                  </a>
-                  <div class="text-sm whitespace-nowrap text-gray-500">
-                    <FormattedDate date={post.data.pubDate} />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
-      }
+      {years.map((year) => (
+        <section>
+          <h2 class="mb-4 border-b pb-2 text-2xl font-bold text-gray-800">
+            {year}
+          </h2>
+          <ul class="flex flex-col gap-4">
+            {postsByYear.get(year)!.map((post) => (
+              <li class="group flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+                <a
+                  href={getLocalizedPath(locale, `/posts/${post.slug}/`)}
+                  class="text-lg font-medium text-gray-900 transition-colors hover:text-blue-600"
+                >
+                  {post.data.title}
+                </a>
+                <div class="text-sm whitespace-nowrap text-gray-500">
+                  <FormattedDate date={post.data.pubDate} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </div>
   </div>
 </BaseLayout>

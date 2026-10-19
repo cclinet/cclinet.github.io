@@ -14,34 +14,26 @@ const t = getMessages(locale);
 
 <BaseLayout description={description} title={title}>
   <article class="mx-auto max-w-4xl">
-    <h1
-      class="text-3xl leading-tight font-bold text-balance sm:text-4xl lg:text-center"
-    >
+    <h1 class="text-3xl leading-tight font-bold text-balance sm:text-4xl lg:text-center">
       {title}
     </h1>
-    <div
-      class="mt-4 flex flex-wrap justify-between gap-x-6 gap-y-2 text-sm text-zinc-500"
-    >
+    <div class="mt-4 flex flex-wrap justify-between gap-x-6 gap-y-2 text-sm text-zinc-500">
       <FormattedDate date={pubDate} />
-      {
-        updatedDate && (
-          <div>
-            {t.labels.lastUpdated} <FormattedDate date={updatedDate} />
-          </div>
-        )
-      }
+      {updatedDate && (
+        <div>
+          {t.labels.lastUpdated} <FormattedDate date={updatedDate} />
+        </div>
+      )}
     </div>
     <div class="mt-3 flex flex-wrap gap-2 text-sm text-zinc-600">
-      {
-        tags?.map((tag) => (
-          <a
-            class="rounded-full bg-zinc-100 px-2.5 py-1 transition-colors hover:bg-blue-50 hover:text-blue-700"
-            href={getLocalizedPath(locale, `/tags/${tag}`)}
-          >
-            {tag}
-          </a>
-        ))
-      }
+      {tags?.map((tag) => (
+        <a
+          class="rounded-full bg-zinc-100 px-2.5 py-1 transition-colors hover:bg-blue-50 hover:text-blue-700"
+          href={getLocalizedPath(locale, `/tags/${tag}`)}
+        >
+          {tag}
+        </a>
+      ))}
     </div>
 
     <hr class="my-6 border-zinc-200" />

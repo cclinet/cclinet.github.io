@@ -6,9 +6,7 @@ const locale = getLocale(Astro.currentLocale);
 const t = getMessages(locale);
 ---
 
-<hgroup
-  class="min-w-0 cursor-pointer text-left duration-800 ease-in-out lg:order-1 lg:items-start lg:border-l-2 lg:border-zinc-200"
->
+<hgroup class="min-w-0 cursor-pointer text-left duration-800 ease-in-out lg:order-1 lg:items-start lg:border-l-2 lg:border-zinc-200">
   <a
     class="flex min-w-0 flex-col duration-800 ease-in-out lg:gap-4 lg:py-4 lg:pb-12 lg:[writing-mode:vertical-lr]"
     href={getLocalizedPath(locale, "/")}
@@ -16,9 +14,7 @@ const t = getMessages(locale);
     <div class="truncate text-3xl font-extrabold lg:text-4xl">
       {t.site.title}
     </div>
-    <div
-      class="truncate text-sm font-semibold text-zinc-600 lg:text-xl lg:font-extrabold lg:text-zinc-700"
-    >
+    <div class="truncate text-sm font-semibold text-zinc-600 lg:text-xl lg:font-extrabold lg:text-zinc-700">
       {t.site.description}
     </div>
   </a>

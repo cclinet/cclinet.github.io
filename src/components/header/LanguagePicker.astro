@@ -15,22 +15,20 @@ const currentUrlWithoutLocale = Astro.url.pathname.replace(regex, "");
   class="flex justify-end gap-1 rounded-md lg:order-4 lg:justify-start"
   role="group"
 >
-  {
-    languages.map(({ locale, icon: Icon }) => (
-      <a
-        aria-label={locale}
-        class="text-sm font-medium"
-        href={getLocalizedPath(locale, currentUrlWithoutLocale)}
+  {languages.map(({ locale, icon: Icon }) => (
+    <a
+      aria-label={locale}
+      class="text-sm font-medium"
+      href={getLocalizedPath(locale, currentUrlWithoutLocale)}
+    >
+      <Icon
+        class="h-5 lg:h-6"
+        class:list={{ "cursor-default": currentLocale === locale }}
+        width={24}
+        height={24}
       >
-        <Icon
-          class="h-5 lg:h-6"
-          class:list={{ "cursor-default": currentLocale === locale }}
-          width={24}
-          height={24}
-        >
-          {locale}
-        </Icon>
-      </a>
-    ))
-  }
+        {locale}
+      </Icon>
+    </a>
+  ))}
 </div>
